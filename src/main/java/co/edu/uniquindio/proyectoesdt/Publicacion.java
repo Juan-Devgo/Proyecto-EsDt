@@ -13,11 +13,13 @@ public class Publicacion {
 
     public Publicacion(String titulo, String tema, Usuario autor, TipoPublicacion tipoPublicacion, Contenido contenido){
         if(titulo == null || titulo.isBlank() || tema == null || tema.isBlank() || autor == null ||
-                tipoPublicacion == null || tipoPublicacion == TipoPublicacion.SOLICITUD_AYUDA || contenido == null) {
+                tipoPublicacion == null || contenido == null) {
             throw new IllegalArgumentException("Al menos uno de los datos suministrados es inválido o nulo al crear " +
                     "una publicación.");
         }
-
+        if (tipoPublicacion == TipoPublicacion.SOLICITUD_AYUDA && getClass() == Publicacion.class){
+            throw new IllegalArgumentException("Las solicitudes de ayuda se deben realizar usando directamente la clase SolicitudAyuda");
+        }
         this.titulo = titulo;
         this.tema = tema;
         this.autor = autor;

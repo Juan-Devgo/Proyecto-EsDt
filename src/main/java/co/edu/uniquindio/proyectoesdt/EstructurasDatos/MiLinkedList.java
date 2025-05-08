@@ -137,7 +137,7 @@ public class MiLinkedList<T> {
 
     //TDA Eliminación
 
-    public void eliminar(int posicion) {
+    public void eliminarPosicion(int posicion) {
 
         if(!esVacia()) {
             if (posicion < tamanio && posicion >= 0) {
