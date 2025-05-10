@@ -5,19 +5,35 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.io.File;
+import java.util.HashSet;
+import java.util.LinkedList;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 class ProyectoEsdtApplicationTests {
     private MiLinkedList<String> listaSimple;
     private MiCola<String> cola;
-
+    private GrupoEstudio grupoEstudio;
+    private Estudiante estudiante1;
+    private Estudiante estudiante2;
+    private Estudiante estudiante3;
+    private Contenido contenido;
+    LinkedList<String> parrafos = new LinkedList<>();
+    HashSet<File> archivos = new HashSet<>();
 
     @BeforeEach //Instanciación de las estructuras
     void creacionEstructurasDatos() {
         listaSimple = new MiLinkedList<>();
         cola = new MiCola<>();
-        //autor = new Estudiante("candy", "camdipam", "2313","gatologa");
+        grupoEstudio = new GrupoEstudio("Estructuras de Datos");
+        estudiante1 = new Estudiante("Angie", "angie123", "1234", "Ingeniería de Sistemas");
+        estudiante2 = new Estudiante("Amyi", "amyi123", "1254", "Ingeniería de Sistemas");
+        estudiante3 = new Estudiante("JuanDi", "ElMaravillosoNovioDeAngie", "amo a mi novia", "Ingeniería de Sistemas");
+        archivos.add(new File("Meopw"));
+        parrafos.add("Un dia la vaca loca se cayo y se le torcio la cola");
+        contenido = new Contenido(archivos,parrafos);
     }
 
     @Test
@@ -108,7 +124,7 @@ class ProyectoEsdtApplicationTests {
         assertEquals("2", cola.sacarCabeza());
     }
 
-    //Prueba: Creacion de un Moderador
+    //Prueba Moderador: Creacion de un Moderador
     void probarCreacionModerador(){
         Moderador moderador = new Moderador("Grisesito","GrisesitoAdmin","mehe","Ingenieria en alimentos");
 
@@ -118,4 +134,68 @@ class ProyectoEsdtApplicationTests {
         assertEquals("mehe", moderador.getContrasenia());
         assertEquals("Ingenieria en alimentos",moderador.getCarrera() );
     }
+
+    //Prueba Estudiante: Creacion de un Estudiante
+    void probarCreacionEstudiante(){
+        Estudiante estudiante = new Estudiante("Manchitas","manchititicas","meow","Ingenieria civil");
+
+        assertNotNull(estudiante);
+        assertEquals("Manchitas", estudiante.getNombre());
+        assertEquals("manchititicas", estudiante.getNickname());
+        assertEquals("meow", estudiante.getContrasenia());
+        assertEquals("Ingenieria civil",estudiante.getCarrera());
+    }
+
+    //Prueba Grupo de estudio: Creacion Grupo de estudio
+    void probarCreacionGrupoEstudio(){
+
+        assertThrows(IllegalArgumentException.class, () -> new GrupoEstudio(""));
+        assertThrows(IllegalArgumentException.class, () -> new GrupoEstudio(null));
+        assertEquals("Estructuras de Datos", grupoEstudio.getNombre());
+        assertTrue(grupoEstudio.getTemas().isEmpty());
+        assertTrue(grupoEstudio.getSolicitudes().isEmpty());
+        assertTrue(grupoEstudio.getIntegrantes().isEmpty());
+    }
+
+    //Prueba Grupo de estudio: Recibir solicitudes de estudiantes y agregarlas
+    void probarRecepcionSolictudesGrupo(){
+        grupoEstudio.recibirSolicitud(estudiante1);
+        grupoEstudio.recibirSolicitud(estudiante2);
+        grupoEstudio.recibirSolicitud(estudiante3);
+
+        assertTrue(grupoEstudio.getSolicitudes().contains(estudiante1));
+        assertTrue(grupoEstudio.getSolicitudes().contains(estudiante2));
+        assertTrue(grupoEstudio.getSolicitudes().contains(estudiante3));
+    }
+
+    //Prueba Grupo de estudio: Agregar aceptar y agregar un integrante
+    void probarAgregarIntegranteGrupo(){
+        grupoEstudio.recibirSolicitud(estudiante1);
+        grupoEstudio.aceptarSolicitud(estudiante1);
+
+        assertFalse(grupoEstudio.getSolicitudes().contains(estudiante1));
+    }
+
+    //Prueba Publicacion: Creacion de publicacion
+    void probarCreacionPublicacion() {
+        Publicacion anuncio = new Publicacion("Dinopardo", "dinos", estudiante1, TipoPublicacion.ANUNCIO, contenido);
+        assertNotNull(anuncio);
+    }
+
+    //Prueba Publicacion: Creacion publicacion con tipoPublicacion Solicitud de ayuda
+    void probarCracionPublicacionTipoSolicitud(){
+        assertThrows(IllegalArgumentException.class, () -> {
+            new Publicacion("Título", "Tema", estudiante1, TipoPublicacion.SOLICITUD_AYUDA, contenido);
+        });
+    }
+
+    //Prueba Solicitud Ayuda: Creacion Solicitud de Ayuda desde la clase SolucitudAyuda
+    void probarCreacionSolicitudAyuda() {
+        SolicitudAyuda solicitud = new SolicitudAyuda("Necesito ayuda", "Teoría de grafos", estudiante2, contenido, true, Prioridad.ALTA);
+
+        assertNotNull(solicitud);
+        assertTrue(solicitud.isActiva());
+    }
+
 }
+
