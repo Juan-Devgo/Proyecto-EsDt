@@ -7,13 +7,13 @@ public class Plataforma {
     public static final String nombre = "BrainLoop";
     private final GrafoNoDirigido<Usuario> usuarios;
     private final MiLinkedList<GrupoEstudio> gruposEstudio;
-    private final ArbolBiBusqueda<Publicacion> publicaciones;
+    private final ArbolBinarioABB<Publicacion> publicaciones;
     private final MiColaPrioridad<SolicitudAyuda> solicitudesAyuda;
 
     private Plataforma() {
         this.usuarios = new GrafoNoDirigido<>();
         this.gruposEstudio = new MiLinkedList<>();
-        this.publicaciones = new ArbolBiBusqueda<>();
+        this.publicaciones = new ArbolBinarioABB<>();
         this.solicitudesAyuda = new MiColaPrioridad<>();
     }
 
@@ -32,7 +32,7 @@ public class Plataforma {
         return gruposEstudio;
     }
 
-    public ArbolBiBusqueda<Publicacion> getPublicaciones() {
+    public ArbolBinarioABB<Publicacion> getPublicaciones() {
         return publicaciones;
     }
 

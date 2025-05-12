@@ -3,13 +3,13 @@ package co.edu.uniquindio.proyectoesdt;
 import java.util.HashMap;
 import java.util.HashSet;
 
-public class Publicacion {
-    private String titulo, tema;
-    private Usuario autor;
-    private TipoPublicacion tipoPublicacion;
-    private Contenido contenido;
-    private final HashSet<Usuario> likes;
-    private final HashMap<Usuario, String> comentarios;
+public class Publicacion implements Comparable<Publicacion>{
+    protected String titulo, tema;
+    protected Usuario autor;
+    protected TipoPublicacion tipoPublicacion;
+    protected Contenido contenido;
+    protected final HashSet<Usuario> likes;
+    protected final HashMap<Usuario, String> comentarios;
 
     public Publicacion(String titulo, String tema, Usuario autor, TipoPublicacion tipoPublicacion, Contenido contenido){
         if(titulo == null || titulo.isBlank() || tema == null || tema.isBlank() || autor == null ||
@@ -25,6 +25,11 @@ public class Publicacion {
         this.autor = autor;
         this.likes = new HashSet<>();
         this.comentarios = new HashMap<>();
+    }
+
+    @Override
+    public int compareTo(Publicacion o) {
+        return titulo.compareTo(o.titulo);
     }
 
     public int getCantidadLikes() {

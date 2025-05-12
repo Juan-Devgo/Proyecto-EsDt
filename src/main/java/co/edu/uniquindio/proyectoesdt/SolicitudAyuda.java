@@ -4,7 +4,8 @@ public class SolicitudAyuda extends Publicacion implements Comparable<SolicitudA
     private boolean activa;
     private Prioridad prioridad;
 
-    public SolicitudAyuda(String titulo, String tema, Usuario autor, Contenido contenido, boolean activa) {
+    public SolicitudAyuda(String titulo, String tema, Usuario autor, Contenido contenido, boolean activa,
+                          Prioridad prioridad) {
         super(titulo, tema, autor, TipoPublicacion.SOLICITUD_AYUDA, contenido);
 
         this.activa = activa;
