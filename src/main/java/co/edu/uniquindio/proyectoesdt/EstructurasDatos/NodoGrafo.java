@@ -4,7 +4,7 @@ import co.edu.uniquindio.proyectoesdt.Usuario;
 
 import java.util.ArrayList;
 
-public class NodoGrafo <T extends Usuario> {
+public class NodoGrafo<T extends Usuario> {
     private T elemento;
     private final ArrayList<NodoGrafo<T>> adyacentes;
 
@@ -17,12 +17,25 @@ public class NodoGrafo <T extends Usuario> {
         return adyacentes.contains(nodo);
     }
 
+    public boolean existeCamino(NodoGrafo<T> nodo) {
+        if(existeNodo(nodo)) {
+            return true;
+        }
+
+        for(NodoGrafo<T> adyacente : adyacentes) {
+            return existeCamino(nodo);
+        }
+
+        return false;
+    }
+
     public void agregarNodo(NodoGrafo<T> nuevoNodo) {
         if(nuevoNodo == null) {
             throw new IllegalArgumentException("Se ha intentado agregar un nodo nulo.");
         }
 
         adyacentes.add(nuevoNodo);
+        nuevoNodo.getAdyacentes().add(this);
     }
 
     public void eliminarNodo(NodoGrafo<T> nodoAEliminar) {
@@ -31,6 +44,8 @@ public class NodoGrafo <T extends Usuario> {
         }
 
         adyacentes.remove(nodoAEliminar);
+        nodoAEliminar.getAdyacentes().remove(this);
+
     }
 
     public T getElemento() {
