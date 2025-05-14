@@ -3,17 +3,18 @@ package co.edu.uniquindio.proyectoesdt;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-public class GrupoEstudio {
+public class GrupoEstudio implements Comparable<GrupoEstudio> {
     private String nombre;
     private final ArrayList<String> temas;
     private final HashSet<Estudiante> solicitudes;
     private final HashSet<Estudiante> integrantes;
+    private int numeroParticipantes = 0;
 
     public GrupoEstudio(String nombre) {
         if(nombre == null || nombre.isBlank()) {
             throw new IllegalArgumentException("El nombre del grupo de estudio es inválido");
         }
-
+        this.numeroParticipantes = numeroParticipantes;
         this.temas = new ArrayList<>();
         this.solicitudes = new HashSet<>();
         this.integrantes = new HashSet<>();
@@ -42,6 +43,7 @@ public class GrupoEstudio {
 
         solicitudes.remove(est);
         integrantes.add(est);
+        numeroParticipantes++;
     }
 
     public void eliminarIntegrante(Estudiante est) {
@@ -50,6 +52,7 @@ public class GrupoEstudio {
         }
 
         integrantes.remove(est);
+        numeroParticipantes --;
     }
 
     public String getNombre() {
@@ -70,5 +73,14 @@ public class GrupoEstudio {
 
     public HashSet<Estudiante> getIntegrantes() {
         return integrantes;
+    }
+
+    public int getNumeroParticipantes() {
+        return numeroParticipantes;
+    }
+
+    @Override
+    public int compareTo(GrupoEstudio otroGrupo) {
+        return Integer.compare(otroGrupo.getNumeroParticipantes(), this.getNumeroParticipantes());
     }
 }

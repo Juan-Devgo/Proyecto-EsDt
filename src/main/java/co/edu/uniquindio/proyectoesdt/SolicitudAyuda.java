@@ -7,8 +7,11 @@ public class SolicitudAyuda extends Publicacion implements Comparable<SolicitudA
     public SolicitudAyuda(String titulo, String tema, Usuario autor, Contenido contenido, boolean activa,
                           Prioridad prioridad) {
         super(titulo, tema, autor, TipoPublicacion.SOLICITUD_AYUDA, contenido);
-
+        if (prioridad == null) {
+            throw new IllegalArgumentException("La prioridad no puede ser nula.");
+        }
         this.activa = activa;
+        this.prioridad = prioridad;
     }
 
     @Override

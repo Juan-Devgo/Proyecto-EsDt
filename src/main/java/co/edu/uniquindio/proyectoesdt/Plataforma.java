@@ -24,6 +24,20 @@ public class Plataforma {
         return instancia;
     }
 
+    // Metodo para generar grafo no dirigido: COMPLETAR
+    public GrafoNoDirigido<Usuario> generarGrafo() {
+        GrafoNoDirigido<Usuario> grafo = new GrafoNoDirigido<>();
+        return grafo;
+    }
+
+    // Metodo para generar Grupos de Estudio: COMPLETAR
+    public void generarGruposEstudio() {
+    }
+
+
+
+
+
     public GrafoNoDirigido<Usuario> getUsuarios() {
         return usuarios;
     }

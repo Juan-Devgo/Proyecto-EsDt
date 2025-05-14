@@ -9,6 +9,7 @@ public abstract class Usuario implements Comparable<Usuario> {
     protected final HashSet<Usuario> amigos;
     protected final HashSet<Usuario> seguidores;
     protected final HashSet<Usuario> seguidos;
+    protected Integer numeroConexiones = 0;
 
     public Usuario(String nombre, String nickname, String contrasenia, String carrera) {
         if(nombre == null || nombre.isBlank() || nickname == null || nickname.isBlank() || contrasenia == null ||
@@ -23,9 +24,8 @@ public abstract class Usuario implements Comparable<Usuario> {
         this.seguidos = new HashSet<>();
     }
 
-    @Override
     public int compareTo(Usuario u) {
-        return nickname.compareTo(u.nickname);
+        return u.numeroConexiones.compareTo(numeroConexiones);
     }
 
     public int getCantidadAmigos() {
@@ -38,6 +38,7 @@ public abstract class Usuario implements Comparable<Usuario> {
         }
 
         amigos.add(us);
+        numeroConexiones++;
     }
 
     public void eliminarAmigo(Usuario us) {
@@ -46,6 +47,7 @@ public abstract class Usuario implements Comparable<Usuario> {
         }
 
         amigos.remove(us);
+        numeroConexiones--;
     }
 
     public void recibirSeguidor(Usuario us) {
@@ -54,6 +56,7 @@ public abstract class Usuario implements Comparable<Usuario> {
         }
 
         seguidores.add(us);
+        numeroConexiones--;
     }
 
     public void seguirUsuario(Usuario us) {
@@ -80,6 +83,10 @@ public abstract class Usuario implements Comparable<Usuario> {
 
         seguidos.remove(us);
         us.perderSeguidor(this);
+    }
+
+    public int getNumeroConexiones() {
+        return numeroConexiones;
     }
 
     public String getNickname() {

@@ -5,14 +5,27 @@ import java.util.HashSet;
 public class Estudiante extends Usuario{
     private final HashSet<Estudiante> conexiones;
     private final HashSet<GrupoEstudio> gruposEstudio;
+    private int numeroConexiones = 0;
+    protected boolean activo;
+    // atributo Intereses
 
     public Estudiante(String nombre, String nickname, String contrasenia, String carrera) {
         super(nombre, nickname, contrasenia, carrera);
 
+        this.numeroConexiones = numeroConexiones;
         this.conexiones = new HashSet<>();
         this.gruposEstudio = new HashSet<>();
     }
 
+    //Metodo para banear al estudiante, Activo = false
+    public void banear() {
+        this.activo = false;
+    }
+
+    //Metodo para desbanear al estudiante, Activo = True
+    public void desbanear() {
+        this.activo = true;
+    }
 
     public void agregarConexion(Estudiante est) {
         if(est == null) {
@@ -20,6 +33,7 @@ public class Estudiante extends Usuario{
         }
 
         conexiones.add(est);
+        numeroConexiones++;
     }
 
     public void eliminarConexion(Estudiante est) {
@@ -28,6 +42,7 @@ public class Estudiante extends Usuario{
         }
 
         conexiones.remove(est);
+        numeroConexiones--;
     }
 
     public void solicitarCupoGrupo(GrupoEstudio gru) {
@@ -44,6 +59,12 @@ public class Estudiante extends Usuario{
         }
 
         gru.rechazarSolicitud(this);
+    }
+    // Metodo para obtener la lista de grupos sugeridos.
+
+
+    public int getNumeroConexiones() {
+        return numeroConexiones;
     }
 
     public HashSet<Estudiante> getConexiones() {
