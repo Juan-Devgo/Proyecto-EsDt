@@ -1,6 +1,6 @@
 package co.edu.uniquindio.proyectoesdt;
 
-public class SolicitudAyuda extends Publicacion implements Comparable<SolicitudAyuda>{
+public class SolicitudAyuda extends Publicacion{
     private boolean activa;
     private Prioridad prioridad;
 
@@ -14,7 +14,6 @@ public class SolicitudAyuda extends Publicacion implements Comparable<SolicitudA
         this.prioridad = prioridad;
     }
 
-    @Override
     public int compareTo(SolicitudAyuda s) {
         return this.prioridad.getValor().compareTo(s.prioridad.getValor());
     }

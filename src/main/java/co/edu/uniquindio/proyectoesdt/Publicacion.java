@@ -3,7 +3,7 @@ package co.edu.uniquindio.proyectoesdt;
 import java.util.HashMap;
 import java.util.HashSet;
 
-public class Publicacion implements Comparable<Publicacion>{
+public class Publicacion implements InsertableBD, Comparable<Publicacion>{
     protected String titulo, tema;
     protected Usuario autor;
     protected TipoPublicacion tipoPublicacion;

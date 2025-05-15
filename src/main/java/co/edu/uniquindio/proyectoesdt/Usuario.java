@@ -3,7 +3,7 @@ package co.edu.uniquindio.proyectoesdt;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-public abstract class Usuario implements Comparable<Usuario> {
+public abstract class Usuario implements InsertableBD, Comparable<Usuario> {
     protected String nombre, nickname, contrasenia, carrera;
     protected final ArrayList<String> intereses;
     protected final HashSet<Usuario> amigos;

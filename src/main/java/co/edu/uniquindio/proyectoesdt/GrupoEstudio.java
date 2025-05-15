@@ -3,7 +3,7 @@ package co.edu.uniquindio.proyectoesdt;
 import java.util.ArrayList;
 import java.util.HashSet;
 
-public class GrupoEstudio implements Comparable<GrupoEstudio> {
+public class GrupoEstudio implements InsertableBD, Comparable<GrupoEstudio> {
     private String nombre;
     private final ArrayList<String> temas;
     private final HashSet<Estudiante> solicitudes;

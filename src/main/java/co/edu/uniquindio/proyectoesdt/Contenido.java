@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.HashSet;
 import java.util.LinkedList;
 
-public class Contenido {
+public class Contenido implements InsertableBD{
     private HashSet<File> archivos;
     private LinkedList<String> parrafos;
 
