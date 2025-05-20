@@ -4,92 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bee5ef9d-e078-49ef-b8b2-c069166a7b4e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/.prettierignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/.prettierrc" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/postcss.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/public/images/img_616ab3338e874f96ab6b56159dd87ea5_5.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/public/images/img_addressbooktabsduotone.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/public/images/img_chatgpt_image_12_abr_2025_050726_pm_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/public/images/img_chatgpt_image_12_abr_2025_163213_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/public/images/img_list.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/public/images/img_search.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/public/images/img_smile.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/public/images/img_vector.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/public/vite.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/src/App.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/src/Routes.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/src/components/common/Card.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/src/components/common/Header.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/src/components/common/Sidebar.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/src/components/ui/Button.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/src/components/ui/Dropdown.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/src/components/ui/InputField.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/src/components/ui/Tag.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/src/main.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/src/pages/Feed/RecentPublications.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/src/pages/Feed/RecommendedContent.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/src/pages/Feed/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/src/styles/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/src/styles/tailwind.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/src/types/Publication.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/src/types/User.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/src/vite-env.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/tailwind.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/tsconfig.node.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/vite.config.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/.gitattributes" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LICENSE" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/LICENSE" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/mvnw" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/mvnw.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/libs/mysql-connector-j-9.3.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/libs/mysql-connector-j-9.3.0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyectoesdt/Contenido.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Contenido.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyectoesdt/EstructurasDatos/ArbolBinarioABB.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/EstructurasDatos/ArbolBinarioABB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyectoesdt/EstructurasDatos/GrafoNoDirigido.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/EstructurasDatos/GrafoNoDirigido.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyectoesdt/EstructurasDatos/ListaPrioridad.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/EstructurasDatos/ListaPrioridad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyectoesdt/EstructurasDatos/MiCola.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/EstructurasDatos/MiCola.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyectoesdt/EstructurasDatos/MiColaPrioridad.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/EstructurasDatos/MiColaPrioridad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyectoesdt/EstructurasDatos/MiLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/EstructurasDatos/MiLinkedList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyectoesdt/EstructurasDatos/Nodo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/EstructurasDatos/Nodo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyectoesdt/EstructurasDatos/NodoArbol.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/EstructurasDatos/NodoArbol.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyectoesdt/EstructurasDatos/NodoDoble.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/EstructurasDatos/NodoDoble.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyectoesdt/EstructurasDatos/NodoGrafo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/EstructurasDatos/NodoGrafo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyectoesdt/Estudiante.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Estudiante.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyectoesdt/GrupoEstudio.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/GrupoEstudio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyectoesdt/InsertableBD.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/InsertableBD.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyectoesdt/Moderador.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Moderador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/ComandoBanearEstudiante.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/ComandoBanearEstudiante.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/ComandoBorrarPublicacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/ComandoBorrarPublicacion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/ComandoDesbanearEstudiante.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/ComandoDesbanearEstudiante.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/ComandoEliminarEstudiante.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/ComandoEliminarEstudiante.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/ComandoEliminarGrupo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/ComandoEliminarGrupo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/ComandoModerador.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/ComandoModerador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/ComandoObtenerGrafo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/ComandoObtenerGrafo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/ComandoObtenerUsuarioConexiones.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/ComandoObtenerUsuarioConexiones.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/DataAccessObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/DataAccessObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/UsuariosDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/UsuariosDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyectoesdt/Plataforma.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Plataforma.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyectoesdt/Prioridad.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Prioridad.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyectoesdt/ProyectoEsdtApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/ProyectoEsdtApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyectoesdt/Publicacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Publicacion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyectoesdt/ServletInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/ServletInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyectoesdt/SolicitudAyuda.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/SolicitudAyuda.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyectoesdt/TipoPublicacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/TipoPublicacion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyectoesdt/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/co/edu/uniquindio/proyectoesdt/util/Logging.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/util/Logging.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/logging.log" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/resources/logging.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/co/edu/uniquindio/proyectoesdt/ProyectoEsdtApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/test/java/co/edu/uniquindio/proyectoesdt/ProyectoEsdtApplicationTests.java" afterDir="false" />
+    <list default="true" id="bee5ef9d-e078-49ef-b8b2-c069166a7b4e" name="Changes" comment="2.1: Inicio de pruebas unitarias y modificación de clase Publicacion">
+      <change afterPath="$PROJECT_DIR$/Backend/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Frontend/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/Routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Routes.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/src/pages/Feed/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/pages/Feed/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/vite.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/vite.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -111,7 +35,7 @@
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
     &quot;url&quot;: &quot;https://github.com/Juan-Devgo/Proyecto-EsDt.git&quot;,
-    &quot;accountId&quot;: &quot;931d22ee-a821-498b-b349-aaa9e5bb43c6&quot;
+    &quot;accountId&quot;: &quot;537f42fb-628e-4345-ac1d-7f93ccd4ecd1&quot;
   }
 }</component>
   <component name="MavenImportPreferences">
@@ -141,6 +65,8 @@
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;ml.llm.LLMConfigurable&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Angie\\Programación\\Estructura de datos\\Proyecto-EsDt\\Frontend\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -153,6 +79,14 @@
       </method>
     </configuration>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-28b599e66164-intellij.indexing.shared.core-IU-242.23339.11" />
+        <option value="bundled-js-predefined-d6986cc7102b-5c90d61e3bab-JavaScript-IU-242.23339.11" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -162,6 +96,11 @@
       <option name="presentableId" value="Default" />
       <updated>1747320446787</updated>
       <workItem from="1747320447911" duration="3036000" />
+      <workItem from="1747503062702" duration="1947000" />
+      <workItem from="1747619108036" duration="5216000" />
+      <workItem from="1747686724247" duration="61000" />
+      <workItem from="1747686797710" duration="250000" />
+      <workItem from="1747687075897" duration="903000" />
     </task>
     <servers />
   </component>
@@ -178,5 +117,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="2.1: Inicio de pruebas unitarias y modificación de clase Publicacion" />
+    <option name="LAST_COMMIT_MESSAGE" value="2.1: Inicio de pruebas unitarias y modificación de clase Publicacion" />
   </component>
 </project>
