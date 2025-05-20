@@ -4,7 +4,8 @@ import co.edu.uniquindio.proyectoesdt.EstructurasDatos.ListaPrioridad;
 import co.edu.uniquindio.proyectoesdt.EstructurasDatos.MiLinkedList;
 import co.edu.uniquindio.proyectoesdt.Moderador;
 import co.edu.uniquindio.proyectoesdt.Usuario;
-public class ComandoObtenerUsuarioConexiones implements ComandoModerador{
+
+public class ComandoObtenerUsuarioConexiones implements ComandoModerador {
 
     private Moderador moderador;
 

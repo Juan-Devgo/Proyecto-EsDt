@@ -3,7 +3,7 @@ package co.edu.uniquindio.proyectoesdt.Patrones;
 import co.edu.uniquindio.proyectoesdt.Estudiante;
 import co.edu.uniquindio.proyectoesdt.Moderador;
 
-public class ComandoDesbanearEstudiante implements ComandoModerador{
+public class ComandoDesbanearEstudiante implements ComandoModerador {
     private final Estudiante estudiante;
     private final Moderador moderador;
 
@@ -13,7 +13,7 @@ public class ComandoDesbanearEstudiante implements ComandoModerador{
     }
 
     @Override
-    public void ejecutar(){
+    public void ejecutar() {
         moderador.desbanearEstudiante(estudiante);
     }
 }

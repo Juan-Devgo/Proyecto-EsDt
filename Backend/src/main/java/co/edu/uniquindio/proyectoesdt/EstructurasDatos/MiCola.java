@@ -16,9 +16,9 @@ public class MiCola<T> {
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append("[");
-        if(!esVacia()){
+        if (!esVacia()) {
             Nodo<T> actual = cabeza;
-            while(!actual.equals(cola)){
+            while (!actual.equals(cola)) {
                 sb.append(actual).append(", ");
                 actual = actual.getSiguiente();
             }
@@ -51,7 +51,7 @@ public class MiCola<T> {
     //TAD obtener primer elemento (sin eliminar)
     public T obtenerCabeza() {
         T elemento = null;
-        if(!esVacia()) {
+        if (!esVacia()) {
             elemento = cabeza.getElemento();
         }
         return elemento;
@@ -60,7 +60,7 @@ public class MiCola<T> {
     //TAD obtener primer elemento (eliminando el elemento)
     public T sacarCabeza() {
         T elemento = null;
-        if(!esVacia()) {
+        if (!esVacia()) {
             elemento = cabeza.getElemento();
             desencolarCabeza();
         }
@@ -69,7 +69,7 @@ public class MiCola<T> {
 
     //TAD Quitar el primer elemento
     public void desencolarCabeza() {
-        if(!esVacia()) {
+        if (!esVacia()) {
             cabeza = cabeza.getSiguiente();
             tamanio--;
         }

@@ -18,11 +18,11 @@ public class NodoGrafo<T extends Usuario> {
     }
 
     public boolean existeCamino(NodoGrafo<T> nodo) {
-        if(existeNodo(nodo)) {
+        if (existeNodo(nodo)) {
             return true;
         }
 
-        for(NodoGrafo<T> adyacente : adyacentes) {
+        for (NodoGrafo<T> adyacente : adyacentes) {
             return existeCamino(nodo);
         }
 
@@ -30,7 +30,7 @@ public class NodoGrafo<T extends Usuario> {
     }
 
     public void agregarNodo(NodoGrafo<T> nuevoNodo) {
-        if(nuevoNodo == null) {
+        if (nuevoNodo == null) {
             throw new IllegalArgumentException("Se ha intentado agregar un nodo nulo.");
         }
 
@@ -39,7 +39,7 @@ public class NodoGrafo<T extends Usuario> {
     }
 
     public void eliminarNodo(NodoGrafo<T> nodoAEliminar) {
-        if(!existeNodo(nodoAEliminar)) {
+        if (!existeNodo(nodoAEliminar)) {
             throw new IllegalArgumentException("Se ha intentado eliminar un nodo que no estaba.");
         }
 

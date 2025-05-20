@@ -34,15 +34,15 @@ public class ArbolBinarioABB<T extends Publicacion> {
             return;
         }
 
-        if(!existe(elemento)) {
+        if (!existe(elemento)) {
             agregarNodoRecursivo(nuevoNodo, raiz);
         }
     }
 
     //TDA Eliminación
     public void eliminar(T elemento) {
-        if(existe(elemento)) {
-            if(raiz.getElemento().equals(elemento)) {
+        if (existe(elemento)) {
+            if (raiz.getElemento().equals(elemento)) {
                 eliminarPrimero();
                 return;
             }
@@ -53,9 +53,9 @@ public class ArbolBinarioABB<T extends Publicacion> {
     //TDA Recorrer
     public String recorrerPreorden() {
         String resultado = "";
-        if(!esVacio()) {
+        if (!esVacio()) {
             StringBuilder sb = new StringBuilder();
-            resultado= recorrerPreordenRecursivo(raiz, resultado);
+            resultado = recorrerPreordenRecursivo(raiz, resultado);
             sb.append(resultado).delete(resultado.length() - 3, resultado.length());
             resultado = "[" + sb + "]";
         } else {
@@ -67,7 +67,7 @@ public class ArbolBinarioABB<T extends Publicacion> {
 
     public String recorrerInorden() {
         String resultado = "";
-        if(!esVacio()) {
+        if (!esVacio()) {
             StringBuilder sb = new StringBuilder();
             resultado = recorrerInordenRecursivo(raiz, resultado);
             sb.append(resultado).delete(resultado.length() - 3, resultado.length());
@@ -81,7 +81,7 @@ public class ArbolBinarioABB<T extends Publicacion> {
 
     public String recorrerPostorden() {
         String resultado = "";
-        if(!esVacio()) {
+        if (!esVacio()) {
             StringBuilder sb = new StringBuilder();
             resultado = recorrerPostordenRecursivo(raiz, resultado);
             sb.append(resultado).delete(resultado.length() - 3, resultado.length());
@@ -106,7 +106,7 @@ public class ArbolBinarioABB<T extends Publicacion> {
     //TDA Obtener altura
     public int obtenerAltura() {
         int altura = 0;
-        if(!esVacio()) {
+        if (!esVacio()) {
             altura = obtenerAlturaRecursivo(raiz, altura);
         }
 
@@ -116,7 +116,7 @@ public class ArbolBinarioABB<T extends Publicacion> {
     //TDA Contar hojas
     public int contarHojas() {
         int numeroHojas = 0;
-        if(!esVacio()) {
+        if (!esVacio()) {
             numeroHojas = contarHojasRecursivo(raiz, numeroHojas);
         }
 
@@ -126,24 +126,24 @@ public class ArbolBinarioABB<T extends Publicacion> {
     //TDA Obtener amplitud
     public String obtenerAmplitud() {
         String amplitud = "";
-        if(!esVacio()) {
+        if (!esVacio()) {
             StringBuilder sb = new StringBuilder();
             Queue<NodoArbol<T>> colaNodos = new LinkedList<>();
             colaNodos.add(raiz);
 
-            while(!colaNodos.isEmpty()) {
+            while (!colaNodos.isEmpty()) {
                 NodoArbol<T> actual = colaNodos.poll();
                 sb.append(actual.getElemento());
 
-                if(actual.getIzquierda() != null) {
+                if (actual.getIzquierda() != null) {
                     colaNodos.add(actual.getIzquierda());
                 }
 
-                if(actual.getDerecha() != null) {
+                if (actual.getDerecha() != null) {
                     colaNodos.add(actual.getDerecha());
                 }
 
-                if(!colaNodos.isEmpty()) {
+                if (!colaNodos.isEmpty()) {
                     sb.append(" - ");
                 }
             }
@@ -189,13 +189,13 @@ public class ArbolBinarioABB<T extends Publicacion> {
     //Private
 
     private void agregarNodoRecursivo(NodoArbol<T> nuevoNodo, NodoArbol<T> raiz) {
-        if(raiz == null) {
+        if (raiz == null) {
             return;
         }
 
-        if(nuevoNodo.getElemento().compareTo(raiz.getElemento()) < 0) {
+        if (nuevoNodo.getElemento().compareTo(raiz.getElemento()) < 0) {
             //Caso Base
-            if(raiz.getIzquierda() == null) {
+            if (raiz.getIzquierda() == null) {
                 raiz.setIzquierda(nuevoNodo);
                 peso++;
                 //Caso Recursivo
@@ -215,13 +215,13 @@ public class ArbolBinarioABB<T extends Publicacion> {
     }
 
 
-
-    /**TDA Eliminar
+    /**
+     * TDA Eliminar
      * Casos:
      * 1. Es una Hoja
      * 2. Que tenga 1 hijo
      * 3. Que tenga 2 hijos
-     * */
+     */
 
     public void eliminarPrimero() {
 
@@ -231,47 +231,47 @@ public class ArbolBinarioABB<T extends Publicacion> {
             eliminarRecursivo(nodoMayorIzquierda.getElemento(), raiz);
             raiz.setElemento(nodoMayorIzquierda.getElemento());
 
-        //Caso 2
-        } else if(raiz.getIzquierda() != null) {
+            //Caso 2
+        } else if (raiz.getIzquierda() != null) {
             T elementoIzquierda = raiz.getIzquierda().getElemento();
             eliminarRecursivo(elementoIzquierda, raiz);
             raiz.setElemento(elementoIzquierda);
 
-        } else if(raiz.getDerecha() != null) {
+        } else if (raiz.getDerecha() != null) {
             T elementoDerecha = raiz.getDerecha().getElemento();
             eliminarRecursivo(elementoDerecha, raiz);
             raiz.setElemento(elementoDerecha);
 
-        //Caso 1
+            //Caso 1
         } else {
             borrarArbol();
         }
     }
 
     private void eliminarRecursivo(T elemento, NodoArbol<T> actual) {
-        if(actual == null) {
+        if (actual == null) {
             return;
         }
 
         //Caso Base
-        if(elemento.compareTo(actual.getElemento()) < 0) {
-            if(actual.getIzquierda().getElemento().equals(elemento)) {
+        if (elemento.compareTo(actual.getElemento()) < 0) {
+            if (actual.getIzquierda().getElemento().equals(elemento)) {
 
                 //Caso 3
                 NodoArbol<T> nodoAEliminar = actual.getIzquierda();
-                if(nodoAEliminar.getIzquierda() != null && nodoAEliminar.getDerecha() != null) {
+                if (nodoAEliminar.getIzquierda() != null && nodoAEliminar.getDerecha() != null) {
                     NodoArbol<T> nodoMayorIzquierda = obtenerNodoMayor(nodoAEliminar.getIzquierda());
                     eliminarRecursivo(nodoMayorIzquierda.getElemento(), nodoAEliminar);
                     nodoAEliminar.setElemento(nodoMayorIzquierda.getElemento());
 
-                //Caso 2
-                } else if(nodoAEliminar.getIzquierda() != null) {
+                    //Caso 2
+                } else if (nodoAEliminar.getIzquierda() != null) {
                     actual.setIzquierda(nodoAEliminar.getIzquierda());
 
-                } else if(nodoAEliminar.getDerecha() != null) {
+                } else if (nodoAEliminar.getDerecha() != null) {
                     actual.setIzquierda(nodoAEliminar.getDerecha());
 
-                //Caso 1
+                    //Caso 1
                 } else {
                     actual.setIzquierda(null);
                 }
@@ -281,22 +281,22 @@ public class ArbolBinarioABB<T extends Publicacion> {
             eliminarRecursivo(elemento, actual.getIzquierda());
 
         } else {
-            if(actual.getDerecha().getElemento().equals(elemento)) {
+            if (actual.getDerecha().getElemento().equals(elemento)) {
                 //Caso 3
                 NodoArbol<T> nodoAEliminar = actual.getDerecha();
-                if(nodoAEliminar.getIzquierda() != null && nodoAEliminar.getDerecha() != null) {
+                if (nodoAEliminar.getIzquierda() != null && nodoAEliminar.getDerecha() != null) {
                     NodoArbol<T> nodoMayorIzquierda = obtenerNodoMayor(nodoAEliminar.getIzquierda());
                     eliminarRecursivo(nodoMayorIzquierda.getElemento(), nodoAEliminar);
                     nodoAEliminar.setElemento(nodoMayorIzquierda.getElemento());
 
-                //Caso 2
-                } else if(nodoAEliminar.getIzquierda() != null) {
+                    //Caso 2
+                } else if (nodoAEliminar.getIzquierda() != null) {
                     actual.setDerecha(nodoAEliminar.getIzquierda());
 
-                } else if(nodoAEliminar.getDerecha() != null) {
+                } else if (nodoAEliminar.getDerecha() != null) {
                     actual.setDerecha(nodoAEliminar.getDerecha());
 
-                //Caso 1
+                    //Caso 1
                 } else {
                     actual.setDerecha(null);
                 }
@@ -326,18 +326,18 @@ public class ArbolBinarioABB<T extends Publicacion> {
     }
 
     private NodoArbol<T> buscarNodo(T elemento, NodoArbol<T> actual) {
-        if(actual == null || !subarbol(actual).existe(elemento)) {
+        if (actual == null || !subarbol(actual).existe(elemento)) {
             return null;
         }
 
-        if(actual.getElemento().equals(elemento)) {
+        if (actual.getElemento().equals(elemento)) {
             return actual;
         }
 
-        if(actual.getElemento().compareTo(elemento) < 0) {
+        if (actual.getElemento().compareTo(elemento) < 0) {
             buscarNodo(elemento, actual.getIzquierda());
 
-        } else if(actual.getElemento().compareTo(elemento) > 0) {
+        } else if (actual.getElemento().compareTo(elemento) > 0) {
             buscarNodo(elemento, actual.getDerecha());
 
         }
@@ -351,11 +351,11 @@ public class ArbolBinarioABB<T extends Publicacion> {
 
     //TDA Obtener peso
     private int obtenerPesoSubarbol(NodoArbol<T> raiz, int peso) {
-        if(raiz == null) {
+        if (raiz == null) {
             return peso;
         }
 
-        if(raiz.getIzquierda() == null && raiz.getDerecha() == null) {
+        if (raiz.getIzquierda() == null && raiz.getDerecha() == null) {
             return 1;
         }
 
@@ -368,11 +368,11 @@ public class ArbolBinarioABB<T extends Publicacion> {
 
     private String recorrerInordenRecursivo(NodoArbol<T> raiz, String resultado) {
 
-        if(raiz == null) {
+        if (raiz == null) {
             return "";
         }
 
-        if(raiz.esHoja()) {
+        if (raiz.esHoja()) {
             return raiz.getElemento().toString() + " - ";
         }
 
@@ -385,11 +385,11 @@ public class ArbolBinarioABB<T extends Publicacion> {
 
     private String recorrerPreordenRecursivo(NodoArbol<T> raiz, String resultado) {
 
-        if(raiz == null) {
+        if (raiz == null) {
             return "";
         }
 
-        if(raiz.esHoja()) {
+        if (raiz.esHoja()) {
             return raiz.getElemento().toString() + " - ";
         }
 
@@ -402,11 +402,11 @@ public class ArbolBinarioABB<T extends Publicacion> {
 
     private String recorrerPostordenRecursivo(NodoArbol<T> raiz, String resultado) {
 
-        if(raiz == null) {
+        if (raiz == null) {
             return "";
         }
 
-        if(raiz.esHoja()) {
+        if (raiz.esHoja()) {
             return raiz.getElemento().toString() + " - ";
         }
 
@@ -418,11 +418,11 @@ public class ArbolBinarioABB<T extends Publicacion> {
     }
 
     private boolean verificarExisteRecursivo(T elemento, NodoArbol<T> raiz, boolean resultado) {
-        if(raiz == null) {
+        if (raiz == null) {
             return false;
         }
 
-        if(raiz.getElemento().equals(elemento)) {
+        if (raiz.getElemento().equals(elemento)) {
             return true;
         }
 
@@ -433,11 +433,11 @@ public class ArbolBinarioABB<T extends Publicacion> {
     }
 
     private int obtenerAlturaRecursivo(NodoArbol<T> raiz, int altura) {
-        if(raiz == null) {
+        if (raiz == null) {
             return altura;
         }
 
-        if(raiz.esHoja()) {
+        if (raiz.esHoja()) {
             return altura + 1;
         }
 
@@ -448,11 +448,11 @@ public class ArbolBinarioABB<T extends Publicacion> {
     }
 
     private int contarHojasRecursivo(NodoArbol<T> raiz, int numeroHojas) {
-        if(raiz == null) {
+        if (raiz == null) {
             return numeroHojas;
         }
 
-        if(raiz.esHoja()) {
+        if (raiz.esHoja()) {
             return numeroHojas + 1;
         }
 

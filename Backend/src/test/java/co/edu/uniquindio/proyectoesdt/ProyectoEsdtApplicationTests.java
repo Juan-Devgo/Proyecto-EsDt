@@ -23,7 +23,8 @@ class ProyectoEsdtApplicationTests {
     LinkedList<String> parrafos = new LinkedList<>();
     HashSet<File> archivos = new HashSet<>();
 
-    @BeforeEach //Instanciación de las estructuras
+    @BeforeEach
+        //Instanciación de las estructuras
     void creacionEstructurasDatos() {
         listaSimple = new MiLinkedList<>();
         cola = new MiCola<>();
@@ -33,7 +34,7 @@ class ProyectoEsdtApplicationTests {
         estudiante3 = new Estudiante("JuanDi", "ElMaravillosoNovioDeAngie", "amo a mi novia", "Ingeniería de Sistemas");
         archivos.add(new File("Meopw"));
         parrafos.add("Un dia la vaca loca se cayo y se le torcio la cola");
-        contenido = new Contenido(archivos,parrafos);
+        contenido = new Contenido(archivos, parrafos);
     }
 
     @Test
@@ -125,29 +126,29 @@ class ProyectoEsdtApplicationTests {
     }
 
     //Prueba Moderador: Creacion de un Moderador
-    void probarCreacionModerador(){
-        Moderador moderador = new Moderador("Grisesito","GrisesitoAdmin","mehe","Ingenieria en alimentos");
+    void probarCreacionModerador() {
+        Moderador moderador = new Moderador("Grisesito", "GrisesitoAdmin", "mehe", "Ingenieria en alimentos");
 
         assertNotNull(moderador);
         assertEquals("Grisesito", moderador.getNombre());
         assertEquals("GrisesitoAdmin", moderador.getNickname());
         assertEquals("mehe", moderador.getContrasenia());
-        assertEquals("Ingenieria en alimentos",moderador.getCarrera() );
+        assertEquals("Ingenieria en alimentos", moderador.getCarrera());
     }
 
     //Prueba Estudiante: Creacion de un Estudiante
-    void probarCreacionEstudiante(){
-        Estudiante estudiante = new Estudiante("Manchitas","manchititicas","meow","Ingenieria civil");
+    void probarCreacionEstudiante() {
+        Estudiante estudiante = new Estudiante("Manchitas", "manchititicas", "meow", "Ingenieria civil");
 
         assertNotNull(estudiante);
         assertEquals("Manchitas", estudiante.getNombre());
         assertEquals("manchititicas", estudiante.getNickname());
         assertEquals("meow", estudiante.getContrasenia());
-        assertEquals("Ingenieria civil",estudiante.getCarrera());
+        assertEquals("Ingenieria civil", estudiante.getCarrera());
     }
 
     //Prueba Grupo de estudio: Creacion Grupo de estudio
-    void probarCreacionGrupoEstudio(){
+    void probarCreacionGrupoEstudio() {
 
         assertThrows(IllegalArgumentException.class, () -> new GrupoEstudio(""));
         assertThrows(IllegalArgumentException.class, () -> new GrupoEstudio(null));
@@ -158,7 +159,7 @@ class ProyectoEsdtApplicationTests {
     }
 
     //Prueba Grupo de estudio: Recibir solicitudes de estudiantes y agregarlas
-    void probarRecepcionSolictudesGrupo(){
+    void probarRecepcionSolictudesGrupo() {
         grupoEstudio.recibirSolicitud(estudiante1);
         grupoEstudio.recibirSolicitud(estudiante2);
         grupoEstudio.recibirSolicitud(estudiante3);
@@ -169,7 +170,7 @@ class ProyectoEsdtApplicationTests {
     }
 
     //Prueba Grupo de estudio: Agregar aceptar y agregar un integrante
-    void probarAgregarIntegranteGrupo(){
+    void probarAgregarIntegranteGrupo() {
         grupoEstudio.recibirSolicitud(estudiante1);
         grupoEstudio.aceptarSolicitud(estudiante1);
 
@@ -183,7 +184,7 @@ class ProyectoEsdtApplicationTests {
     }
 
     //Prueba Publicacion: Creacion publicacion con tipoPublicacion Solicitud de ayuda
-    void probarCracionPublicacionTipoSolicitud(){
+    void probarCracionPublicacionTipoSolicitud() {
         assertThrows(IllegalArgumentException.class, () -> {
             new Publicacion("Título", "Tema", estudiante1, TipoPublicacion.SOLICITUD_AYUDA, contenido);
         });

@@ -3,7 +3,7 @@ package co.edu.uniquindio.proyectoesdt;
 import co.edu.uniquindio.proyectoesdt.EstructurasDatos.GrafoNoDirigido;
 import co.edu.uniquindio.proyectoesdt.EstructurasDatos.ListaPrioridad;
 
-public class Moderador extends Usuario{
+public class Moderador extends Usuario {
 
     public Moderador(String nombre, String nickname, String contrasenia, String carrera) {
         super(nombre, nickname, contrasenia, carrera);
@@ -16,21 +16,21 @@ public class Moderador extends Usuario{
 
     // Metodo para eliminar una publicacion: COMPLETAR
     public void borrarPublicacion(Publicacion publicacion) {
-        if(publicacion == null) {
+        if (publicacion == null) {
             throw new IllegalArgumentException("Valor nulo al intentar borrar la publicación.");
         }
     }
 
     // Metodo para eliminar un estudiante: COMPLETAR
     public void eliminarEstudiante(Estudiante estudiante) {
-        if(estudiante == null) {
+        if (estudiante == null) {
             throw new IllegalArgumentException("Valor nulo al intentar eliminar al estudiante.");
         }
     }
 
     // Metodo para eliminar un grupo: COMPLETAR
     public void eliminarGrupo(GrupoEstudio grupo) {
-        if(grupo == null) {
+        if (grupo == null) {
             throw new IllegalArgumentException("Valor nulo al intentar eliminar el grupo.");
         }
     }
@@ -71,11 +71,6 @@ public class Moderador extends Usuario{
         ListaPrioridad<GrupoEstudio> gruposMasParticipacion = new ListaPrioridad<GrupoEstudio>();
         return gruposMasParticipacion;
     }
-
-
-
-
-
 
 
 }

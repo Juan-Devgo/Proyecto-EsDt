@@ -2,6 +2,7 @@ package co.edu.uniquindio.proyectoesdt.Patrones;
 
 import co.edu.uniquindio.proyectoesdt.Moderador;
 import co.edu.uniquindio.proyectoesdt.Publicacion;
+
 public class ComandoBorrarPublicacion implements ComandoModerador {
     private final Publicacion publicacion;
     private final Moderador moderador;
@@ -12,7 +13,7 @@ public class ComandoBorrarPublicacion implements ComandoModerador {
     }
 
     @Override
-    public void ejecutar(){
+    public void ejecutar() {
         moderador.borrarPublicacion(publicacion);
     }
 }

@@ -18,7 +18,7 @@ public class ProyectoEsdtApplication {
         String BD = "proyecto-esdt-BD";
         try {
             System.out.println("Estableciendo conexión con la base de datos...");
-            connection = DriverManager.getConnection(host+BD, usuario, contrasenia);
+            connection = DriverManager.getConnection(host + BD, usuario, contrasenia);
             System.out.println("Conexión establecida.");
         } catch (SQLException e) {
             System.out.println("Ha ocurrido un error de conexión con la base de datos...");

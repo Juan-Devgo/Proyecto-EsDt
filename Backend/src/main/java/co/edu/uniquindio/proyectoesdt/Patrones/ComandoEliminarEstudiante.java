@@ -3,7 +3,7 @@ package co.edu.uniquindio.proyectoesdt.Patrones;
 import co.edu.uniquindio.proyectoesdt.Estudiante;
 import co.edu.uniquindio.proyectoesdt.Moderador;
 
-public class ComandoEliminarEstudiante implements ComandoModerador{
+public class ComandoEliminarEstudiante implements ComandoModerador {
     private final Estudiante estudiante;
     private final Moderador moderador;
 
@@ -11,8 +11,9 @@ public class ComandoEliminarEstudiante implements ComandoModerador{
         this.estudiante = estudiante;
         this.moderador = moderador;
     }
+
     @Override
-    public void ejecutar(){
+    public void ejecutar() {
 
     }
 

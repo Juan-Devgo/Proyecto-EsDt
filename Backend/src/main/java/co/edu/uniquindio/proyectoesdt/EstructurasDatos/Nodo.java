@@ -18,6 +18,7 @@ public class Nodo<T> {
     public T getElemento() {
         return elemento;
     }
+
     public Nodo<T> getSiguiente() {
         return siguiente;
     }
@@ -26,6 +27,7 @@ public class Nodo<T> {
     public void setSiguiente(Nodo<T> siguiente) {
         this.siguiente = siguiente;
     }
+
     public void setElemento(T elemento) {
         this.elemento = elemento;
     }

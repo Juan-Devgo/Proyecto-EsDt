@@ -18,7 +18,7 @@ public class Plataforma {
     }
 
     public static Plataforma getInstancia() {
-        if(instancia == null) {
+        if (instancia == null) {
             instancia = new Plataforma();
         }
         return instancia;
@@ -33,9 +33,6 @@ public class Plataforma {
     // Metodo para generar Grupos de Estudio: COMPLETAR
     public void generarGruposEstudio() {
     }
-
-
-
 
 
     public GrafoNoDirigido<Usuario> getUsuarios() {

@@ -18,10 +18,11 @@ public class Logging {
         }
     }
 
-    public Logging(){}
+    public Logging() {
+    }
 
     public static void log(String mensaje, Level nivel, Object clase) {
-        if(instancia == null) {
+        if (instancia == null) {
             instancia = new Logging();
         }
 

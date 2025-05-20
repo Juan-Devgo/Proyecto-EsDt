@@ -1,6 +1,6 @@
 package co.edu.uniquindio.proyectoesdt;
 
-public class SolicitudAyuda extends Publicacion{
+public class SolicitudAyuda extends Publicacion {
     private boolean activa;
     private Prioridad prioridad;
 

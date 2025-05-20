@@ -1,6 +1,6 @@
 package co.edu.uniquindio.proyectoesdt.EstructurasDatos;
 
-public class ListaPrioridad<T extends Comparable<T>> extends MiCola<T>{
+public class ListaPrioridad<T extends Comparable<T>> extends MiCola<T> {
 
     @Override
     public void encolarCola(T elemento) {
@@ -17,7 +17,7 @@ public class ListaPrioridad<T extends Comparable<T>> extends MiCola<T>{
             nuevo.setSiguiente(actual.getSiguiente());
             actual.setSiguiente(nuevo);
         }
-        tamanio ++;
+        tamanio++;
     }
 
     public Nodo<T> buscar(T elemento) {

@@ -2,7 +2,7 @@ package co.edu.uniquindio.proyectoesdt.Patrones;
 
 import co.edu.uniquindio.proyectoesdt.Moderador;
 
-public class ComandoObtenerGrafo implements ComandoModerador{
+public class ComandoObtenerGrafo implements ComandoModerador {
     private Moderador moderador;
 
     public ComandoObtenerGrafo(Moderador moderador) {

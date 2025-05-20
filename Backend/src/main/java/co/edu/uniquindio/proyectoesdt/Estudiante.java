@@ -2,7 +2,7 @@ package co.edu.uniquindio.proyectoesdt;
 
 import java.util.HashSet;
 
-public class Estudiante extends Usuario{
+public class Estudiante extends Usuario {
     private final HashSet<Estudiante> conexiones;
     private final HashSet<GrupoEstudio> gruposEstudio;
     private int numeroConexiones = 0;
@@ -28,7 +28,7 @@ public class Estudiante extends Usuario{
     }
 
     public void agregarConexion(Estudiante est) {
-        if(est == null) {
+        if (est == null) {
             throw new IllegalArgumentException("Valor nulo al agregar conexión");
         }
 
@@ -37,7 +37,7 @@ public class Estudiante extends Usuario{
     }
 
     public void eliminarConexion(Estudiante est) {
-        if(est == null) {
+        if (est == null) {
             throw new IllegalArgumentException("Valor nulo al eliminar conexión");
         }
 
@@ -46,7 +46,7 @@ public class Estudiante extends Usuario{
     }
 
     public void solicitarCupoGrupo(GrupoEstudio gru) {
-        if(gru == null) {
+        if (gru == null) {
             throw new IllegalArgumentException("Valor nulo al solicitar cupo grupo");
         }
 
@@ -54,7 +54,7 @@ public class Estudiante extends Usuario{
     }
 
     public void dejarDeSolicitarCupoGrupo(GrupoEstudio gru) {
-        if(gru == null) {
+        if (gru == null) {
             throw new IllegalArgumentException("Valor nulo al dejar de solicitar cupo grupo");
         }
 

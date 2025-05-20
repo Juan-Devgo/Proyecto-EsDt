@@ -12,8 +12,8 @@ public abstract class Usuario implements InsertableBD, Comparable<Usuario> {
     protected Integer numeroConexiones = 0;
 
     public Usuario(String nombre, String nickname, String contrasenia, String carrera) {
-        if(nombre == null || nombre.isBlank() || nickname == null || nickname.isBlank() || contrasenia == null ||
-            contrasenia.isBlank() || carrera == null || carrera.isBlank()) {
+        if (nombre == null || nombre.isBlank() || nickname == null || nickname.isBlank() || contrasenia == null ||
+                contrasenia.isBlank() || carrera == null || carrera.isBlank()) {
             throw new IllegalArgumentException("Al menos uno de los datos suministrados es inválido o nulo al crear " +
                     "un usuario.");
         }
@@ -33,7 +33,7 @@ public abstract class Usuario implements InsertableBD, Comparable<Usuario> {
     }
 
     public void agregarAmigo(Usuario us) {
-        if(us == null) {
+        if (us == null) {
             throw new IllegalArgumentException("Valor nulo al agregar amigo.");
         }
 
@@ -42,7 +42,7 @@ public abstract class Usuario implements InsertableBD, Comparable<Usuario> {
     }
 
     public void eliminarAmigo(Usuario us) {
-        if(us == null) {
+        if (us == null) {
             throw new IllegalArgumentException("Valor nulo al eliminar amigo.");
         }
 
@@ -51,7 +51,7 @@ public abstract class Usuario implements InsertableBD, Comparable<Usuario> {
     }
 
     public void recibirSeguidor(Usuario us) {
-        if(us == null) {
+        if (us == null) {
             throw new IllegalArgumentException("Valor nulo al recibir seguidor.");
         }
 
@@ -60,7 +60,7 @@ public abstract class Usuario implements InsertableBD, Comparable<Usuario> {
     }
 
     public void seguirUsuario(Usuario us) {
-        if(us == null) {
+        if (us == null) {
             throw new IllegalArgumentException("Valor nulo al seguir usuario.");
         }
 
@@ -69,7 +69,7 @@ public abstract class Usuario implements InsertableBD, Comparable<Usuario> {
     }
 
     public void perderSeguidor(Usuario us) {
-        if(us == null) {
+        if (us == null) {
             throw new IllegalArgumentException("Valor nulo al perder seguidor.");
         }
 
@@ -77,7 +77,7 @@ public abstract class Usuario implements InsertableBD, Comparable<Usuario> {
     }
 
     public void noSeguirUsuario(Usuario us) {
-        if(us == null) {
+        if (us == null) {
             throw new IllegalArgumentException("Valor nulo al no seguir usuario.");
         }
 

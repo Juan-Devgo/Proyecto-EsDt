@@ -11,7 +11,7 @@ public class GrupoEstudio implements InsertableBD, Comparable<GrupoEstudio> {
     private int numeroParticipantes = 0;
 
     public GrupoEstudio(String nombre) {
-        if(nombre == null || nombre.isBlank()) {
+        if (nombre == null || nombre.isBlank()) {
             throw new IllegalArgumentException("El nombre del grupo de estudio es inválido");
         }
         this.numeroParticipantes = numeroParticipantes;
@@ -21,7 +21,7 @@ public class GrupoEstudio implements InsertableBD, Comparable<GrupoEstudio> {
     }
 
     public void recibirSolicitud(Estudiante est) {
-        if(est == null) {
+        if (est == null) {
             throw new IllegalArgumentException("Valor nulo al recibir solicitud.");
         }
 
@@ -29,7 +29,7 @@ public class GrupoEstudio implements InsertableBD, Comparable<GrupoEstudio> {
     }
 
     public void rechazarSolicitud(Estudiante est) {
-        if(est == null) {
+        if (est == null) {
             throw new IllegalArgumentException("Valor nulo al rechazar solicitud.");
         }
 
@@ -37,7 +37,7 @@ public class GrupoEstudio implements InsertableBD, Comparable<GrupoEstudio> {
     }
 
     public void aceptarSolicitud(Estudiante est) {
-        if(est == null) {
+        if (est == null) {
             throw new IllegalArgumentException("Valor nulo al aceptar solicitud.");
         }
 
@@ -47,12 +47,12 @@ public class GrupoEstudio implements InsertableBD, Comparable<GrupoEstudio> {
     }
 
     public void eliminarIntegrante(Estudiante est) {
-        if(est == null) {
+        if (est == null) {
             throw new IllegalArgumentException("Valor nulo al eliminar integrante.");
         }
 
         integrantes.remove(est);
-        numeroParticipantes --;
+        numeroParticipantes--;
     }
 
     public String getNombre() {

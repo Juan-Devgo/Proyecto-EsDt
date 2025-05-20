@@ -3,7 +3,7 @@ package co.edu.uniquindio.proyectoesdt.Patrones;
 import co.edu.uniquindio.proyectoesdt.GrupoEstudio;
 import co.edu.uniquindio.proyectoesdt.Moderador;
 
-public class ComandoEliminarGrupo implements ComandoModerador{
+public class ComandoEliminarGrupo implements ComandoModerador {
     private final GrupoEstudio grupoEstudio;
     private final Moderador moderador;
 
@@ -13,7 +13,7 @@ public class ComandoEliminarGrupo implements ComandoModerador{
     }
 
     @Override
-    public void ejecutar(){
+    public void ejecutar() {
 
     }
 }

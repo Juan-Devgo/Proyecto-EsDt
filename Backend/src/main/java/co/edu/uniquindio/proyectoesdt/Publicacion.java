@@ -3,7 +3,7 @@ package co.edu.uniquindio.proyectoesdt;
 import java.util.HashMap;
 import java.util.HashSet;
 
-public class Publicacion implements InsertableBD, Comparable<Publicacion>{
+public class Publicacion implements InsertableBD, Comparable<Publicacion> {
     protected String titulo, tema;
     protected Usuario autor;
     protected TipoPublicacion tipoPublicacion;
@@ -11,13 +11,13 @@ public class Publicacion implements InsertableBD, Comparable<Publicacion>{
     protected final HashSet<Usuario> likes;
     protected final HashMap<Usuario, String> comentarios;
 
-    public Publicacion(String titulo, String tema, Usuario autor, TipoPublicacion tipoPublicacion, Contenido contenido){
-        if(titulo == null || titulo.isBlank() || tema == null || tema.isBlank() || autor == null ||
+    public Publicacion(String titulo, String tema, Usuario autor, TipoPublicacion tipoPublicacion, Contenido contenido) {
+        if (titulo == null || titulo.isBlank() || tema == null || tema.isBlank() || autor == null ||
                 tipoPublicacion == null || contenido == null) {
             throw new IllegalArgumentException("Al menos uno de los datos suministrados es inválido o nulo al crear " +
                     "una publicación.");
         }
-        if (tipoPublicacion == TipoPublicacion.SOLICITUD_AYUDA && getClass() == Publicacion.class){
+        if (tipoPublicacion == TipoPublicacion.SOLICITUD_AYUDA && getClass() == Publicacion.class) {
             throw new IllegalArgumentException("Las solicitudes de ayuda se deben realizar usando directamente la clase SolicitudAyuda");
         }
         this.titulo = titulo;
@@ -37,7 +37,7 @@ public class Publicacion implements InsertableBD, Comparable<Publicacion>{
     }
 
     public void recibirLike(Usuario us) {
-        if(us == null) {
+        if (us == null) {
             throw new IllegalArgumentException("Valor nulo al recibir like.");
         }
 
@@ -45,7 +45,7 @@ public class Publicacion implements InsertableBD, Comparable<Publicacion>{
     }
 
     public void perderLike(Usuario us) {
-        if(us == null) {
+        if (us == null) {
             throw new IllegalArgumentException("Valor nulo al perder like.");
         }
 
@@ -53,17 +53,17 @@ public class Publicacion implements InsertableBD, Comparable<Publicacion>{
     }
 
     public void recibirComentario(Usuario us, String comentario) {
-        if(us == null || comentario == null) {
+        if (us == null || comentario == null) {
             throw new IllegalArgumentException("Valor nulo al recibir comentario.");
         }
 
-        if(!comentario.isBlank()) {
+        if (!comentario.isBlank()) {
             comentarios.put(us, comentario);
         }
     }
 
     public void perderComentario(Usuario us) {
-        if(us == null) {
+        if (us == null) {
             throw new IllegalArgumentException("Valor nulo al perder comentario.");
         }
 
@@ -71,7 +71,7 @@ public class Publicacion implements InsertableBD, Comparable<Publicacion>{
     }
 
     public void editarComentario(Usuario us, String comentario) {
-        if(us == null || comentario == null) {
+        if (us == null || comentario == null) {
             throw new IllegalArgumentException("Valor nulo al editar comentario.");
         }
 

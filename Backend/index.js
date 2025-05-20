@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 
-const app=express();
+const app = express();
 app.use(cors());
 
 // Mock data for recent publications
@@ -72,13 +72,13 @@ const recommendedContent = [
     },
 ];
 
-app.get("/recommended-content", (req, res)=>{
+app.get("/recommended-content", (req, res) => {
     res.send(recommendedContent)
 });
 
-app.get("/recent-publications", (req, res)=>{
+app.get("/recent-publications", (req, res) => {
     res.send(recentPublications)
 });
 
 
-app.listen(4029,()=>console.log("app is running"));
+app.listen(4029, () => console.log("app is running"));
