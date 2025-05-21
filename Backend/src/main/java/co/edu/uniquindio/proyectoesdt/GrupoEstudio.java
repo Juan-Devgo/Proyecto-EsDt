@@ -8,13 +8,13 @@ public class GrupoEstudio implements InsertableBD, Comparable<GrupoEstudio> {
     private final ArrayList<String> temas;
     private final HashSet<Estudiante> solicitudes;
     private final HashSet<Estudiante> integrantes;
-    private int numeroParticipantes = 0;
+    private int numeroParticipantes;
 
     public GrupoEstudio(String nombre) {
         if (nombre == null || nombre.isBlank()) {
             throw new IllegalArgumentException("El nombre del grupo de estudio es inválido");
         }
-        this.numeroParticipantes = numeroParticipantes;
+        this.numeroParticipantes = 0;
         this.temas = new ArrayList<>();
         this.solicitudes = new HashSet<>();
         this.integrantes = new HashSet<>();

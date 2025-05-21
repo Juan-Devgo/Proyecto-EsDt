@@ -5,8 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bee5ef9d-e078-49ef-b8b2-c069166a7b4e" name="Changes" comment="2.1: Inicio de pruebas unitarias y modificación de clase Publicacion">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/GruposEstudioDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/PublicacionDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/EstructurasDatos/GrafoNoDirigido.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/EstructurasDatos/GrafoNoDirigido.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/GrupoEstudio.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/GrupoEstudio.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Moderador.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Moderador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/ComandoBanearEstudiante.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/ComandoBanearEstudiante.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/ComandoObtenerUsuarioConexiones.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/ComandoObtenerUsuarioConexiones.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/DataAccessObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/DataAccessObject.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/UsuariosDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/UsuariosDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Publicacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Publicacion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Usuario.java" afterDir="false" />
+    </list>
+    <list id="ded1d3e1-f420-4f7b-982e-49afe184a6b6" name="Changes by angie" comment="">
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/EstructurasDatos/ListaPrioridad.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/EstructurasDatos/MiColaPrioridad.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/EstructurasDatos/MiColaPrioridad.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Moderador.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Moderador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/ComandoDesbanearEstudiante.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/ComandoDesbanearEstudiante.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/ComandoEliminarEstudiante.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/ComandoEliminarEstudiante.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Plataforma.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Plataforma.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +34,13 @@
   </component>
   <component name="ComposerSettings">
     <execution />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -31,6 +57,21 @@
     &quot;accountId&quot;: &quot;931d22ee-a821-498b-b349-aaa9e5bb43c6&quot;
   }
 }</component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Moderador.java">
+      <ranges>
+        <range start1="3" end1="4" start2="3" end2="5" changelist="bee5ef9d-e078-49ef-b8b2-c069166a7b4e" />
+        <range start1="7" end1="7" start2="8" end2="10" changelist="bee5ef9d-e078-49ef-b8b2-c069166a7b4e" />
+        <range start1="11" end1="14" start2="14" end2="43" changelist="bee5ef9d-e078-49ef-b8b2-c069166a7b4e" />
+        <range start1="16" end1="60" start2="45" end2="49" changelist="bee5ef9d-e078-49ef-b8b2-c069166a7b4e" />
+        <range start1="62" end1="67" start2="51" end2="55" changelist="bee5ef9d-e078-49ef-b8b2-c069166a7b4e" />
+        <range start1="68" end1="72" start2="56" end2="56" changelist="bee5ef9d-e078-49ef-b8b2-c069166a7b4e" />
+        <range start1="73" end1="73" start2="57" end2="65" changelist="ded1d3e1-f420-4f7b-982e-49afe184a6b6" />
+        <range start1="74" end1="75" start2="66" end2="66" changelist="bee5ef9d-e078-49ef-b8b2-c069166a7b4e" />
+        <range start1="76" end1="77" start2="67" end2="67" changelist="bee5ef9d-e078-49ef-b8b2-c069166a7b4e" />
+      </ranges>
+    </file>
+  </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -66,7 +107,7 @@
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "ml.llm.LLMConfigurable",
+    "settings.editor.selected.configurable": "configurable.group.appearance",
     "ts.external.directory.path": "C:\\Users\\Angie\\Programación\\Estructura de datos\\Proyecto-EsDt\\Frontend\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
@@ -115,7 +156,8 @@
       <workItem from="1747686797710" duration="250000" />
       <workItem from="1747687075897" duration="903000" />
       <workItem from="1747765594737" duration="76000" />
-      <workItem from="1747765683367" duration="2994000" />
+      <workItem from="1747765683367" duration="7971000" />
+      <workItem from="1747773680298" duration="17793000" />
     </task>
     <servers />
   </component>

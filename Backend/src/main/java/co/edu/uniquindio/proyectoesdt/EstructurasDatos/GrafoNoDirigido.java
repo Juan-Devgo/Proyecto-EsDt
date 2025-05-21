@@ -6,11 +6,15 @@ import java.util.*;
 
 public class GrafoNoDirigido<T extends Usuario> {
     private int tamanio;
-    private ArrayList<NodoGrafo<T>> usuarios;
+    private final ArrayList<NodoGrafo<T>> usuarios;
 
     public GrafoNoDirigido() {
         tamanio = 0;
         usuarios = new ArrayList<>();
+    }
+
+    public ArrayList<NodoGrafo<T>> getUsuarios() {
+        return usuarios;
     }
 
     //TDA Verificar es vacío

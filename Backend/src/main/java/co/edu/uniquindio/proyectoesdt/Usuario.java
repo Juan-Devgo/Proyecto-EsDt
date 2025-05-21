@@ -132,4 +132,16 @@ public abstract class Usuario implements InsertableBD, Comparable<Usuario> {
     public void eliminarInteres(String interes) {
 
     }
+
+    public HashSet<Usuario> getAmigos() {
+        return amigos;
+    }
+
+    public HashSet<Usuario> getSeguidores() {
+        return seguidores;
+    }
+
+    public HashSet<Usuario> getSeguidos() {
+        return seguidos;
+    }
 }

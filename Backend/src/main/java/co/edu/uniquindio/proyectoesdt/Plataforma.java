@@ -9,6 +9,7 @@ public class Plataforma {
     private final MiLinkedList<GrupoEstudio> gruposEstudio;
     private final ArbolBinarioABB<Publicacion> publicaciones;
     private final MiColaPrioridad<SolicitudAyuda> solicitudesAyuda;
+    //private MiColaPrioridad <Estudiantes> baneados;
 
     private Plataforma() {
         this.usuarios = new GrafoNoDirigido<>();
@@ -32,6 +33,15 @@ public class Plataforma {
 
     // Metodo para generar Grupos de Estudio: COMPLETAR
     public void generarGruposEstudio() {
+    }
+    public void banearEstudiante(Estudiante estudiante, Moderador moderador) {
+        if (baneados.add(estudiante)) {
+            System.out.println("Moderador " + moderador.getNickname() +
+                    " baneó al estudiante " + estudiante.getNickname());
+        } else {
+            System.out.println("El estudiante " + estudiante.getNickname() +
+                    " ya estaba baneado.");
+        }
     }
 
 

@@ -1,5 +1,9 @@
 package co.edu.uniquindio.proyectoesdt.Patrones;
 
-public interface DataAccessObject {
-    void insertar();
+import co.edu.uniquindio.proyectoesdt.InsertableBD;
+
+import java.util.Collection;
+
+public interface DataAccessObject<T extends InsertableBD> {
+    void insertar(Collection<T> insertables);
 }

@@ -1,7 +1,5 @@
 package co.edu.uniquindio.proyectoesdt.Patrones;
 
-import co.edu.uniquindio.proyectoesdt.EstructurasDatos.ListaPrioridad;
-import co.edu.uniquindio.proyectoesdt.EstructurasDatos.MiLinkedList;
 import co.edu.uniquindio.proyectoesdt.Moderador;
 import co.edu.uniquindio.proyectoesdt.Usuario;
 

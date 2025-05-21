@@ -2,6 +2,7 @@ package co.edu.uniquindio.proyectoesdt.Patrones;
 
 import co.edu.uniquindio.proyectoesdt.Estudiante;
 import co.edu.uniquindio.proyectoesdt.Moderador;
+import co.edu.uniquindio.proyectoesdt.Plataforma;
 
 public class ComandoEliminarEstudiante implements ComandoModerador {
     private final Estudiante estudiante;
@@ -14,7 +15,7 @@ public class ComandoEliminarEstudiante implements ComandoModerador {
 
     @Override
     public void ejecutar() {
-
+        Plataforma.getInstancia().getUsuarios().eliminar(estudiante);
     }
 
 

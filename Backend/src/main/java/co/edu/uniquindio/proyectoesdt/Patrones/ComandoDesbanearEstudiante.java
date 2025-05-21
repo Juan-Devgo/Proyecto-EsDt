@@ -14,6 +14,6 @@ public class ComandoDesbanearEstudiante implements ComandoModerador {
 
     @Override
     public void ejecutar() {
-        moderador.desbanearEstudiante(estudiante);
+        estudiante.desbanear();
     }
 }
