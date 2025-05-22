@@ -10,6 +10,7 @@ public abstract class Usuario implements InsertableBD, Comparable<Usuario> {
     protected final HashSet<Usuario> seguidores;
     protected final HashSet<Usuario> seguidos;
     protected Integer numeroConexiones = 0;
+    protected boolean activo = true;
 
     public Usuario(String nombre, String nickname, String contrasenia, String carrera) {
         if (nombre == null || nombre.isBlank() || nickname == null || nickname.isBlank() || contrasenia == null ||
@@ -38,7 +39,6 @@ public abstract class Usuario implements InsertableBD, Comparable<Usuario> {
         }
 
         amigos.add(us);
-        numeroConexiones++;
     }
 
     public void eliminarAmigo(Usuario us) {
@@ -47,7 +47,6 @@ public abstract class Usuario implements InsertableBD, Comparable<Usuario> {
         }
 
         amigos.remove(us);
-        numeroConexiones--;
     }
 
     public void recibirSeguidor(Usuario us) {
@@ -56,7 +55,10 @@ public abstract class Usuario implements InsertableBD, Comparable<Usuario> {
         }
 
         seguidores.add(us);
-        numeroConexiones--;
+        numeroConexiones++;
+        if(seguidos.contains(us)){
+            agregarAmigo(us);
+        }
     }
 
     public void seguirUsuario(Usuario us) {
@@ -66,6 +68,11 @@ public abstract class Usuario implements InsertableBD, Comparable<Usuario> {
 
         seguidos.add(us);
         us.recibirSeguidor(this);
+        numeroConexiones++;
+
+        if(seguidores.contains(us)){
+            agregarAmigo(us);
+        }
     }
 
     public void perderSeguidor(Usuario us) {
@@ -74,6 +81,10 @@ public abstract class Usuario implements InsertableBD, Comparable<Usuario> {
         }
 
         seguidores.remove(us);
+        numeroConexiones--;
+        if(seguidos.contains(us)){
+            eliminarAmigo(us);
+        }
     }
 
     public void noSeguirUsuario(Usuario us) {
@@ -83,6 +94,10 @@ public abstract class Usuario implements InsertableBD, Comparable<Usuario> {
 
         seguidos.remove(us);
         us.perderSeguidor(this);
+        numeroConexiones--;
+        if(seguidores.contains(us)){
+            eliminarAmigo(us);
+        }
     }
 
     public int getNumeroConexiones() {
@@ -93,15 +108,19 @@ public abstract class Usuario implements InsertableBD, Comparable<Usuario> {
         return nickname;
     }
 
-    public void setNickname(String nickname) {
+    /*public void setNickname(String nickname) {
         this.nickname = nickname;
-    }
+    }*/
 
     public String getNombre() {
         return nombre;
     }
 
     public void setNombre(String nombre) {
+        if(nombre == null || nombre.isBlank()){
+            throw new IllegalArgumentException("valor nulo intentando agregar un nombre");
+        }
+
         this.nombre = nombre;
     }
 
@@ -110,6 +129,9 @@ public abstract class Usuario implements InsertableBD, Comparable<Usuario> {
     }
 
     public void setContrasenia(String contrasenia) {
+        if(contrasenia == null || contrasenia.isBlank()){
+            throw new IllegalArgumentException("valor nulo intentando establecer una contraseña");
+        }
         this.contrasenia = contrasenia;
     }
 
@@ -126,11 +148,23 @@ public abstract class Usuario implements InsertableBD, Comparable<Usuario> {
     }
 
     public void agregarInteres(String interes) {
+        if(interes == null || interes.isBlank()) {
+            throw new IllegalArgumentException("Valor nulo tratando de agregar un interés");
+        }
 
+        intereses.add(interes);
     }
 
     public void eliminarInteres(String interes) {
+        if(interes == null || interes.isBlank()) {
+            throw new IllegalArgumentException("Valor nulo tratando de eliminar un interés");
+        }
 
+        intereses.remove(interes);
+    }
+
+    public boolean getActivo(){
+        return activo;
     }
 
     public HashSet<Usuario> getAmigos() {

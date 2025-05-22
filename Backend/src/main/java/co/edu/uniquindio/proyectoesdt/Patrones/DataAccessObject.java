@@ -6,4 +6,5 @@ import java.util.Collection;
 
 public interface DataAccessObject<T extends InsertableBD> {
     void insertar(Collection<T> insertables);
+    Collection<T> leer();
 }

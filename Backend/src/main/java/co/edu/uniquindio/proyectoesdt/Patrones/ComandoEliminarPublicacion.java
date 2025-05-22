@@ -4,7 +4,6 @@ import co.edu.uniquindio.proyectoesdt.Publicacion;
 import co.edu.uniquindio.proyectoesdt.Moderador;
 
 public class ComandoEliminarPublicacion implements ComandoModerador{
-
     private Moderador moderador;
     private Publicacion publicacion;
 

@@ -1,7 +1,5 @@
 package co.edu.uniquindio.proyectoesdt;
 
-import co.edu.uniquindio.proyectoesdt.EstructurasDatos.GrafoNoDirigido;
-import co.edu.uniquindio.proyectoesdt.EstructurasDatos.MiColaPrioridad;
 import co.edu.uniquindio.proyectoesdt.Patrones.*;
 
 public class Moderador extends Usuario {
@@ -10,6 +8,8 @@ public class Moderador extends Usuario {
 
     public Moderador(String nombre, String nickname, String contrasenia, String carrera) {
         super(nombre, nickname, contrasenia, carrera);
+        this.activo = true;
+
     }
 
     public void ejecutarComando(ComandoModerador comando) {
@@ -22,7 +22,7 @@ public class Moderador extends Usuario {
     }
 
     public void ejecutarBorrarPublicacion(Publicacion publicacion) {
-        ejecutarComando(new ComandoBorrarPublicacion(this, publicacion));
+        ejecutarComando(new ComandoEliminarPublicacion(this, publicacion));
     }
 
 

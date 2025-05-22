@@ -15,7 +15,6 @@ public class ComandoBanearEstudiante implements ComandoModerador {
 
     @Override
     public void ejecutar() {
-        Plataforma.getInstancia().
-        estudiante.banear();
+        Plataforma.getInstancia();
     }
 }
