@@ -64,7 +64,7 @@ public class Plataforma {
             this.publicacionesDAO = new PublicacionesDAO(connection);
         }
 
-        // Singlenton
+        // Singleton
         public static Plataforma getInstancia() {
             if (instancia == null) {
                 instancia = new Plataforma();
@@ -72,15 +72,15 @@ public class Plataforma {
             return instancia;
         }
 
-        // Metodo para generar grafo no dirigido: COMPLETAR
+        // Método para generar grafo no dirigido: COMPLETAR
         public int[][] generarGrafo() {
             return usuarios.obtenerMatrizAdyacencia();
         }
 
-        // Metodo para generar Grupos de Estudio: COMPLETAR
+        // Método para generar Grupos de Estudio: COMPLETAR
         public void generarGruposEstudio() {}
 
-        // Metodo para banear un Estudiante
+        // Método para banear un Estudiante
         public void banearEstudiante(Estudiante estudiante, Moderador moderador) {
             estudiante.banear();
             Logging.logInfo("El moderador " + moderador.nickname + " ha baneado al usuario " + estudiante.nickname +
@@ -88,7 +88,7 @@ public class Plataforma {
             usuariosDAO.insertar(List.of(estudiante));
         }
 
-        // Metodo para desbanear un Estudiante
+        // Método para desbanear un Estudiante
         public void desbanearEstudiante(Estudiante estudiante, Moderador moderador) {
             estudiante.desbanear();
             Logging.logInfo("El moderador " + moderador.nickname + " ha desbaneado al usuario " + estudiante.nickname +
@@ -96,7 +96,7 @@ public class Plataforma {
             usuariosDAO.insertar(List.of(estudiante));
         }
 
-        // Metodo para validar si ya existe un nickname
+        // Método para validar si ya existe un nickname
         public boolean validarNicknameDisponible(String nickname){
             for (NodoGrafo<? extends Usuario> nodo : usuarios.getUsuarios()) {
                 Usuario usuario = nodo.getElemento();
@@ -107,7 +107,7 @@ public class Plataforma {
             return true;
         }
 
-        // Metodo para crear estudiante, usa validacion de nickname
+        // Método para crear estudiante, usa validacion de nickname
         public Estudiante crearEstudiante(String nombre, String nickname, String contrasenia, String carrera) {
             if (!validarNicknameDisponible(nickname)) {
                 throw new IllegalArgumentException("El nickname '" + nickname + "' ya está en uso. Inténtalo con otro.");
@@ -117,7 +117,7 @@ public class Plataforma {
             return estudiante;
         }
 
-        // Metodo para crear una publicacion, usa validacion de nickname
+        // Método para crear una publicacion, usa validacion de nickname
         public Moderador crearModerador(String nombre, String nickname, String contrasenia, String carrera){
             if (!validarNicknameDisponible(nickname)) {
                 throw new IllegalArgumentException("El nickname '" + nickname + "' ya está en uso. Inténtalo con otro.");
@@ -127,7 +127,7 @@ public class Plataforma {
             return moderador;
         }
 
-        // Metodo para eliminar un estudiante
+        // Método para eliminar un estudiante
         public void eliminarEstudiante(Estudiante estudiante){
             if(!usuarios.existe(estudiante)) {
                 throw new IllegalArgumentException("Se ha intentado eliminar un estudiante nulo.");
@@ -136,7 +136,7 @@ public class Plataforma {
             //usuariosDAO.
         }
 
-        // Metodo para eliminar un moderador
+        // Método para eliminar un moderador
         public void eliminarModerador(Moderador moderador){
             if(!usuarios.existe(moderador)) {
                 throw new IllegalArgumentException("Se ha intentado eliminar un moderador nulo.");
@@ -145,7 +145,7 @@ public class Plataforma {
             //usuariosDAO.
         }
 
-        // Metodo para actualizar el nombre de un estudiante o moderador
+        // Método para actualizar el nombre de un estudiante o moderador
         public void actualizarUsuario(Usuario usuario, String nombre, String contrasenia, String carrera){
             if(!nombre.equals(usuario.getNombre())){
                 usuario.setNombre(nombre);
@@ -159,7 +159,7 @@ public class Plataforma {
             usuariosDAO.insertar(List.of(usuario));
         }
 
-        // Metodo para actualizar el Nickname de un estudiante
+        // Método para actualizar el Nickname de un estudiante
         public void actualizarNicknameEstudiante(Estudiante estudiante, String nickname){
             if(!validarNicknameDisponible(nickname)){
                 throw new IllegalArgumentException("El nickname '" + nickname + "' ya está en uso. Inténtalo con otro.");

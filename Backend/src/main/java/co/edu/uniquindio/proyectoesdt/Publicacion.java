@@ -7,7 +7,7 @@ public class Publicacion implements InsertableBD, Comparable<Publicacion> {
     protected String titulo, tema;
     protected Usuario autor;
     protected TipoPublicacion tipoPublicacion;
-    protected Contenido contenido;
+    protected final Contenido contenido;
     protected final HashSet<Usuario> likes;
     protected final HashMap<Usuario, String> comentarios;
 
@@ -17,13 +17,16 @@ public class Publicacion implements InsertableBD, Comparable<Publicacion> {
             throw new IllegalArgumentException("Al menos uno de los datos suministrados es inválido o nulo al crear " +
                     "una publicación.");
         }
+
         if (tipoPublicacion == TipoPublicacion.SOLICITUD_AYUDA && getClass() == Publicacion.class) {
             throw new IllegalArgumentException("Las solicitudes de ayuda se deben realizar usando directamente la " +
                     "clase SolicitudAyuda");
         }
+
         this.titulo = titulo;
         this.tema = tema;
         this.autor = autor;
+        this.contenido = contenido;
         this.likes = new HashSet<>();
         this.comentarios = new HashMap<>();
     }
@@ -106,6 +109,10 @@ public class Publicacion implements InsertableBD, Comparable<Publicacion> {
 
     public TipoPublicacion getTipoPublicacion() {
         return tipoPublicacion;
+    }
+
+    public Contenido getContenido() {
+        return contenido;
     }
 
     public void setTipoPublicacion(TipoPublicacion tipoPublicacion) {

@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 
@@ -19,9 +20,6 @@ class ProyectoEsdtApplicationTests {
     private Estudiante estudiante1;
     private Estudiante estudiante2;
     private Estudiante estudiante3;
-    private Contenido contenido;
-    LinkedList<String> parrafos = new LinkedList<>();
-    HashSet<File> archivos = new HashSet<>();
 
     @BeforeEach
         //Instanciación de las estructuras
@@ -29,12 +27,12 @@ class ProyectoEsdtApplicationTests {
         listaSimple = new MiLinkedList<>();
         cola = new MiCola<>();
         grupoEstudio = new GrupoEstudio("Estructuras de Datos");
-        estudiante1 = new Estudiante("Angie", "angie123", "1234", "Ingeniería de Sistemas");
-        estudiante2 = new Estudiante("Amyi", "amyi123", "1254", "Ingeniería de Sistemas");
-        estudiante3 = new Estudiante("JuanDi", "ElMaravillosoNovioDeAngie", "amo a mi novia", "Ingeniería de Sistemas");
-        archivos.add(new File("Meopw"));
-        parrafos.add("Un dia la vaca loca se cayo y se le torcio la cola");
-        contenido = new Contenido(archivos, parrafos);
+        estudiante1 = new Estudiante("Angie", "angie123", "1234", "Ingeniería de " +
+                "Sistemas");
+        estudiante2 = new Estudiante("Amyi", "amyi123", "1254", "Ingeniería de " +
+                "Sistemas");
+        estudiante3 = new Estudiante("JuanDi", "ElMaravillosoNovioDeAngie", "amo a mi novia",
+                "Ingeniería de Sistemas");
     }
 
     @Test
@@ -127,7 +125,8 @@ class ProyectoEsdtApplicationTests {
 
     //Prueba Moderador: Creacion de un Moderador
     void probarCreacionModerador() {
-        Moderador moderador = new Moderador("Grisesito", "GrisesitoAdmin", "mehe", "Ingenieria en alimentos");
+        Moderador moderador = new Moderador("Grisesito", "GrisesitoAdmin", "mehe",
+                "Ingenieria en alimentos");
 
         assertNotNull(moderador);
         assertEquals("Grisesito", moderador.getNombre());
@@ -138,7 +137,8 @@ class ProyectoEsdtApplicationTests {
 
     //Prueba Estudiante: Creacion de un Estudiante
     void probarCreacionEstudiante() {
-        Estudiante estudiante = new Estudiante("Manchitas", "manchititicas", "meow", "Ingenieria civil");
+        Estudiante estudiante = new Estudiante("Manchitas", "manchititicas", "meow",
+                "Ingenieria civil");
 
         assertNotNull(estudiante);
         assertEquals("Manchitas", estudiante.getNombre());
@@ -179,20 +179,39 @@ class ProyectoEsdtApplicationTests {
 
     //Prueba Publicacion: Creacion de publicacion
     void probarCreacionPublicacion() {
-        Publicacion anuncio = new Publicacion("Dinopardo", "dinos", estudiante1, TipoPublicacion.ANUNCIO, contenido);
+        LinkedList<String> parrafos = new LinkedList<>();
+        ArrayList<File> archivos = new ArrayList<>();
+        archivos.add(new File("Meopw"));
+        parrafos.add("Un dia la vaca loca se cayo y se le torcio la cola");
+        String titulo = "Dinopardo";
+        Contenido contenido = new Contenido(titulo, archivos, parrafos);
+        Publicacion anuncio = new Publicacion(titulo, "dinos", estudiante1, TipoPublicacion.ANUNCIO, contenido);
         assertNotNull(anuncio);
     }
 
     //Prueba Publicacion: Creacion publicacion con tipoPublicacion Solicitud de ayuda
     void probarCracionPublicacionTipoSolicitud() {
         assertThrows(IllegalArgumentException.class, () -> {
-            new Publicacion("Título", "Tema", estudiante1, TipoPublicacion.SOLICITUD_AYUDA, contenido);
+            LinkedList<String> parrafos = new LinkedList<>();
+            ArrayList<File> archivos = new ArrayList<>();
+            archivos.add(new File("Meopw"));
+            parrafos.add("Un dia la vaca loca se cayo y se le torcio la cola");
+            String titulo = "Título";
+            Contenido contenido = new Contenido(titulo, archivos, parrafos);
+            new Publicacion(titulo, "Tema", estudiante1, TipoPublicacion.SOLICITUD_AYUDA, contenido);
         });
     }
 
     //Prueba Solicitud Ayuda: Creacion Solicitud de Ayuda desde la clase SolucitudAyuda
     void probarCreacionSolicitudAyuda() {
-        SolicitudAyuda solicitud = new SolicitudAyuda("Necesito ayuda", "Teoría de grafos", estudiante2, contenido, true, Prioridad.ALTA);
+        LinkedList<String> parrafos = new LinkedList<>();
+        ArrayList<File> archivos = new ArrayList<>();
+        archivos.add(new File("Meopw"));
+        parrafos.add("Un dia la vaca loca se cayo y se le torcio la cola");
+        String titulo = "Necesito ayuda";
+        Contenido contenido = new Contenido(titulo, archivos, parrafos);
+        SolicitudAyuda solicitud = new SolicitudAyuda(titulo, "Teoría de grafos", estudiante2, contenido,
+                true, Prioridad.ALTA);
 
         assertNotNull(solicitud);
         assertTrue(solicitud.isActiva());

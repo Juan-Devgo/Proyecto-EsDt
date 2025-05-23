@@ -106,6 +106,33 @@ public class GruposEstudioDAO implements DataAccessObject<GrupoEstudio> {
         return gruposEstudio.values();
     }
 
+    @Override
+    public void eliminar(Collection<GrupoEstudio> eliminables) {
+        String sqlDeleteGrupos = "DELETE FROM grupos_estudio WHERE nombre = ?";
+        String sqlDeleteSolicitudes = "DELETE FROM solicitudes WHERE nombre_grupo_propietario = ?";
+        String sqlDeleteIntegrantes = "DELETE FROM integrantes WHERE nombre_grupo_propietario = ?";
+
+        try(PreparedStatement stmtGrupos = connection.prepareStatement(sqlDeleteGrupos);
+            PreparedStatement stmtSolicitudes = connection.prepareStatement(sqlDeleteSolicitudes);
+            PreparedStatement stmtIntegrantes = connection.prepareStatement(sqlDeleteIntegrantes)
+        ){
+            for(GrupoEstudio g: eliminables) {
+                stmtGrupos.setString(1, g.getNombre());
+                stmtGrupos.executeUpdate();
+
+                stmtSolicitudes.setString(1, g.getNombre());
+                stmtSolicitudes.executeUpdate();
+
+                stmtIntegrantes.setString(1, g.getNombre());
+                stmtIntegrantes.executeUpdate();
+            }
+
+        } catch (SQLException e) {
+            e.fillInStackTrace();
+            throw new RuntimeException("Error fatal en GruposEstudioDAO: Imposible crear PreparedStatement.");
+        }
+    }
+
     public void actualizarSolicitudes(GrupoEstudio g) {
         String sqlDeleteSolicitudes = "DELETE FROM solicitudes WHERE nombre_grupo_propietario = ?";
         String sqlInsertSolicitudes = "INSERT INTO solicitudes (nombre_grupo_propietario, nickname) VALUES (?, ?)";

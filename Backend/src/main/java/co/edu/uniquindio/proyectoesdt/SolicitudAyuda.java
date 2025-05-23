@@ -25,4 +25,12 @@ public class SolicitudAyuda extends Publicacion {
     public void setActiva(boolean activa) {
         this.activa = activa;
     }
+
+    public Prioridad getPrioridad() {
+        return prioridad;
+    }
+
+    public void setPrioridad(Prioridad prioridad) {
+        this.prioridad = prioridad;
+    }
 }

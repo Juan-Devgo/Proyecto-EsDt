@@ -118,6 +118,28 @@ public class UsuariosDAO implements DataAccessObject<Usuario> {
         return usuarios.values();
     }
 
+    @Override
+    public void eliminar(Collection<Usuario> eliminables) {
+        String sqlDeleteUsuarios = "DELETE FROM usuarios WHERE nickname = ?";
+        String sqlDeleteIntereses = "DELETE FROM intereses WHERE nickname_propietario = ?";
+
+        try(PreparedStatement stmtDeleteUsuarios = connection.prepareStatement(sqlDeleteUsuarios);
+            PreparedStatement stmtDeleteIntereses = connection.prepareStatement(sqlDeleteIntereses)
+        ) {
+            for(Usuario u: eliminables) {
+                stmtDeleteUsuarios.setString(1, u.getNickname());
+                stmtDeleteUsuarios.executeUpdate();
+
+                stmtDeleteIntereses.setString(1, u.getNickname());
+                stmtDeleteIntereses.executeUpdate();
+            }
+
+        } catch (SQLException e) {
+            e.fillInStackTrace();
+            throw new RuntimeException("Error fatal en UsuariosDAO: Imposible crear PreparedStatement.");
+        }
+    }
+
     public void actualizarIntereses(Usuario u) {
         String sqlDeleteIntereses = "DELETE FROM intereses WHERE nickname_propietario = ?";
         String sqlInsertIntereses = "INSERT INTO intereses (nickname_propietario, interes) VALUES (?, ?)";
