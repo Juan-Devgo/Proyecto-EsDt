@@ -1,12 +1,19 @@
 package co.edu.uniquindio.proyectoesdt.EstructurasDatos;
 
-public class MiLinkedList<T> {
+import java.util.Iterator;
+
+public class MiLinkedList<T> implements Iterable<T> {
     private Nodo<T> cabeza;
     private int tamanio;
 
     public MiLinkedList() {
         cabeza = null;
         tamanio = 0;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new IteradorMiLinkedList<T>(cabeza);
     }
 
     //TDA Mostrar

@@ -5,17 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bee5ef9d-e078-49ef-b8b2-c069166a7b4e" name="Changes" comment="2.1: Inicio de pruebas unitarias y modificación de clase Publicacion">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/EstructurasDatos/IteradorArbolBinarioABB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/EstructurasDatos/IteradorGrafoNoDirigido.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/EstructurasDatos/IteradorMiLinkedList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Contenido.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Contenido.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/ComandoObtenerPublicacionValoradas.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/ComandoObtenerPublicacionValoradas.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/DataAccessObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/DataAccessObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/GruposEstudioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/GruposEstudioDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/PublicacionesDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/PublicacionesDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/UsuariosDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/UsuariosDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/EstructurasDatos/ArbolBinarioABB.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/EstructurasDatos/ArbolBinarioABB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/EstructurasDatos/GrafoNoDirigido.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/EstructurasDatos/GrafoNoDirigido.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/EstructurasDatos/MiLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/EstructurasDatos/MiLinkedList.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Plataforma.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Plataforma.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Publicacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Publicacion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/SolicitudAyuda.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/SolicitudAyuda.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/src/test/java/co/edu/uniquindio/proyectoesdt/ProyectoEsdtApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/test/java/co/edu/uniquindio/proyectoesdt/ProyectoEsdtApplicationTests.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -134,7 +132,7 @@
       <workItem from="1747765683367" duration="7971000" />
       <workItem from="1747773680298" duration="18213000" />
       <workItem from="1747828134988" duration="36495000" />
-      <workItem from="1747917090867" duration="32542000" />
+      <workItem from="1747917090867" duration="53816000" />
     </task>
     <servers />
   </component>

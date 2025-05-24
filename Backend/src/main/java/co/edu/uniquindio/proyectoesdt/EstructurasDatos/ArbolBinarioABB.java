@@ -2,10 +2,11 @@ package co.edu.uniquindio.proyectoesdt.EstructurasDatos;
 
 import co.edu.uniquindio.proyectoesdt.Publicacion;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class ArbolBinarioABB<T extends Publicacion> {
+public class ArbolBinarioABB<T extends Publicacion> implements Iterable<T> {
     private int peso;
     private NodoArbol<T> raiz;
 
@@ -18,6 +19,11 @@ public class ArbolBinarioABB<T extends Publicacion> {
         this.peso = 0;
         this.peso = obtenerPesoSubarbol(raiz, peso);
         this.raiz = raiz;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new IteradorArbolBinarioABB<>(raiz);
     }
 
     //TDA Está vacío

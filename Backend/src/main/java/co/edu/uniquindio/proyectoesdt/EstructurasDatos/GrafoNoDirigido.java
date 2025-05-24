@@ -4,13 +4,18 @@ import co.edu.uniquindio.proyectoesdt.Usuario;
 
 import java.util.*;
 
-public class GrafoNoDirigido<T extends Usuario> {
+public class GrafoNoDirigido<T extends Usuario> implements Iterable<T> {
     private int tamanio;
     private final ArrayList<NodoGrafo<T>> usuarios;
 
     public GrafoNoDirigido() {
         tamanio = 0;
         usuarios = new ArrayList<>();
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return new IteradorGrafoNoDirigido<>(usuarios.iterator());
     }
 
     public ArrayList<NodoGrafo<T>> getUsuarios() {
@@ -30,6 +35,23 @@ public class GrafoNoDirigido<T extends Usuario> {
                 if (u.getElemento().equals(usuario)) {
                     existe = true;
                     break;
+                }
+            }
+        }
+
+        return existe;
+    }
+
+    public boolean existeConexion(T usuario1, T usuario2) {
+        boolean existe = false;
+
+        if (existe(usuario1) && existe(usuario2)) {
+            if ((!usuario1.equals(usuario2))) {
+                Optional<NodoGrafo<T>> nodoOptional1 = buscarNodo(usuario1);
+                Optional<NodoGrafo<T>> nodoOptional2 = buscarNodo(usuario2);
+
+                if (nodoOptional1.isPresent() && nodoOptional2.isPresent()) {
+                    existe = nodoOptional1.get().existeNodo(nodoOptional2.get());
                 }
             }
         }

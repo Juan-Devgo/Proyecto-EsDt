@@ -179,7 +179,7 @@ class ProyectoEsdtApplicationTests {
 
     //Prueba Publicacion: Creacion de publicacion
     void probarCreacionPublicacion() {
-        LinkedList<String> parrafos = new LinkedList<>();
+        ArrayList<String> parrafos = new ArrayList<>();
         ArrayList<File> archivos = new ArrayList<>();
         archivos.add(new File("Meopw"));
         parrafos.add("Un dia la vaca loca se cayo y se le torcio la cola");
@@ -192,7 +192,7 @@ class ProyectoEsdtApplicationTests {
     //Prueba Publicacion: Creacion publicacion con tipoPublicacion Solicitud de ayuda
     void probarCracionPublicacionTipoSolicitud() {
         assertThrows(IllegalArgumentException.class, () -> {
-            LinkedList<String> parrafos = new LinkedList<>();
+            ArrayList<String> parrafos = new ArrayList<>();
             ArrayList<File> archivos = new ArrayList<>();
             archivos.add(new File("Meopw"));
             parrafos.add("Un dia la vaca loca se cayo y se le torcio la cola");
@@ -204,7 +204,7 @@ class ProyectoEsdtApplicationTests {
 
     //Prueba Solicitud Ayuda: Creacion Solicitud de Ayuda desde la clase SolucitudAyuda
     void probarCreacionSolicitudAyuda() {
-        LinkedList<String> parrafos = new LinkedList<>();
+        ArrayList<String> parrafos = new ArrayList<>();
         ArrayList<File> archivos = new ArrayList<>();
         archivos.add(new File("Meopw"));
         parrafos.add("Un dia la vaca loca se cayo y se le torcio la cola");
