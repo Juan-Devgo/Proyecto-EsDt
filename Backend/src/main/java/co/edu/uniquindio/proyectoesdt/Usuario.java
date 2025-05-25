@@ -4,13 +4,14 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 public abstract class Usuario implements InsertableBD, Comparable<Usuario> {
-    protected String nombre, nickname, contrasenia, carrera;
-    protected final ArrayList<String> intereses;
-    protected final HashSet<Usuario> amigos;
-    protected final HashSet<Usuario> seguidores;
-    protected final HashSet<Usuario> seguidos;
-    protected Integer numeroConexiones = 0;
-    protected boolean activo = true;
+    protected final String nickname;
+    protected String nombre, contrasenia, carrera;
+    protected ArrayList<String> intereses;
+    protected HashSet<Usuario> amigos;
+    protected HashSet<Usuario> seguidores;
+    protected HashSet<Usuario> seguidos;
+    protected Integer numeroConexiones;
+    protected boolean activo;
 
     public Usuario(String nombre, String nickname, String contrasenia, String carrera) {
         if (nombre == null || nombre.isBlank() || nickname == null || nickname.isBlank() || contrasenia == null ||
@@ -19,10 +20,16 @@ public abstract class Usuario implements InsertableBD, Comparable<Usuario> {
                     "un usuario.");
         }
 
+        this.nickname = nickname;
+        this.nombre = nombre;
+        this.contrasenia = contrasenia;
+        this.carrera = carrera;
         this.intereses = new ArrayList<>();
         this.amigos = new HashSet<>();
         this.seguidores = new HashSet<>();
         this.seguidos = new HashSet<>();
+        this.numeroConexiones = 0;
+        this.activo = true;
     }
 
     public int compareTo(Usuario u) {
@@ -108,10 +115,6 @@ public abstract class Usuario implements InsertableBD, Comparable<Usuario> {
         return nickname;
     }
 
-    /*public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }*/
-
     public String getNombre() {
         return nombre;
     }
@@ -163,19 +166,45 @@ public abstract class Usuario implements InsertableBD, Comparable<Usuario> {
         intereses.remove(interes);
     }
 
+    public void setIntereses(ArrayList<String> intereses) {
+        this.intereses = intereses;
+    }
+
     public boolean getActivo(){
         return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
     }
 
     public HashSet<Usuario> getAmigos() {
         return amigos;
     }
 
+    public void setAmigos(HashSet<Usuario> amigos) {
+        this.amigos = amigos;
+    }
+
     public HashSet<Usuario> getSeguidores() {
         return seguidores;
+    }
+
+    public void setSeguidores(HashSet<Usuario> seguidores) {
+        this.seguidores = seguidores;
     }
 
     public HashSet<Usuario> getSeguidos() {
         return seguidos;
     }
+
+    public void setSeguidos(HashSet<Usuario> seguidos) {
+        this.seguidos = seguidos;
+    }
+
+    public void setNumeroConexiones(Integer numeroConexiones) {
+        this.numeroConexiones = numeroConexiones;
+    }
+
+    public abstract Usuario clonar(String nickname);
 }

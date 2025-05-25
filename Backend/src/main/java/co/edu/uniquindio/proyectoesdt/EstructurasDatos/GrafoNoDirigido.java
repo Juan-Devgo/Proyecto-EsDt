@@ -59,6 +59,23 @@ public class GrafoNoDirigido<T extends Usuario> implements Iterable<T> {
         return existe;
     }
 
+    public boolean existeCamino(T usuario1, T usuario2) {
+        boolean existe = false;
+
+        if (existe(usuario1) && existe(usuario2)) {
+            if ((!usuario1.equals(usuario2))) {
+                Optional<NodoGrafo<T>> nodoOptional1 = buscarNodo(usuario1);
+                Optional<NodoGrafo<T>> nodoOptional2 = buscarNodo(usuario2);
+
+                if (nodoOptional1.isPresent() && nodoOptional2.isPresent()) {
+                    existe = nodoOptional1.get().existeCamino(nodoOptional2.get());
+                }
+            }
+        }
+
+        return existe;
+    }
+
     //TDA Insersión
     public void agregar(T usuario) {
         if (usuario == null) {

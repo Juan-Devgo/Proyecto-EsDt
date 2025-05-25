@@ -5,19 +5,24 @@ import java.util.HashSet;
 
 public class GrupoEstudio implements InsertableBD, Comparable<GrupoEstudio> {
     private String nombre;
-    private final ArrayList<String> temas;
-    private final HashSet<Estudiante> solicitudes;
-    private final HashSet<Estudiante> integrantes;
+    private ArrayList<String> temas;
+    private HashSet<Estudiante> solicitudes;
+    private HashSet<Estudiante> integrantes;
     private int numeroParticipantes;
 
     public GrupoEstudio(String nombre) {
         if (nombre == null || nombre.isBlank()) {
             throw new IllegalArgumentException("El nombre del grupo de estudio es inválido");
         }
-        this.numeroParticipantes = 0;
         this.temas = new ArrayList<>();
         this.solicitudes = new HashSet<>();
         this.integrantes = new HashSet<>();
+        this.numeroParticipantes = 0;
+    }
+
+    @Override
+    public int compareTo(GrupoEstudio otroGrupo) {
+        return Integer.compare(otroGrupo.getNumeroParticipantes(), this.getNumeroParticipantes());
     }
 
     public void recibirSolicitud(Estudiante est) {
@@ -43,6 +48,7 @@ public class GrupoEstudio implements InsertableBD, Comparable<GrupoEstudio> {
 
         solicitudes.remove(est);
         integrantes.add(est);
+        est.agregarGrupoEstudio(this);
         numeroParticipantes++;
     }
 
@@ -67,20 +73,40 @@ public class GrupoEstudio implements InsertableBD, Comparable<GrupoEstudio> {
         return temas;
     }
 
+    public void setTemas(ArrayList<String> temas) {
+        if (temas == null) {
+            throw new IllegalArgumentException("Valor nulo al cambiar los temas.");
+        }
+
+        this.temas = temas;
+    }
+
     public HashSet<Estudiante> getSolicitudes() {
         return solicitudes;
+    }
+
+    public void setSolicitudes(HashSet<Estudiante> solicitudes) {
+        if (solicitudes == null) {
+            throw new IllegalArgumentException("Valor nulo al cambiar las solicitudes.");
+        }
+
+        this.solicitudes = solicitudes;
     }
 
     public HashSet<Estudiante> getIntegrantes() {
         return integrantes;
     }
 
+    public void setIntegrantes(HashSet<Estudiante> integrantes) {
+        if (solicitudes == null) {
+            throw new IllegalArgumentException("Valor nulo al cambiar los integrantes.");
+        }
+
+        this.integrantes = integrantes;
+    }
+
     public int getNumeroParticipantes() {
         return numeroParticipantes;
     }
 
-    @Override
-    public int compareTo(GrupoEstudio otroGrupo) {
-        return Integer.compare(otroGrupo.getNumeroParticipantes(), this.getNumeroParticipantes());
-    }
 }

@@ -3,18 +3,27 @@ package co.edu.uniquindio.proyectoesdt;
 import java.util.HashSet;
 
 public class Estudiante extends Usuario {
-    private final HashSet<Estudiante> conexiones;
-    private final HashSet<GrupoEstudio> gruposEstudio;
-    private int numeroConexiones;
-    // atributo Intereses
+    private HashSet<GrupoEstudio> gruposEstudio;
 
     public Estudiante(String nombre, String nickname, String contrasenia, String carrera) {
         super(nombre, nickname, contrasenia, carrera);
 
-        this.numeroConexiones = 0;
-        this.conexiones = new HashSet<>();
         this.gruposEstudio = new HashSet<>();
         this.activo = true;
+    }
+
+    @Override
+    public Estudiante clonar(String nickname) {
+        Estudiante estudiante = new Estudiante(nombre, nickname, contrasenia, carrera);
+        estudiante.setIntereses(intereses);
+        estudiante.setAmigos(amigos);
+        estudiante.setSeguidores(seguidores);
+        estudiante.setSeguidos(seguidos);
+        estudiante.setNumeroConexiones(numeroConexiones);
+        estudiante.setActivo(activo);
+        estudiante.setGruposEstudio(gruposEstudio);
+
+        return estudiante;
     }
 
     //Metodo para banear al estudiante, Activo = False
@@ -25,24 +34,6 @@ public class Estudiante extends Usuario {
     //Metodo para desbanear al estudiante, Activo = True
     public void desbanear() {
         this.activo = true;
-    }
-
-    public void agregarConexion(Estudiante est) {
-        if (est == null) {
-            throw new IllegalArgumentException("Valor nulo al agregar conexión");
-        }
-
-        conexiones.add(est);
-        numeroConexiones++;
-    }
-
-    public void eliminarConexion(Estudiante est) {
-        if (est == null) {
-            throw new IllegalArgumentException("Valor nulo al eliminar conexión");
-        }
-
-        conexiones.remove(est);
-        numeroConexiones--;
     }
 
     public void solicitarCupoGrupo(GrupoEstudio gru) {
@@ -61,18 +52,19 @@ public class Estudiante extends Usuario {
         gru.rechazarSolicitud(this);
     }
 
-    // Metodo para obtener la lista de grupos sugeridos.
+    public void agregarGrupoEstudio(GrupoEstudio gru) {
+        if (gru == null) {
+            throw new IllegalArgumentException("Valor nulo al agregar un grupo");
+        }
 
-
-    public int getNumeroConexiones() {
-        return numeroConexiones;
-    }
-
-    public HashSet<Estudiante> getConexiones() {
-        return conexiones;
+        gruposEstudio.add(gru);
     }
 
     public HashSet<GrupoEstudio> getGruposEstudio() {
         return gruposEstudio;
+    }
+
+    public void setGruposEstudio(HashSet<GrupoEstudio> gruposEstudio) {
+        this.gruposEstudio = gruposEstudio;
     }
 }
