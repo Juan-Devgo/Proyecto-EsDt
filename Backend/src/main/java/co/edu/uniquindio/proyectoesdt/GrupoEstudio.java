@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 public class GrupoEstudio implements InsertableBD, Comparable<GrupoEstudio> {
-    private String nombre;
+    private final String nombre;
     private ArrayList<String> temas;
     private HashSet<Estudiante> solicitudes;
     private HashSet<Estudiante> integrantes;
@@ -12,8 +12,10 @@ public class GrupoEstudio implements InsertableBD, Comparable<GrupoEstudio> {
 
     public GrupoEstudio(String nombre) {
         if (nombre == null || nombre.isBlank()) {
-            throw new IllegalArgumentException("El nombre del grupo de estudio es inválido");
+            throw new IllegalArgumentException("No se puede crear un grupo de estudio sin nombre.");
         }
+
+        this.nombre = nombre;
         this.temas = new ArrayList<>();
         this.solicitudes = new HashSet<>();
         this.integrantes = new HashSet<>();
@@ -23,6 +25,32 @@ public class GrupoEstudio implements InsertableBD, Comparable<GrupoEstudio> {
     @Override
     public int compareTo(GrupoEstudio otroGrupo) {
         return Integer.compare(otroGrupo.getNumeroParticipantes(), this.getNumeroParticipantes());
+    }
+
+    public GrupoEstudio clonar(String nombre) {
+        GrupoEstudio grupo = new GrupoEstudio(nombre);
+        grupo.setTemas(temas);
+        grupo.setIntegrantes(integrantes);
+        grupo.setSolicitudes(solicitudes);
+        grupo.setNumeroParticipantes(numeroParticipantes);
+
+        return grupo;
+    }
+
+    public void agregarTema(String tema) {
+        if(tema == null || tema.isBlank()) {
+            throw new IllegalArgumentException("No se puede agregar un tema en blanco.");
+        }
+
+        temas.add(tema);
+    }
+
+    public void eliminarTema(String tema) {
+        if(tema == null || tema.isBlank()) {
+            throw new IllegalArgumentException("No se puede eliminar un tema en blanco.");
+        }
+
+        temas.remove(tema);
     }
 
     public void recibirSolicitud(Estudiante est) {
@@ -65,10 +93,6 @@ public class GrupoEstudio implements InsertableBD, Comparable<GrupoEstudio> {
         return nombre;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
     public ArrayList<String> getTemas() {
         return temas;
     }
@@ -109,4 +133,7 @@ public class GrupoEstudio implements InsertableBD, Comparable<GrupoEstudio> {
         return numeroParticipantes;
     }
 
+    public void setNumeroParticipantes(int numeroParticipantes) {
+        this.numeroParticipantes = numeroParticipantes;
+    }
 }

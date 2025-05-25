@@ -47,6 +47,7 @@ public class GruposEstudioDAO implements DataAccessObject<GrupoEstudio> {
                 stmtNombre.setString(1, g.getNombre());
                 stmtNombre.addBatch();
 
+                actualizartemas(g);
                 actualizarSolicitudes(g);
                 actualizarIntegrantes(g);
             }
@@ -64,10 +65,12 @@ public class GruposEstudioDAO implements DataAccessObject<GrupoEstudio> {
         HashMap<String, GrupoEstudio> gruposEstudio = new HashMap<>();
 
         String sqlSelectGruposEstudio = "SELECT * FROM grupos_estudio";
+        String sqlSelectTemas = "SELECT * FROM temas";
         String sqlSelectSolicitudes = "SELECT * FROM solicitudes";
         String sqlSelectIntegrantes = "SELECT * FROM integrantes";
 
         try(PreparedStatement stmtSelectGruposEstudio = connection.prepareStatement(sqlSelectGruposEstudio);
+            PreparedStatement stmtSelectTemas = connection.prepareStatement(sqlSelectTemas);
             PreparedStatement stmtSelectSolicitudes = connection.prepareStatement(sqlSelectSolicitudes);
             PreparedStatement stmtSelectIntegrantes = connection.prepareStatement(sqlSelectIntegrantes)
         ) {
@@ -78,9 +81,16 @@ public class GruposEstudioDAO implements DataAccessObject<GrupoEstudio> {
                 gruposEstudio.put(nombre, g);
             }
 
+            ResultSet rsTemas = stmtSelectTemas.executeQuery();
+            while (rsTemas.next()) {
+                String nombre = rsTemas.getString("nombre_grupo_propietario");
+                String tema = rsTemas.getString("tema");
+                gruposEstudio.get(nombre).agregarTema(tema);
+            }
+
             ResultSet rsSolicitudes = stmtSelectSolicitudes.executeQuery();
             while(rsSolicitudes.next()) {
-                String nombre = rsGruposEstudio.getString("nombre_grupo_propietario");
+                String nombre = rsSolicitudes.getString("nombre_grupo_propietario");
                 Estudiante e = Plataforma.getInstancia().buscarEstudiante(rsSolicitudes
                         .getString("nickname"));
                 if(e != null) {
@@ -90,8 +100,8 @@ public class GruposEstudioDAO implements DataAccessObject<GrupoEstudio> {
 
             ResultSet rsIntegrantes = stmtSelectIntegrantes.executeQuery();
             while(rsIntegrantes.next()) {
-                String nombre = rsGruposEstudio.getString("nombre_grupo_propietario");
-                Estudiante e = Plataforma.getInstancia().buscarEstudiante(rsSolicitudes
+                String nombre = rsIntegrantes.getString("nombre_grupo_propietario");
+                Estudiante e = Plataforma.getInstancia().buscarEstudiante(rsIntegrantes
                         .getString("nickname"));
                 if(e != null) {
                     gruposEstudio.get(nombre).aceptarSolicitud(e);
@@ -109,10 +119,12 @@ public class GruposEstudioDAO implements DataAccessObject<GrupoEstudio> {
     @Override
     public void eliminar(Collection<GrupoEstudio> eliminables) {
         String sqlDeleteGrupos = "DELETE FROM grupos_estudio WHERE nombre = ?";
+        String sqlDeleteTemas = "DELETE FROM temas WHERE nombre_grupo_propietario = ?";
         String sqlDeleteSolicitudes = "DELETE FROM solicitudes WHERE nombre_grupo_propietario = ?";
         String sqlDeleteIntegrantes = "DELETE FROM integrantes WHERE nombre_grupo_propietario = ?";
 
         try(PreparedStatement stmtGrupos = connection.prepareStatement(sqlDeleteGrupos);
+            PreparedStatement stmtTemas = connection.prepareStatement(sqlDeleteTemas);
             PreparedStatement stmtSolicitudes = connection.prepareStatement(sqlDeleteSolicitudes);
             PreparedStatement stmtIntegrantes = connection.prepareStatement(sqlDeleteIntegrantes)
         ){
@@ -120,12 +132,39 @@ public class GruposEstudioDAO implements DataAccessObject<GrupoEstudio> {
                 stmtGrupos.setString(1, g.getNombre());
                 stmtGrupos.executeUpdate();
 
+                stmtTemas.setString(1, g.getNombre());
+                stmtTemas.executeUpdate();
+
                 stmtSolicitudes.setString(1, g.getNombre());
                 stmtSolicitudes.executeUpdate();
 
                 stmtIntegrantes.setString(1, g.getNombre());
                 stmtIntegrantes.executeUpdate();
             }
+
+        } catch (SQLException e) {
+            e.fillInStackTrace();
+            throw new RuntimeException("Error fatal en GruposEstudioDAO: Imposible crear PreparedStatement.");
+        }
+    }
+
+    public void actualizartemas(GrupoEstudio g) {
+        String sqlDeleteTemas = "DELETE FROM temas WHERE nombre_grupo_propietario = ?";
+        String sqlInsertTemas = "INSERT INTO temas (nombre_grupo_propietario, tema) VALUES (?, ?)";
+
+        try(PreparedStatement stmtDeleteTemas = connection.prepareStatement(sqlDeleteTemas);
+            PreparedStatement stmtInsertTemas = connection.prepareStatement(sqlInsertTemas)
+        ){
+            stmtDeleteTemas.setString(1, g.getNombre());
+            stmtDeleteTemas.executeUpdate();
+
+            for(String t: g.getTemas()) {
+                stmtInsertTemas.setString(1, g.getNombre());
+                stmtInsertTemas.setString(2, t);
+                stmtInsertTemas.addBatch();
+            }
+
+            stmtInsertTemas.executeBatch();
 
         } catch (SQLException e) {
             e.fillInStackTrace();

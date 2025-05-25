@@ -4,12 +4,13 @@ import java.util.HashMap;
 import java.util.HashSet;
 
 public class Publicacion implements InsertableBD, Comparable<Publicacion> {
-    protected String titulo, tema;
+    protected final String titulo;
+    protected String tema;
     protected Usuario autor;
     protected TipoPublicacion tipoPublicacion;
-    protected final Contenido contenido;
-    protected final HashSet<Usuario> likes;
-    protected final HashMap<Usuario, String> comentarios;
+    protected Contenido contenido;
+    protected HashSet<Usuario> likes;
+    protected HashMap<Usuario, String> comentarios;
 
     public Publicacion(String titulo, String tema, Usuario autor, TipoPublicacion tipoPublicacion, Contenido contenido){
         if (titulo == null || titulo.isBlank() || tema == null || tema.isBlank() || autor == null ||
@@ -26,6 +27,7 @@ public class Publicacion implements InsertableBD, Comparable<Publicacion> {
         this.titulo = titulo;
         this.tema = tema;
         this.autor = autor;
+        this.tipoPublicacion = tipoPublicacion;
         this.contenido = contenido;
         this.likes = new HashSet<>();
         this.comentarios = new HashMap<>();
@@ -34,6 +36,14 @@ public class Publicacion implements InsertableBD, Comparable<Publicacion> {
     @Override
     public int compareTo(Publicacion o) {
         return titulo.compareTo(o.titulo);
+    }
+
+    public Publicacion clonar(String titulo) {
+        Publicacion publicacion = new Publicacion(titulo, tema, autor, tipoPublicacion, contenido);
+        publicacion.setLikes(likes);
+        publicacion.setComentarios(comentarios);
+
+        return publicacion;
     }
 
     public int getCantidadLikes() {
@@ -87,10 +97,6 @@ public class Publicacion implements InsertableBD, Comparable<Publicacion> {
         return titulo;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
-    }
-
     public String getTema() {
         return tema;
     }
@@ -104,6 +110,10 @@ public class Publicacion implements InsertableBD, Comparable<Publicacion> {
     }
 
     public void setAutor(Usuario autor) {
+        if(autor == null) {
+            throw new IllegalArgumentException("Valor nulo al tratar de cambiar al autor de la publicación.");
+        }
+
         this.autor = autor;
     }
 
@@ -111,19 +121,47 @@ public class Publicacion implements InsertableBD, Comparable<Publicacion> {
         return tipoPublicacion;
     }
 
+    public void setTipoPublicacion(TipoPublicacion tipoPublicacion) {
+        if(tipoPublicacion == null) {
+            throw new IllegalArgumentException("Valor nulo al tratar de cambiar el tipo de publicación.");
+        }
+
+        this.tipoPublicacion = tipoPublicacion;
+    }
+
     public Contenido getContenido() {
         return contenido;
     }
 
-    public void setTipoPublicacion(TipoPublicacion tipoPublicacion) {
-        this.tipoPublicacion = tipoPublicacion;
+    public void setContenido(Contenido contenido) {
+        if(contenido == null) {
+            throw new IllegalArgumentException("Valor nulo al tratar de cambiar el contenido de la publicación.");
+        }
+
+        this.contenido = contenido;
     }
 
     public HashSet<Usuario> getLikes() {
         return likes;
     }
 
+    public void setLikes(HashSet<Usuario> likes) {
+        if(likes == null) {
+            throw new IllegalArgumentException("Valor nulo al tratar de cambiar los likes de la publicación.");
+        }
+
+        this.likes = likes;
+    }
+
     public HashMap<Usuario, String> getComentarios() {
         return comentarios;
+    }
+
+    public void setComentarios(HashMap<Usuario, String> comentarios) {
+        if(comentarios == null) {
+            throw new IllegalArgumentException("Valor nulo al tratar de cambiar los comentarios de la publicación.");
+        }
+
+        this.comentarios = comentarios;
     }
 }

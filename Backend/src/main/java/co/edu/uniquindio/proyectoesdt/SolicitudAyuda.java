@@ -31,6 +31,11 @@ public class SolicitudAyuda extends Publicacion {
     }
 
     public void setPrioridad(Prioridad prioridad) {
+        if(prioridad == null) {
+            throw new IllegalArgumentException("Valor nulo al tratar de cambiar la prioridad de la solicitud de ayuda."
+            );
+        }
+
         this.prioridad = prioridad;
     }
 }

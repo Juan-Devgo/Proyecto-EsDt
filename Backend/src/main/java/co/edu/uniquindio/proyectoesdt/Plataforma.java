@@ -97,6 +97,10 @@ public class Plataforma {
         Collection<Publicacion> publicacionesBD = publicacionesDAO.leer();
         for(Publicacion p: publicacionesBD) {
             publicaciones.agregar(p);
+
+            if(p instanceof SolicitudAyuda s) {
+                solicitudesAyuda.encolarCola(s);
+            }
         }
     }
 
@@ -179,8 +183,7 @@ public class Plataforma {
     }
 
     public String obtenerCaminoMasCorto (Usuario usuario1, Usuario usuario2){
-        String camino = usuarios.encontrarCaminoCorto(usuario1,usuario2);
-        return camino;
+        return usuarios.encontrarCaminoCorto(usuario1,usuario2);
     }
 
     public LinkedList<GrupoEstudio> obtenerGruposMasValorados(){
@@ -190,7 +193,7 @@ public class Plataforma {
             grupos.add(g);
         }
 
-        for(int i = 0; i < 5; i++) {
+        for(int i = 0; i < 5 && !grupos.isEmpty(); i++) {
             grupoEstudioMasValorados.add(grupos.poll());
         }
 
@@ -205,7 +208,7 @@ public class Plataforma {
             usuariosC.add(g);
         }
 
-        for(int i = 0; i < 5 ; i++) {
+        for(int i = 0; i < 5 && !usuariosC.isEmpty(); i++) {
             usuariosMasConexiones.add(usuariosC.poll());
         }
 
@@ -220,7 +223,7 @@ public class Plataforma {
             publicacionesV.add(g);
         }
 
-        for(int i = 0; i < 5 ; i++){
+        for(int i = 0; i < 5 && !publicacionesV.isEmpty(); i++){
             publicacionesMasValoradas.add(publicacionesV.poll());
         }
 
@@ -241,26 +244,15 @@ public class Plataforma {
         usuariosDAO.insertar(List.of(estudiante));
     }
 
-    // Método para validar si ya existe un nickname
-    public boolean validarNicknameDisponible(String nickname){
-        boolean nicknameDisponible = true;
-        for (Usuario usuario : usuarios) {
-            if (usuario.getNickname().equalsIgnoreCase(nickname.trim())) {
-                nicknameDisponible = false;
-                break;
-            }
-        }
-
-        return nicknameDisponible;
-    }
-
     // Método para crear estudiante, usa validación de nickname
     public void crearEstudiante(String nombre, String nickname, String contrasenia, String carrera) {
         if (!validarNicknameDisponible(nickname)) {
             throw new IllegalArgumentException("El nickname '" + nickname.trim() + "' ya está en uso. Inténtalo con otro."
             );
         }
+
         Estudiante estudiante = new Estudiante(nombre, nickname.trim(), contrasenia, carrera);
+
         usuarios.agregar(estudiante);
         usuariosDAO.insertar(List.of(estudiante));
     }
@@ -271,9 +263,24 @@ public class Plataforma {
             throw new IllegalArgumentException("El nickname '" + nickname.trim() + "' ya está en uso. Inténtalo con otro."
             );
         }
+
         Moderador moderador = new Moderador(nombre, nickname.trim(), contrasenia, carrera);
+
         usuarios.agregar(moderador);
         usuariosDAO.insertar(List.of(moderador));
+    }
+
+    // Método para validar si ya existe un nickname
+    public boolean validarNicknameDisponible(String nickname){
+        boolean nicknameDisponible = true;
+        for (Usuario usuario : usuarios) {
+            if (usuario.getNickname().equals(nickname.trim())) {
+                nicknameDisponible = false;
+                break;
+            }
+        }
+
+        return nicknameDisponible;
     }
 
     // Método para seguir un usuario
@@ -301,17 +308,20 @@ public class Plataforma {
             estudiante.noSeguirUsuario(u);
         }
 
+        LinkedList<GrupoEstudio> gruposAux = new LinkedList<>();
         for(GrupoEstudio g: gruposEstudio) {
             if(g.getSolicitudes().contains(estudiante)) {
                 g.rechazarSolicitud(estudiante);
+                gruposAux.add(g);
             }
 
             if(g.getIntegrantes().contains(estudiante)) {
                 g.eliminarIntegrante(estudiante);
+                gruposAux.add(g);
             }
         }
 
-        ArrayList<Publicacion> publicacionesAux = new ArrayList<>();
+        LinkedList<Publicacion> publicacionesAux = new LinkedList<>();
         for(Publicacion p: publicaciones) {
             if(p.getAutor().nickname.equals(estudiante.getNickname())) {
                 publicacionesAux.add(p);
@@ -329,6 +339,8 @@ public class Plataforma {
         Collection<Usuario> actualizables = new ArrayList<>(estudiante.seguidores.stream().toList());
         actualizables.addAll(estudiante.seguidos.stream().toList());
         usuariosDAO.insertar(actualizables);
+
+        gruposEstudioDAO.insertar(gruposAux);
     }
 
     // Método para eliminar un moderador
@@ -345,7 +357,7 @@ public class Plataforma {
             moderador.noSeguirUsuario(u);
         }
 
-        ArrayList<Publicacion> publicacionesAux = new ArrayList<>();
+        LinkedList<Publicacion> publicacionesAux = new LinkedList<>();
         for(Publicacion p: publicaciones) {
             if(p.getAutor().nickname.equals(moderador.getNickname())) {
                 publicacionesAux.add(p);
@@ -405,36 +417,60 @@ public class Plataforma {
         return moderadorEncontrado;
     }
 
+    // Método para buscar varios usuarios
+    public Collection<Usuario> buscarUsuariosNicknameONombre(String nombre) {
+        if(nombre == null || nombre.isBlank()) {
+            throw new IllegalArgumentException("No se puede buscar por nombres en blanco");
+        }
+
+        Collection<Usuario> usauriosEncontrados = new ArrayList<>();
+        for(Usuario u: usuarios) {
+            if(u.getNickname().toLowerCase().trim().contains(nombre.toLowerCase().trim()) ||
+                    u.getNombre().toLowerCase().trim().contains(nombre.toLowerCase().trim())) {
+                usauriosEncontrados.add(u);
+            }
+        }
+
+        return usauriosEncontrados;
+    }
+
     // Método para actualizar atributos de un estudiante o moderador
     public void actualizarUsuario(Usuario usuario, String nombre, String contrasenia, String carrera){
+        if(usuario == null) {
+            throw new IllegalArgumentException("No se pueden cambiar los atributos de un usuario nulo.");
+        }
+
         if(!nombre.equals(usuario.getNombre())) {
             usuario.setNombre(nombre);
         }
+
         if(!contrasenia.equals(usuario.getContrasenia())) {
             usuario.setContrasenia(contrasenia);
         }
+
         if(!carrera.equals(usuario.getCarrera())) {
             usuario.setCarrera(carrera);
         }
+
         usuariosDAO.insertar(List.of(usuario));
     }
 
     // Método para actualizar el Nickname de un estudiante
     public void actualizarNicknameEstudiante(Estudiante estudiante, String nickname){
+        if(estudiante == null) {
+            throw new IllegalArgumentException("No se puede cambiar el nickname a un estudiante nulo.");
+        }
+
         if(!validarNicknameDisponible(nickname)) {
             throw new IllegalArgumentException("El nickname '" + nickname + "' ya está en uso. Inténtalo con otro.");
         }
 
         LinkedList<GrupoEstudio> gruposSolicitante = new LinkedList<>();
-        LinkedList<GrupoEstudio> gruposIntegrante = new LinkedList<>();
+        LinkedList<GrupoEstudio> gruposIntegrante = new LinkedList<>(estudiante.getGruposEstudio());
 
         for(GrupoEstudio g: gruposEstudio) {
             if(g.getSolicitudes().contains(estudiante)) {
                 gruposSolicitante.add(g);
-            }
-
-            if(g.getIntegrantes().contains(estudiante)) {
-                gruposIntegrante.add(g);
             }
         }
 
@@ -450,7 +486,6 @@ public class Plataforma {
         usuarios.agregar(nuevoEstudiante);
 
         eliminarEstudiante(estudiante);
-        usuariosDAO.eliminar(List.of(estudiante));
         usuariosDAO.insertar(List.of(nuevoEstudiante));
 
         publicacionesAutor.forEach(p -> p.setAutor(nuevoEstudiante));
@@ -466,6 +501,10 @@ public class Plataforma {
 
     // Método para actualizar el Nickname de un moderador
     public void actualizarNicknameModerador(Moderador moderador, String nickname){
+        if(moderador == null) {
+            throw new IllegalArgumentException("No se puede cambiar el nickname a un moderador nulo.");
+        }
+
         if(!validarNicknameDisponible(nickname)){
             throw new IllegalArgumentException("El nickname '" + nickname + "' ya está en uso. Inténtalo con otro.");
         }
@@ -482,7 +521,6 @@ public class Plataforma {
         usuarios.agregar(moderadorNuevo);
 
         eliminarModerador(moderador);
-        usuariosDAO.eliminar(List.of(moderador));
         usuariosDAO.insertar(List.of(moderadorNuevo));
 
         publicacionesAutor.forEach(p -> p.setAutor(moderadorNuevo));
@@ -493,10 +531,6 @@ public class Plataforma {
 
     // Método para crear un grupo de estudio
     public void crearGrupoEstudio(String nombre) {
-        if(nombre == null || nombre.isBlank()) {
-            throw new IllegalArgumentException("No se puede crear un grupo de estudio sin nombre.");
-        }
-
         if(!validarNombreGrupoDisponible(nombre)) {
             throw new IllegalArgumentException("El grupo de estudio '" + nombre + "' ya se encuentra en uso.");
         }
@@ -529,17 +563,153 @@ public class Plataforma {
         gruposEstudioDAO.eliminar(List.of(grupo));
     }
 
+    // Método para buscar un grupo de estudio
+    public GrupoEstudio buscarGrupoEstudio(String nombre) {
+        GrupoEstudio grupoEncontrado = null;
+
+        if(nombre == null || nombre.isBlank()){
+            throw new IllegalArgumentException(" No se puede encontrar un grupo con nombre nulo.");
+        }
+
+        for(GrupoEstudio g: gruposEstudio) {
+            if(g.getNombre().equals(nombre)){
+                grupoEncontrado = g;
+                break;
+            }
+        }
+
+        return grupoEncontrado;
+    }
+
+    // Método para buscar varios grupos de estudio por nombre o tema
+    public Collection<GrupoEstudio> buscarGruposEstudio(String busqueda) {
+        if(busqueda == null || busqueda.isBlank()) {
+            throw new IllegalArgumentException("No se pueden buscar grupos de estudio.");
+        }
+
+        Collection<GrupoEstudio> gruposEncontrados = new HashSet<>();
+        for(GrupoEstudio g: gruposEstudio) {
+            if(g.getNombre().toLowerCase().trim().contains(busqueda.toLowerCase().trim())) {
+                gruposEncontrados.add(g);
+            }
+
+            for(String tema: g.getTemas()) {
+                if(tema.toLowerCase().trim().contains(busqueda.toLowerCase().trim())) {
+                    gruposEncontrados.add(g);
+                }
+            }
+        }
+
+        return gruposEncontrados;
+    }
+
+    // Método para actualizar los temas de un grupo de estudio
+    public void actualizarTemasGrupo(GrupoEstudio grupo, ArrayList<String> temas) {
+        if(temas == null) {
+            throw  new IllegalArgumentException("No se pueden actualizar los temas ya que son nulos.");
+        }
+
+        grupo.setTemas(temas);
+        gruposEstudioDAO.actualizartemas(grupo);
+    }
+
     // Método para actualizar el nombre de un grupo de estudio
     public void actualizarNombreGrupo(GrupoEstudio grupo, String nombre) {
         if(!validarNombreGrupoDisponible(nombre)) {
             throw new IllegalArgumentException("El grupo de estudio '" + nombre + "' ya se encuentra en uso.");
         }
 
-        gruposEstudioDAO.eliminar(List.of(grupo));
-        crearGrupoEstudio(nombre);
+        GrupoEstudio nuevoGrupo = grupo.clonar(nombre);
+        gruposEstudio.agregar(nuevoGrupo);
+
+        eliminarGrupoEstudio(grupo);
+        gruposEstudioDAO.insertar(List.of(nuevoGrupo));
+    }
+
+    // Método para agregar integrante a grupo de estudio
+    public void agregarIntegranteGrupo(GrupoEstudio grupo, Estudiante estudiante) {
+        if(grupo == null || estudiante == null ) {
+            throw new IllegalArgumentException("No se puede agregar integrante a grupo ya que hay al menos un dato nulo"
+            );
+        }
+
+        grupo.aceptarSolicitud(estudiante);
+        gruposEstudioDAO.actualizarIntegrantes(grupo);
+        gruposEstudioDAO.actualizarSolicitudes(grupo);
+    }
+
+    // Método para agregar una solicitud a grupo de estudio
+    public void agregarSolicitudGrupo(GrupoEstudio grupo, Estudiante estudiante) {
+        if(grupo == null || estudiante == null ) {
+            throw new IllegalArgumentException("No se puede agregar una solicitud a grupo ya que hay al menos un " +
+                    "dato nulo");
+        }
+
+        grupo.recibirSolicitud(estudiante);
+        gruposEstudioDAO.actualizarSolicitudes(grupo);
+    }
+
+    // Método para eliminar un integrante de un grupo de estudio
+    public void eliminarIntegranteGrupo(GrupoEstudio grupo, Estudiante estudiante) {
+        if(grupo == null || estudiante == null ) {
+            throw new IllegalArgumentException("No se puede eliminar un integrante del grupo ya que hay al menos un " +
+                    "dato nulo");
+        }
+
+        grupo.eliminarIntegrante(estudiante);
+        gruposEstudioDAO.actualizarIntegrantes(grupo);
+    }
+
+    // Método para eliminar una solicitud a grupo de estudio
+    public void eliminarSolicitudGrupo(GrupoEstudio grupo, Estudiante estudiante) {
+        if(grupo == null || estudiante == null ) {
+            throw new IllegalArgumentException("No se puede eliminar una solicitud a grupo ya que hay al menos un " +
+                    "dato nulo");
+        }
+
+        grupo.rechazarSolicitud(estudiante);
+        gruposEstudioDAO.actualizarSolicitudes(grupo);
     }
 
     // Métodos de publicaciones
+
+    // Método para crear una publicación
+    public void crearPublicacion(String titulo, String tema, Usuario autor, TipoPublicacion tipo, Contenido contenido) {
+        if(!validarTituloPublicacionDisponible(titulo)) {
+            throw new IllegalArgumentException("El título '" + titulo + "' ya se encuentra en uso.");
+        }
+
+        Publicacion publicacion = new Publicacion(titulo, tema, autor, tipo, contenido);
+
+        publicaciones.agregar(publicacion);
+        publicacionesDAO.insertar(List.of(publicacion));
+    }
+
+    // Método para crear una solicitud de ayuda
+    public void crearSolicitudAyuda(String titulo, String tema, Usuario autor, Contenido contenido, Prioridad prioridad)
+    {
+        if (!validarTituloPublicacionDisponible(titulo)) {
+            throw new IllegalArgumentException("El título '" + titulo + "' ya se encuentra en uso.");
+        }
+
+        SolicitudAyuda solicitud = new SolicitudAyuda(titulo, tema, autor, contenido, true, prioridad);
+
+        publicaciones.agregar(solicitud);
+        solicitudesAyuda.encolarCola(solicitud);
+        publicacionesDAO.insertar(List.of(solicitud));
+    }
+
+    private boolean validarTituloPublicacionDisponible(String titulo) {
+        boolean tituloDisponible = true;
+        for(Publicacion p: publicaciones) {
+            if(p.getTitulo().trim().equalsIgnoreCase(titulo.trim())) {
+                tituloDisponible = false;
+                break;
+            }
+        }
+
+        return tituloDisponible;
+    }
 
     // Método para eliminar una publicación
     public void eliminarPublicacion(Publicacion publicacion){
@@ -552,6 +722,95 @@ public class Plataforma {
 
         publicaciones.eliminar(publicacion);
         publicacionesDAO.eliminar(List.of(publicacion));
+    }
+
+    // Método para buscar una publicación
+    public Publicacion buscarPublicacion(String titulo) {
+        Publicacion publicacion = null;
+
+        for(Publicacion p: publicaciones) {
+            if(p.getTitulo().trim().equalsIgnoreCase(titulo.trim())) {
+                publicacion = p;
+                break;
+            }
+        }
+
+        return publicacion;
+    }
+
+    // Método para buscar varias publicaciones por tema, autor y tipo
+    public Collection<Publicacion> buscarPublicacionesTema(String busqueda) {
+        if(busqueda == null || busqueda.isBlank()) {
+            throw new IllegalArgumentException("No se puede buscar publicaciones con un tema en blanco");
+        }
+
+        Collection<Publicacion> publicacionesEncontradas = new LinkedList<>();
+        for(Publicacion p: publicaciones) {
+            if(p.getTema().toLowerCase().contains(busqueda.trim().toLowerCase()) ||
+                    p.getAutor().getNickname().toLowerCase().trim().contains(busqueda.toLowerCase().trim()) ||
+                    p.getAutor().getNombre().toLowerCase().trim().contains(busqueda.toLowerCase().trim()) ||
+                    p.getTipoPublicacion().toString().toLowerCase().trim().contains(busqueda.toLowerCase().trim())
+            ) {
+                publicacionesEncontradas.add(p);
+            }
+        }
+        return publicacionesEncontradas;
+    }
+
+    // Método para actualizar atributos de una publicación
+    public void actualizarPublicacion(Publicacion p, String tema, Usuario autor, TipoPublicacion tipo,
+                                      Contenido contenido) {
+        if(p == null) {
+            throw new IllegalArgumentException("No se puede actualizar una publicación nula.");
+        }
+
+        if(!tema.equals(p.getTema())) {
+            p.setTema(tema);
+        }
+
+        if(!autor.equals(p.getAutor()) && usuarios.existe(autor)) {
+            p.setAutor(autor);
+        }
+
+        if(!tipo.equals(p.getTipoPublicacion())) {
+            p.setTipoPublicacion(tipo);
+        }
+
+        if(!contenido.equals(p.getContenido())) {
+            p.setContenido(contenido);
+        }
+
+        publicacionesDAO.insertar(List.of(p));
+    }
+
+    // Método para actualizar atributos a una solicitud de ayuda
+    public void actualizarSolicitudAyuda(SolicitudAyuda s, Prioridad prioridad, boolean activa) {
+        if(s == null) {
+            throw new IllegalArgumentException("No se puede actualizar una solicitud de ayuda nula.");
+        }
+
+        if(!prioridad.equals(s.getPrioridad())) {
+            s.setPrioridad(prioridad);
+        }
+
+        if(activa != s.isActiva()) {
+            s.setActiva(activa);
+        }
+
+        publicacionesDAO.insertar(List.of(s));
+    }
+
+    // Método para actualizar el título a una publicación
+    public void actualizarTituloPublicacion(Publicacion publicacion, String titulo) {
+        if(!validarTituloPublicacionDisponible(titulo)) {
+            throw new IllegalArgumentException("El título '" + titulo + "' ya se encuentra en uso.");
+        }
+
+        Publicacion nuevaPublicacion = publicacion.clonar(titulo);
+        publicaciones.agregar(nuevaPublicacion);
+
+        eliminarPublicacion(publicacion);
+        publicacionesDAO.insertar(List.of(nuevaPublicacion));
     }
 
     public GrafoNoDirigido<Usuario> getUsuarios() {

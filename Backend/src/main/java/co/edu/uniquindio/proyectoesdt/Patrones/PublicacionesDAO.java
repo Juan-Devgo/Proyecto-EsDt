@@ -41,7 +41,8 @@ public class PublicacionesDAO implements DataAccessObject<Publicacion>{
     @Override
     public void insertar(Collection<Publicacion> insertables) {
         String sqlInsertPublicacion = "INSERT INTO (titulo, tema, nickname_autor, tipo, parrafos, activa, prioridad) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE tema = VALUES(tema), tipo = VALUES(tipo), " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE tema = VALUES(tema), " +
+                "nickname_autor = VALUES(nickname_autor) tipo = VALUES(tipo), " +
                 "parrafos = VALUES(parrafos), activa = VALUES(activa), prioridad = VALUES(prioridad)";
 
         try(PreparedStatement stmtPublicacion = connection.prepareStatement(sqlInsertPublicacion)) {
@@ -54,8 +55,7 @@ public class PublicacionesDAO implements DataAccessObject<Publicacion>{
 
                 File parrafos = p.getContenido().getParrafosFile();
 
-                stmtPublicacion.setBinaryStream(5, new FileInputStream(parrafos), (int) parrafos
-                        .length());
+                stmtPublicacion.setBinaryStream(5, new FileInputStream(parrafos), (int) parrafos.length());
 
                 if(p instanceof SolicitudAyuda sa) {
                     stmtPublicacion.setBoolean(6, sa.isActiva());
