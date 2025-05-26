@@ -12,7 +12,7 @@ public class Publicacion implements InsertableBD, Comparable<Publicacion> {
     protected HashSet<Usuario> likes;
     protected HashMap<Usuario, String> comentarios;
 
-    public Publicacion(String titulo, String tema, Usuario autor, TipoPublicacion tipoPublicacion, Contenido contenido){
+    public Publicacion(String titulo, String tema, Usuario autor, TipoPublicacion tipoPublicacion, Contenido contenido) {
         if (titulo == null || titulo.isBlank() || tema == null || tema.isBlank() || autor == null ||
                 tipoPublicacion == null || contenido == null) {
             throw new IllegalArgumentException("Al menos uno de los datos suministrados es inválido o nulo al crear " +
@@ -48,6 +48,10 @@ public class Publicacion implements InsertableBD, Comparable<Publicacion> {
 
     public int getCantidadLikes() {
         return likes.size();
+    }
+
+    public int getCantidadComentarios() {
+        return comentarios.size();
     }
 
     public void recibirLike(Usuario us) {
@@ -110,7 +114,7 @@ public class Publicacion implements InsertableBD, Comparable<Publicacion> {
     }
 
     public void setAutor(Usuario autor) {
-        if(autor == null) {
+        if (autor == null) {
             throw new IllegalArgumentException("Valor nulo al tratar de cambiar al autor de la publicación.");
         }
 
@@ -122,7 +126,7 @@ public class Publicacion implements InsertableBD, Comparable<Publicacion> {
     }
 
     public void setTipoPublicacion(TipoPublicacion tipoPublicacion) {
-        if(tipoPublicacion == null) {
+        if (tipoPublicacion == null) {
             throw new IllegalArgumentException("Valor nulo al tratar de cambiar el tipo de publicación.");
         }
 
@@ -134,7 +138,7 @@ public class Publicacion implements InsertableBD, Comparable<Publicacion> {
     }
 
     public void setContenido(Contenido contenido) {
-        if(contenido == null) {
+        if (contenido == null) {
             throw new IllegalArgumentException("Valor nulo al tratar de cambiar el contenido de la publicación.");
         }
 
@@ -146,7 +150,7 @@ public class Publicacion implements InsertableBD, Comparable<Publicacion> {
     }
 
     public void setLikes(HashSet<Usuario> likes) {
-        if(likes == null) {
+        if (likes == null) {
             throw new IllegalArgumentException("Valor nulo al tratar de cambiar los likes de la publicación.");
         }
 
@@ -158,7 +162,7 @@ public class Publicacion implements InsertableBD, Comparable<Publicacion> {
     }
 
     public void setComentarios(HashMap<Usuario, String> comentarios) {
-        if(comentarios == null) {
+        if (comentarios == null) {
             throw new IllegalArgumentException("Valor nulo al tratar de cambiar los comentarios de la publicación.");
         }
 

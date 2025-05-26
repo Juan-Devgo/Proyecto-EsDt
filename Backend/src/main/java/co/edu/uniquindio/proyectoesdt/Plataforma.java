@@ -104,6 +104,92 @@ public class Plataforma {
         }
     }
 
+    // Método para calcular el nivel de participación
+    public double calcularParticipacion() {
+        HashMap<String, Integer> cantidadPublicacionesUsuarios = obtenerCantidadPublicacionesPorUsuario();
+
+        int acumuladoCantidadPublicacionesUsuarios = 0;
+        for(Integer n: cantidadPublicacionesUsuarios.values()) {
+            acumuladoCantidadPublicacionesUsuarios += n;
+        }
+
+        double participacionPublicaciones = ((double) acumuladoCantidadPublicacionesUsuarios) /
+                                                        cantidadPublicacionesUsuarios.size();
+
+        LinkedList<Integer> cantidadLikesPublicaciones = obtenerCantidadLikesPorPublicacion();
+
+        int acumuladoCantidadLikesPublicaciones = 0;
+        for(Integer n: cantidadLikesPublicaciones) {
+            acumuladoCantidadLikesPublicaciones += n;
+        }
+
+        double participacionLikes = ((double) acumuladoCantidadLikesPublicaciones) / cantidadLikesPublicaciones.size();
+
+        LinkedList<Integer> cantidadComentariosPublicaciones = obtenerCantidadComentariosPorPublicacion();
+
+        int acumuladoCantidadComentariosPublicaciones = 0;
+        for(Integer n: cantidadComentariosPublicaciones) {
+            acumuladoCantidadComentariosPublicaciones += n;
+        }
+
+        double participacionComentarios = ((double) acumuladoCantidadComentariosPublicaciones) /
+                                                cantidadComentariosPublicaciones.size();
+
+        LinkedList<Integer> cantidadUsuariosGrupos = obtenerCantidadUsuariosPorGrupo();
+
+        int acumuladoCantidadUsuariosGrupos = 0;
+        for(Integer n: cantidadUsuariosGrupos) {
+            acumuladoCantidadComentariosPublicaciones += n;
+        }
+
+        double participacionGrupos = ((double) acumuladoCantidadUsuariosGrupos) /
+                cantidadUsuariosGrupos.size();
+
+        return (participacionPublicaciones + participacionLikes + participacionComentarios + participacionGrupos) / 4;
+    }
+
+    private HashMap<String, Integer> obtenerCantidadPublicacionesPorUsuario() {
+        HashMap<String, Integer> cantidadPublicacionesUsuarios = new HashMap<>();
+        for(Publicacion p: publicaciones) {
+            String autorNickname = p.getAutor().nickname;
+            if(cantidadPublicacionesUsuarios.containsKey(autorNickname)) {
+                Integer cantidadAnterior = cantidadPublicacionesUsuarios.get(autorNickname);
+                cantidadPublicacionesUsuarios.replace(autorNickname, cantidadAnterior + 1);
+            } else {
+                cantidadPublicacionesUsuarios.put(autorNickname, 1);
+            }
+        }
+
+        return cantidadPublicacionesUsuarios;
+    }
+
+    private LinkedList<Integer> obtenerCantidadLikesPorPublicacion() {
+        LinkedList<Integer> cantidadLikesPublicaciones = new LinkedList<>();
+        for(Publicacion p: publicaciones) {
+            cantidadLikesPublicaciones.add(p.getCantidadLikes());
+        }
+
+        return cantidadLikesPublicaciones;
+    }
+
+    private LinkedList<Integer> obtenerCantidadComentariosPorPublicacion() {
+        LinkedList<Integer> cantidadComentariosPublicaciones = new LinkedList<>();
+        for(Publicacion p: publicaciones) {
+            cantidadComentariosPublicaciones.add(p.getCantidadComentarios());
+        }
+
+        return cantidadComentariosPublicaciones;
+    }
+
+    private LinkedList<Integer> obtenerCantidadUsuariosPorGrupo() {
+        LinkedList<Integer> cantidadUsuariosGrupos = new LinkedList<>();
+        for(GrupoEstudio g: gruposEstudio) {
+            cantidadUsuariosGrupos.add(g.getNumeroParticipantes());
+        }
+
+        return cantidadUsuariosGrupos;
+    }
+
     // Método para generar grafo no dirigido
     public int[][] generarGrafo() {
         return usuarios.obtenerMatrizAdyacencia();
@@ -140,7 +226,7 @@ public class Plataforma {
         }
     }
 
-    //Método para generar conexiones entre estudiantes
+    // Método para generar conexiones entre estudiantes
     public void generarConexionesEstudiantes() {
         for(Usuario u: usuarios){
             if(u instanceof Estudiante estudiante) {
@@ -525,6 +611,54 @@ public class Plataforma {
 
         publicacionesAutor.forEach(p -> p.setAutor(moderadorNuevo));
         publicacionesDAO.insertar(publicacionesAutor);
+    }
+
+    // Método para sugerir usuarios a un usuario
+    public Collection<Usuario> obtenerSugerenciasUsuarios(Usuario usuario) {
+        Collection<Usuario> sugerencias = new LinkedList<>();
+        for(Usuario u: usuarios) {
+            if(usuarios.existeConexion(usuario, u) && !usuario.getSeguidos().contains(u)) {
+                sugerencias.add(u);
+            }
+        }
+
+        return sugerencias;
+    }
+
+    // Método para sugerir grupos de estudio a un usuario
+    public Collection<GrupoEstudio> obtenerSugerenciasGrupos(Usuario usuario) {
+        Collection<GrupoEstudio> sugerencias = new LinkedList<>();
+        if(usuario instanceof Moderador) {
+            gruposEstudio.forEach(sugerencias::add);
+        } else {
+
+            for(GrupoEstudio g: gruposEstudio) {
+                if(!g.getSolicitudes().contains(usuario) && !g.getIntegrantes().contains(usuario)) {
+
+                    boolean comparteIntereses = false;
+                    for(String interes: usuario.getIntereses()) {
+                        if(g.getTemas().contains(interes)) {
+                            comparteIntereses = true;
+                            break;
+                        }
+                    }
+
+                    boolean comparteAmigos = false;
+                    for(Usuario amigo: usuario.getAmigos()) {
+                        if(g.getIntegrantes().contains(amigo) || g.getSolicitudes().contains(amigo)) {
+                            comparteAmigos = true;
+                            break;
+                        }
+                    }
+
+                    if(comparteIntereses || comparteAmigos) {
+                        sugerencias.add(g);
+                    }
+                }
+            }
+        }
+
+        return sugerencias;
     }
 
     // Métodos de grupos de estudio

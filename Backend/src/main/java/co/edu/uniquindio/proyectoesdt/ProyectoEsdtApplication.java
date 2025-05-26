@@ -12,6 +12,7 @@ public class ProyectoEsdtApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ProyectoEsdtApplication.class, args);
+        Plataforma plataforma = Plataforma.getInstancia();
     }
 
 }

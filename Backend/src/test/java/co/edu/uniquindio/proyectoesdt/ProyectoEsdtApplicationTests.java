@@ -40,8 +40,9 @@ class ProyectoEsdtApplicationTests {
 
         listaSimple.agregar("1");
         listaSimple.agregarAlInicio("2");
-        listaSimple.agregarEnPosicion("3", 3);
-        listaSimple.agregarEnPosicion("4", 4);
+        listaSimple.agregarEnPosicion("3", 2);
+        listaSimple.agregarEnPosicion("4", 3);
+        System.out.println(listaSimple);
 
         cola.encolarCola("1");
         cola.encolarCola("2");

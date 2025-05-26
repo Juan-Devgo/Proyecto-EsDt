@@ -1,9 +1,6 @@
 package co.edu.uniquindio.proyectoesdt;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -35,21 +32,25 @@ public class Contenido implements InsertableBD {
     }
 
     public void agregarParrafo(int posicion, String parrafo) {
-        while(parrafos.size() <= posicion) {
+        if (parrafo == null) {
+            throw new IllegalArgumentException("Párrafo nulo.");
+        }
+        while (parrafos.size() <= posicion) {
             parrafos.add("");
         }
-
-        parrafos.add(posicion, parrafo);
-
+        parrafos.set(posicion, parrafo);
     }
 
     public void agregarArchivo(int posicion, File archivo) {
-        while(archivos.size() <= posicion) {
+        if (archivo == null) {
+            throw new IllegalArgumentException("Archivo nulo.");
+        }
+
+        while (archivos.size() <= posicion) {
             archivos.add(null);
         }
 
-        archivos.add(posicion, archivo);
-
+        archivos.set(posicion, archivo);
     }
 
     public void eliminarParrafo(String parrafo) {
@@ -61,12 +62,13 @@ public class Contenido implements InsertableBD {
     }
 
     public File getParrafosFile() throws IOException {
-        File parrafosFile = new File("files\\" + tituloPublicacion.trim() + "_parrafos");
-        BufferedWriter bfw = new BufferedWriter(new FileWriter(parrafosFile));
+        File parrafosFile = new File("files", tituloPublicacion.trim() + "_parrafos.txt");
 
-        for(String parrafo: parrafos) {
-            bfw.write(parrafo);
-            bfw.newLine();
+        try (BufferedWriter bfw = new BufferedWriter(new FileWriter(parrafosFile))) {
+            for (String parrafo : parrafos) {
+                bfw.write(parrafo);
+                bfw.newLine();
+            }
         }
 
         return parrafosFile;
@@ -88,24 +90,25 @@ public class Contenido implements InsertableBD {
         return parrafos;
     }
 
-    public void setParrafos(ArrayList<String> parrafos) {
-        if(parrafos == null) {
-            throw new IllegalArgumentException("Valor nulo al cambiar los párrafos de una publicación.");
+    public void setParrafos(File archivoParrafos) {
+        if (archivoParrafos == null) {
+            throw new IllegalArgumentException("Archivo nulo al establecer los párrafos.");
         }
 
-        this.parrafos = parrafos;
+        ArrayList<String> nuevosParrafos = new ArrayList<>();
+
+        try (Scanner scanner = new Scanner(archivoParrafos)) {
+            while (scanner.hasNextLine()) {
+                nuevosParrafos.add(scanner.nextLine());
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException("No se ha encontrado el archivo para set: " + archivoParrafos.getName());
+        }
+
+        this.parrafos = nuevosParrafos;
     }
 
-    public void setParrafos(File parrafos) {
-        ArrayList<String> nuevosParrafos = new ArrayList<>();
-        //try {
-            Scanner scanner = new Scanner("files\\" + parrafos.getName());
-            while(scanner.hasNext()) {
-                nuevosParrafos.add(scanner.next());
-            }
-            this.parrafos = nuevosParrafos;
-        /*} catch (IOException e) {
-            throw new RuntimeException("No se ha encontrado el archivo para set: " + parrafos.getName());
-        }*/
+    public String getTituloPublicacion() {
+        return tituloPublicacion;
     }
 }

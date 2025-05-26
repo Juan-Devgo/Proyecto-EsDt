@@ -35,6 +35,15 @@ public abstract class Usuario implements InsertableBD, Comparable<Usuario> {
     public int compareTo(Usuario u) {
         return u.numeroConexiones.compareTo(numeroConexiones);
     }
+    
+    public  void mandarMensaje(Chat chat, String contenido){
+        if (chat == null){
+            throw new IllegalArgumentException("El chat no puede ser nulo.");
+        }
+        chat.escribirMensaje(this,contenido);
+    }
+
+
 
     public int getCantidadAmigos() {
         return amigos.size();
