@@ -30,7 +30,7 @@ public class Plataforma {
         String host = "jdbc:mysql://localhost:3306/";
         String usuario = "root";
         String contrasenia = "";
-        String BD = "proyecto-esdt-BD";
+        String BD = "proyecto-esdt-bd";
         try {
             Logging.logInfo("Estableciendo conexión con la base de datos...", Plataforma.class);
             connection = DriverManager.getConnection(host + BD, usuario, contrasenia);
@@ -211,8 +211,10 @@ public class Plataforma {
                 }
             }
 
-            if(!existeGrupoInteres) {
+            if(!existeGrupoInteres && buscarGrupoEstudio("Grupo de " + interes) == null) {
                 crearGrupoEstudio("Grupo de " + interes);
+                GrupoEstudio grupoNuevo = buscarGrupoEstudio("Grupo de " + interes);
+                agregarTemaGrupo(grupoNuevo, interes);
             }
         }
     }
@@ -225,7 +227,9 @@ public class Plataforma {
                 if (!representantesComunidades.contains(estudiante)) {
                     if (!representantesComunidades.isEmpty()) {
 
-                        for (Estudiante representante : representantesComunidades) {
+                        ArrayList<Estudiante> copiaRepresentantes = new ArrayList<>(representantesComunidades);
+
+                        for (Estudiante representante : copiaRepresentantes) {
                             if (!usuarios.existeCamino(representante, estudiante)) {
 
                                 boolean noPerteneceAComunidad = true;
@@ -239,6 +243,8 @@ public class Plataforma {
 
                                 if(noPerteneceAComunidad) {
                                     crearGrupoEstudio("Comunidad de " + estudiante.getNickname());
+                                    buscarGrupoEstudio("Comunidad de " + estudiante.getNickname())
+                                            .aceptarSolicitud(estudiante);
                                     representantesComunidades.add(estudiante);
                                 }
                             }
@@ -405,6 +411,17 @@ public class Plataforma {
         usuariosDAO.insertar(List.of(seguidor, seguido));
     }
 
+    // Método para dejar de seguir un usuario
+    public void dejarSeguirUsuario(Usuario seguidor, Usuario seguido) {
+        if(seguidor == null || seguido == null) {
+            throw new IllegalArgumentException("Se ha intentado seguir a un usuario y alguno de los dos usuarios en " +
+                    "nulo");
+        }
+
+        seguidor.noSeguirUsuario(seguido);
+        usuariosDAO.insertar(List.of(seguidor, seguido));
+    }
+
     // Método para eliminar un estudiante
     public void eliminarEstudiante(Estudiante estudiante){
         if(estudiante == null) {
@@ -412,22 +429,22 @@ public class Plataforma {
         }
 
         for(Usuario u: estudiante.seguidores) {
-            u.noSeguirUsuario(estudiante);
+            dejarSeguirUsuario(u, estudiante);
         }
 
         for(Usuario u: estudiante.seguidos) {
-            estudiante.noSeguirUsuario(u);
+            dejarSeguirUsuario(estudiante, u);
         }
 
         LinkedList<GrupoEstudio> gruposAux = new LinkedList<>();
         for(GrupoEstudio g: gruposEstudio) {
             if(g.getSolicitudes().contains(estudiante)) {
-                g.rechazarSolicitud(estudiante);
+                eliminarSolicitudGrupo(g, estudiante);
                 gruposAux.add(g);
             }
 
             if(g.getIntegrantes().contains(estudiante)) {
-                g.eliminarIntegrante(estudiante);
+                eliminarIntegranteGrupo(g, estudiante);
                 gruposAux.add(g);
             }
         }
@@ -442,16 +459,17 @@ public class Plataforma {
         for(Publicacion p: publicacionesAux) {
             eliminarPublicacion(p);
         }
+
         publicacionesDAO.eliminar(publicacionesAux);
-
-        usuarios.eliminar(estudiante);
-        usuariosDAO.eliminar(List.of(estudiante));
-
         Collection<Usuario> actualizables = new ArrayList<>(estudiante.seguidores.stream().toList());
         actualizables.addAll(estudiante.seguidos.stream().toList());
         usuariosDAO.insertar(actualizables);
 
         gruposEstudioDAO.insertar(gruposAux);
+
+        usuarios.eliminar(estudiante);
+        usuariosDAO.eliminar(List.of(estudiante));
+
     }
 
     // Método para eliminar un moderador
@@ -461,11 +479,11 @@ public class Plataforma {
         }
 
         for(Usuario u: moderador.seguidores) {
-            u.noSeguirUsuario(moderador);
+            dejarSeguirUsuario(u, moderador);
         }
 
         for(Usuario u: moderador.seguidos) {
-            moderador.noSeguirUsuario(u);
+            dejarSeguirUsuario(moderador, u);
         }
 
         LinkedList<Publicacion> publicacionesAux = new LinkedList<>();
@@ -479,13 +497,13 @@ public class Plataforma {
             eliminarPublicacion(p);
         }
         publicacionesDAO.eliminar(publicacionesAux);
+        Collection<Usuario> actualizables = new ArrayList<>(moderador.seguidores.stream().toList());
+        actualizables.addAll(moderador.seguidos.stream().toList());
+        usuariosDAO.insertar(actualizables);
 
         usuarios.eliminar(moderador);
         usuariosDAO.eliminar(List.of(moderador));
 
-        Collection<Usuario> actualizables = new ArrayList<>(moderador.seguidores.stream().toList());
-        actualizables.addAll(moderador.seguidos.stream().toList());
-        usuariosDAO.insertar(actualizables);
     }
 
     // Método para buscar un estudiante
@@ -593,10 +611,10 @@ public class Plataforma {
             }
         }
 
-        Estudiante nuevoEstudiante = estudiante.clonar(nickname);
-        usuarios.agregar(nuevoEstudiante);
+        LinkedList<Usuario> seguidores = new LinkedList<>(estudiante.getSeguidores());
+        LinkedList<Usuario> seguidos = new LinkedList<>(estudiante.getSeguidos());
 
-        eliminarEstudiante(estudiante);
+        Estudiante nuevoEstudiante = estudiante.clonar(nickname);
         usuariosDAO.insertar(List.of(nuevoEstudiante));
 
         publicacionesAutor.forEach(p -> p.setAutor(nuevoEstudiante));
@@ -608,6 +626,12 @@ public class Plataforma {
         Collection<GrupoEstudio> grupos = new ArrayList<>(gruposIntegrante.stream().toList());
         grupos.addAll(gruposSolicitante);
         gruposEstudioDAO.insertar(grupos);
+
+        usuarios.agregar(nuevoEstudiante);
+        eliminarEstudiante(estudiante);
+
+        seguidores.forEach(seguidor -> seguirUsuario(seguidor, nuevoEstudiante));
+        seguidos.forEach(seguido -> seguirUsuario(nuevoEstudiante, seguido));
     }
 
     // Método para actualizar el Nickname de un moderador
@@ -628,6 +652,9 @@ public class Plataforma {
             }
         }
 
+        LinkedList<Usuario> seguidores = new LinkedList<>(moderador.getSeguidores());
+        LinkedList<Usuario> seguidos = new LinkedList<>(moderador.getSeguidos());
+
         Moderador moderadorNuevo = moderador.clonar(nickname);
         usuarios.agregar(moderadorNuevo);
 
@@ -636,6 +663,9 @@ public class Plataforma {
 
         publicacionesAutor.forEach(p -> p.setAutor(moderadorNuevo));
         publicacionesDAO.insertar(publicacionesAutor);
+
+        seguidores.forEach(seguidor -> seguirUsuario(seguidor, moderadorNuevo));
+        seguidos.forEach(seguido -> seguirUsuario(moderadorNuevo, seguido));
     }
 
     // Método para agregar un interés a un usuario
@@ -662,6 +692,10 @@ public class Plataforma {
 
     // Método para sugerir usuarios a un usuario
     public Collection<Usuario> obtenerSugerenciasUsuarios(Usuario usuario) {
+        if(usuario == null) {
+            throw new IllegalArgumentException("No se pueden obtener las sugerencias de un usaurio nulo.");
+        }
+
         Collection<Usuario> sugerencias = new LinkedList<>();
         for(Usuario u: usuarios) {
             if(usuarios.existeConexion(usuario, u) && !usuario.getSeguidos().contains(u)) {
@@ -674,6 +708,10 @@ public class Plataforma {
 
     // Método para sugerir grupos de estudio a un usuario
     public Collection<GrupoEstudio> obtenerSugerenciasGrupos(Usuario usuario) {
+        if(usuario == null) {
+            throw new IllegalArgumentException("No se pueden obtener las sugerencias de un usaurio nulo.");
+        }
+
         Collection<GrupoEstudio> sugerencias = new LinkedList<>();
         if(usuario instanceof Moderador) {
             gruposEstudio.forEach(sugerencias::add);
@@ -788,7 +826,7 @@ public class Plataforma {
 
     // Método para actualizar los temas de un grupo de estudio
     public void actualizarTemasGrupo(GrupoEstudio grupo, ArrayList<String> temas) {
-        if(temas == null) {
+        if(temas == null || grupo == null) {
             throw  new IllegalArgumentException("No se pueden actualizar los temas ya que son nulos.");
         }
 
@@ -796,6 +834,15 @@ public class Plataforma {
         gruposEstudioDAO.actualizartemas(grupo);
     }
 
+    // Método para agregar un tema a un grupo de estudio
+    public void agregarTemaGrupo(GrupoEstudio grupo, String tema) {
+        if(tema == null || grupo == null) {
+            throw  new IllegalArgumentException("No se pueden actualizar los temas ya que son nulos.");
+        }
+
+        grupo.agregarTema(tema);
+        gruposEstudioDAO.actualizartemas(grupo);
+    }
     // Método para actualizar el nombre de un grupo de estudio
     public void actualizarNombreGrupo(GrupoEstudio grupo, String nombre) {
         if(!validarNombreGrupoDisponible(nombre)) {
@@ -994,6 +1041,26 @@ public class Plataforma {
 
         eliminarPublicacion(publicacion);
         publicacionesDAO.insertar(List.of(nuevaPublicacion));
+    }
+
+    // Método para dar like a publicación
+    public void darLikePublicacion(Publicacion publicacion, Usuario usuario) {
+        if(publicacion == null || usuario == null) {
+            throw new IllegalArgumentException("No se puede dar like ya que hay al menos un dato nulo en dar like publicación.");
+        }
+
+        publicacion.recibirLike(usuario);
+        publicacionesDAO.actualizarLikes(publicacion);
+    }
+
+    // Método para dar un comentario a publicación
+    public void darComentarioPublicacion(Publicacion publicacion, Usuario usuario, String comentario) {
+        if(publicacion == null || usuario == null) {
+            throw new IllegalArgumentException("No se puede dar like ya que hay al menos un dato nulo en dar comentario publicación.");
+        }
+
+        publicacion.recibirComentario(usuario, comentario);
+        publicacionesDAO.actualizarComentarios(publicacion);
     }
 
     public GrafoNoDirigido<Usuario> getUsuarios() {

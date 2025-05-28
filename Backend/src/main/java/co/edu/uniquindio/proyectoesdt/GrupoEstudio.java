@@ -37,6 +37,11 @@ public class GrupoEstudio implements InsertableBD, Comparable<GrupoEstudio> {
         return equal;
     }
 
+    @Override
+    public String toString() {
+        return nombre;
+    }
+
     public GrupoEstudio clonar(String nombre) {
         GrupoEstudio grupo = new GrupoEstudio(nombre);
         grupo.setTemas(temas);

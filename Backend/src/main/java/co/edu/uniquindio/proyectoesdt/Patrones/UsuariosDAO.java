@@ -154,16 +154,19 @@ public class UsuariosDAO implements DataAccessObject<Usuario> {
 
                 Logging.logInfo("Eliminando el usuario: " + u.getNickname() + "...", this);
 
-                stmtDeleteUsuarios.setString(1, u.getNickname());
-                stmtDeleteUsuarios.executeUpdate();
-
                 stmtDeleteIntereses.setString(1, u.getNickname());
                 stmtDeleteIntereses.executeUpdate();
+
+                stmtDeleteUsuarios.setString(1, u.getNickname());
+                stmtDeleteUsuarios.executeUpdate();
 
                 Logging.logInfo("Usuario eliminado.", this);
             }
 
         } catch (SQLException e) {
+            System.err.println(e.getSQLState());
+            System.err.println(e.getErrorCode());
+            System.err.println(e.getMessage());
             e.fillInStackTrace();
             throw new RuntimeException("Error fatal en UsuariosDAO: Imposible crear PreparedStatement.");
         }
@@ -171,10 +174,10 @@ public class UsuariosDAO implements DataAccessObject<Usuario> {
 
     public void actualizarIntereses(Usuario u) {
         String sqlDeleteIntereses = "DELETE FROM intereses WHERE nickname_propietario = ?";
-        String sqlInsertIntereses = "INSERT INTO intereses (nickname_propietario, interes) VALUES (?, ?)";
+        String sqlInsertIntereses = "INSERT INTO intereses (nickname_propietario , interes) VALUES (?, ?)";
 
-        try(PreparedStatement stmtInsertIntereses = connection.prepareStatement(sqlInsertIntereses);
-            PreparedStatement stmtDeleteIntereses = connection.prepareStatement(sqlDeleteIntereses)
+        try(PreparedStatement stmtDeleteIntereses = connection.prepareStatement(sqlDeleteIntereses);
+            PreparedStatement stmtInsertIntereses = connection.prepareStatement(sqlInsertIntereses)
         ) {
             stmtDeleteIntereses.setString(1, u.getNickname());
             stmtDeleteIntereses.executeUpdate();

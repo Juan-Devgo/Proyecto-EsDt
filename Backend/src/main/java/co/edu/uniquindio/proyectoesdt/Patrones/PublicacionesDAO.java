@@ -233,7 +233,7 @@ public class PublicacionesDAO implements DataAccessObject<Publicacion>{
 
     public void actualizarLikes(Publicacion p) {
         String sqlDeleteLikes = "DELETE FROM likes WHERE titulo_publicacion_propietario = ?";
-        String sqlInsertLikes = "INSERT INTO ikes (titulo_publicacion_propietario, nickname) VALUES (?, ?)";
+        String sqlInsertLikes = "INSERT INTO likes (titulo_publicacion_propietario, nickname) VALUES (?, ?)";
 
         try(PreparedStatement stmtDeleteLikes = connection.prepareStatement(sqlDeleteLikes);
             PreparedStatement stmtInsertLikes = connection.prepareStatement(sqlInsertLikes)

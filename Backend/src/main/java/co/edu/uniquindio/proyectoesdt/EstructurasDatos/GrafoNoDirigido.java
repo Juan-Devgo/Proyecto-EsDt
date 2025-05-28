@@ -117,7 +117,10 @@ public class GrafoNoDirigido<T extends Usuario> implements Iterable<T> {
 
             if (nodoOptional.isPresent()) {
                 NodoGrafo<T> nodoAEliminar = nodoOptional.get();
-                for (NodoGrafo<T> adyacente : nodoAEliminar.getAdyacentes()) {
+
+                List<NodoGrafo<T>> copiaAdyacentes = new ArrayList<>(nodoAEliminar.getAdyacentes());
+
+                for (NodoGrafo<T> adyacente : copiaAdyacentes) {
                     nodoAEliminar.eliminarNodo(adyacente);
                 }
                 tamanio--;
