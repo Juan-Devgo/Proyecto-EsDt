@@ -5,43 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bee5ef9d-e078-49ef-b8b2-c069166a7b4e" name="Changes" comment="2.1: Inicio de pruebas unitarias y modificación de clase Publicacion">
-      <change afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/util/Archivos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/src/main/resources/files/_Primer_Publicaci_n__parrafos.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Contenido.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Contenido.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/EstructurasDatos/NodoGrafo.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/EstructurasDatos/NodoGrafo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/GrupoEstudio.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/GrupoEstudio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/GruposEstudioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/GruposEstudioDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/PublicacionesDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/PublicacionesDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/UsuariosDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Patrones/UsuariosDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Plataforma.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Plataforma.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/ProyectoEsdtApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/ProyectoEsdtApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Publicacion.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Publicacion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Usuario.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/Usuario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/util/Logging.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/util/Logging.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/src/main/resources/logging.log" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/resources/logging.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/Routes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/Routes.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/components/common/Card.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/components/common/Feed/Card.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/components/common/Header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/components/common/Feed/Header.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/components/common/Sidebar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/components/common/Feed/Sidebar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/components/ui/Button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/components/ui/Feed/Button.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/components/ui/Dropdown.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/components/ui/Feed/Dropdown.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/components/ui/InputField.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/components/ui/Feed/InputField.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/components/ui/Tag.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/components/ui/Feed/Tag.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/main.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/main.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/pages/Feed/RecentPublications.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/pages/Feed/RecentPublications.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/pages/Feed/RecommendedContent.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/pages/Feed/RecommendedContent.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/pages/Feed/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/pages/Feed/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/styles/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/styles/Feed/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/src/styles/tailwind.css" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/src/styles/Feed/tailwind.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/controllers/EstudianteRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/controllers/EstudianteRepository.java" afterDir="false" />
     </list>
     <list id="b03e64a5-a5a7-4564-8c22-afcea9cfa925" name="Changes by Angie" comment="">
-      <change afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/controllers/EstudianteController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/controllers/EstudianteRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Backend/src/main/java/co/edu/uniquindio/proyectoesdt/controllers/EstudianteService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/pom.xml" afterDir="false" />
     </list>
     <list id="beb4ca9f-575b-460c-8c99-5ae2a4f52ddb" name="Changes by angie" comment="" />
@@ -91,37 +58,37 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;JUnit.ProyectoEsdtApplicationTests.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ProyectoEsdtApplicationTests.probarFuncionalidadesEstructurasDatos.executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Spring Boot.ProyectoEsdtApplication.executor&quot;: &quot;Debug&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;23&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/juand/OneDrive/Escritorio/Uniquindío/Semestre 5/Estructura de Datos/Proyecto-EsDt/Backend&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\juand\\OneDrive\\Escritorio\\Uniquindío\\Semestre 5\\Estructura de Datos\\Proyecto-EsDt\\Frontend\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "JUnit.ProyectoEsdtApplicationTests.executor": "Run",
+    "JUnit.ProyectoEsdtApplicationTests.probarFuncionalidadesEstructurasDatos.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.ProyectoEsdtApplication.executor": "Run",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "jdk.selected.JAVA_MODULE": "23",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/juand/OneDrive/Escritorio/Uniquindío/Semestre 5/Estructura de Datos/Proyecto-EsDt/Backend",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "configurable.group.appearance",
+    "ts.external.directory.path": "C:\\Users\\juand\\OneDrive\\Escritorio\\Uniquindío\\Semestre 5\\Estructura de Datos\\Proyecto-EsDt\\Frontend\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
-  <component name="RunManager">
+}]]></component>
+  <component name="RunManager" selected="Spring Boot.ProyectoEsdtApplication">
     <configuration name="ProyectoEsdtApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="proyecto-esdt" />
       <extension name="coverage">
@@ -160,6 +127,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.ProyectoEsdtApplicationTests.probarFuncionalidadesEstructurasDatos" />
+        <item itemvalue="JUnit.ProyectoEsdtApplicationTests" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -185,7 +158,7 @@
       <workItem from="1748210164155" duration="879000" />
       <workItem from="1748211756698" duration="1510000" />
       <workItem from="1748215439782" duration="15012000" />
-      <workItem from="1748273097535" duration="54729000" />
+      <workItem from="1748273097535" duration="55885000" />
     </task>
     <servers />
   </component>
