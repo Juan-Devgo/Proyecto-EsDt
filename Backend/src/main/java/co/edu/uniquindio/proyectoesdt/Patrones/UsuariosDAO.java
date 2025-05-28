@@ -2,7 +2,9 @@ package co.edu.uniquindio.proyectoesdt.Patrones;
 
 import co.edu.uniquindio.proyectoesdt.Estudiante;
 import co.edu.uniquindio.proyectoesdt.Moderador;
+import co.edu.uniquindio.proyectoesdt.Plataforma;
 import co.edu.uniquindio.proyectoesdt.Usuario;
+import co.edu.uniquindio.proyectoesdt.util.Logging;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,9 +15,13 @@ import java.util.HashMap;
 
 public class UsuariosDAO implements DataAccessObject<Usuario> {
     private Connection connection;
+    private Plataforma plataforma;
 
-    public UsuariosDAO(Connection connection) {
+    public UsuariosDAO(Connection connection, Plataforma plataforma) {
         this.connection = null;
+        this.plataforma = plataforma;
+
+        Logging.logInfo("Intentando crear UsuariosDAO...", this);
 
         try {
             if (connection == null) {
@@ -28,21 +34,31 @@ public class UsuariosDAO implements DataAccessObject<Usuario> {
             }
 
             this.connection = connection;
+
+            Logging.logInfo("UsuariosDAO creado con éxito", this);
+
         } catch (SQLException e) {
             e.fillInStackTrace();
-            throw new RuntimeException("Error fatal en UsuariosDAO: " + e.getMessage());
+            Logging.logSevere("Error fatal en UsuariosDAO: " + e.getMessage(), this);
         }
     }
 
     @Override
     public void insertar(Collection<Usuario> insertables) {
         String sqlInsertUsuario = "INSERT INTO usuarios (nombre, nickname, contrasenia, carrera, es_estudiante, " +
-                "es_activo) VALUES (?, ?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE nombre = VALUES(nombre), contrasenia = " +
-                "VALUES(contrasenia), carrera = VALUES(carrera), es_estudiante = VALUES(es_estudiante), es_activo = " +
-                "VALUES(es_activo)";
+                "es_activo) VALUES (?, ?, ?, ?, ?, ?) " +
+                "ON DUPLICATE KEY UPDATE " +
+                "nombre = VALUES(nombre), " +
+                "contrasenia = VALUES(contrasenia), " +
+                "carrera = VALUES(carrera), " +
+                "es_estudiante = VALUES(es_estudiante), " +
+                "es_activo = VALUES(es_activo);";
 
         try(PreparedStatement stmtUsuario = connection.prepareStatement(sqlInsertUsuario)) {
             for(Usuario u: insertables) {
+
+                Logging.logInfo("Insertando el usuario: " + u.getNickname() + "...", this);
+
                 stmtUsuario.setString(1, u.getNombre());
                 stmtUsuario.setString(2, u.getNickname());
                 stmtUsuario.setString(3, u.getContrasenia());
@@ -53,6 +69,9 @@ public class UsuariosDAO implements DataAccessObject<Usuario> {
 
                 actualizarSeguidores(u);
                 actualizarIntereses(u);
+
+                Logging.logInfo("El usuario: " + u.getNickname() + " se ha insertado correctamente.",
+                        this);
             }
 
             stmtUsuario.executeBatch();
@@ -77,6 +96,9 @@ public class UsuariosDAO implements DataAccessObject<Usuario> {
         ) {
             ResultSet rsUsuarios = stmtUsuarios.executeQuery();
             while(rsUsuarios.next()) {
+
+                Logging.logInfo("Leyendo usuario...", this);
+
                 String nombre = rsUsuarios.getString("nombre");
                 String nickname = rsUsuarios.getString("nickname");
                 String contrasenia = rsUsuarios.getString("contrasenia");
@@ -92,6 +114,8 @@ public class UsuariosDAO implements DataAccessObject<Usuario> {
                     Moderador m = new Moderador(nombre, nickname, contrasenia, carrera);
                     usuarios.put(nickname, m);
                 }
+
+                Logging.logInfo("Se ha leído el usuario: " + nickname + ".", this);
             }
 
             ResultSet rsIntereses = stmtIntereses.executeQuery();
@@ -127,11 +151,16 @@ public class UsuariosDAO implements DataAccessObject<Usuario> {
             PreparedStatement stmtDeleteIntereses = connection.prepareStatement(sqlDeleteIntereses)
         ) {
             for(Usuario u: eliminables) {
+
+                Logging.logInfo("Eliminando el usuario: " + u.getNickname() + "...", this);
+
                 stmtDeleteUsuarios.setString(1, u.getNickname());
                 stmtDeleteUsuarios.executeUpdate();
 
                 stmtDeleteIntereses.setString(1, u.getNickname());
                 stmtDeleteIntereses.executeUpdate();
+
+                Logging.logInfo("Usuario eliminado.", this);
             }
 
         } catch (SQLException e) {

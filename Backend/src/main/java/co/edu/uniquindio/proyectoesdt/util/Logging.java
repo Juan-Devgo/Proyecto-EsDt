@@ -1,36 +1,31 @@
 package co.edu.uniquindio.proyectoesdt.util;
 
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.Level;
 import java.util.logging.SimpleFormatter;
 
 public class Logging {
-    private static Logging instancia;
+    private static final Logger logger = Logger.getLogger("BrainLoop Logger");
     private static final FileHandler fHandler;
 
     static {
         try {
-            fHandler = new FileHandler("logging.log", true);
+            Path path = Path.of(Archivos.obtenerRutaLogging());
+            fHandler = new FileHandler(path.toString(), true);
+            fHandler.setFormatter(new SimpleFormatter());
+            logger.addHandler(fHandler);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Error al configurar el Logging: " + e.getMessage(), e);
         }
     }
 
-    public Logging() {
-    }
+    private Logging() {}
 
     public static void log(String mensaje, Level nivel, Object clase) {
-        if (instancia == null) {
-            instancia = new Logging();
-        }
-
-        Logger logger = Logger.getLogger(clase.getClass().getName());
-        fHandler.setFormatter(new SimpleFormatter());
-        logger.addHandler(fHandler);
-
-        logger.log(nivel, mensaje);
+        logger.logp(nivel, clase.getClass().getSimpleName(), "", mensaje);
     }
 
     public static void logInfo(String mensaje, Object clase) {

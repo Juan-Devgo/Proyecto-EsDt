@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        /* Primary Colors */
+        --primary-teal: #335c67;
+        --primary-teal-dark: #2a4a54;
+        --primary-red: #9e2a2b;
+        --primary-red-dark: #7e2122;
+
+        /* Text Colors */
+        --text-black: #000000;
+        --text-gray: #828282;
+
+        /* Border Colors */
+        --border-gray: #dfdfdf;
+
+        /* Background Colors */
+        --bg-white: #ffffff;
+    }
+}
+
+@layer utilities {
+    .bg-primary-teal {
+        background-color: var(--primary-teal);
+    }
+
+    .bg-primary-teal-dark {
+        background-color: var(--primary-teal-dark);
+    }
+
+    .bg-primary-red {
+        background-color: var(--primary-red);
+    }
+
+    .bg-primary-red-dark {
+        background-color: var(--primary-red-dark);
+    }
+
+    .text-black {
+        color: var(--text-black);
+    }
+
+    .text-gray {
+        color: var(--text-gray);
+    }
+
+    .border-gray {
+        border-color: var(--border-gray);
+    }
+
+    .bg-white {
+        background-color: var(--bg-white);
+    }
+}

@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
-import Sidebar from "../../components/common/Sidebar";
-import Header from "../../components/common/Header";
+import Sidebar from "../../components/common/Feed/Sidebar.tsx";
+import Header from "../../components/common/Feed/Header.tsx";
 import RecentPublications from "./RecentPublications";
 import RecommendedContent from "./RecommendedContent";
 

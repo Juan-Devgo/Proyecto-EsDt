@@ -3,6 +3,7 @@ package co.edu.uniquindio.proyectoesdt.Patrones;
 import co.edu.uniquindio.proyectoesdt.Estudiante;
 import co.edu.uniquindio.proyectoesdt.GrupoEstudio;
 import co.edu.uniquindio.proyectoesdt.Plataforma;
+import co.edu.uniquindio.proyectoesdt.util.Logging;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,14 +11,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.List;
 
 public class GruposEstudioDAO implements DataAccessObject<GrupoEstudio> {
     private Connection connection;
+    private final Plataforma plataforma;
 
-    public GruposEstudioDAO(Connection connection) {
-
+    public GruposEstudioDAO(Connection connection, Plataforma plataforma) {
         this.connection = null;
+        this.plataforma = plataforma;
+
+        Logging.logInfo("Intentando crear GruposDAO...", this);
 
         try{
             if(connection == null) {
@@ -31,25 +34,33 @@ public class GruposEstudioDAO implements DataAccessObject<GrupoEstudio> {
 
             this.connection = connection;
 
+            Logging.logInfo("GruposEstudioDAO creado con éxito", this);
+
         } catch (SQLException e) {
             e.fillInStackTrace();
-            throw new RuntimeException("Error fatal en GruposEstudioDAO: " + e.getMessage());
+            Logging.logSevere("Error fatal en GruposEstudioDAO: " + e.getMessage(), this);
         }
     }
 
     @Override
     public void insertar(Collection<GrupoEstudio> insertables) {
-        String sqlInsertNombre = "INSERT IGNORE INTO grupos_estudio (nombre) VALUES (?)";
+        String sqlInsertNombre = "INSERT IGNORE INTO grupos_estudio (nombre) VALUES (?);";
 
         try(PreparedStatement stmtNombre = connection.prepareStatement(sqlInsertNombre)) {
 
             for(GrupoEstudio g: insertables) {
+
+                Logging.logInfo("Insertando el grupo: " + g.getNombre() + "...", this);
+
                 stmtNombre.setString(1, g.getNombre());
                 stmtNombre.addBatch();
 
                 actualizartemas(g);
                 actualizarSolicitudes(g);
                 actualizarIntegrantes(g);
+
+                Logging.logInfo("El grupo: " + g.getNombre() + " se ha insertado correctamente.",
+                        this);
             }
 
             stmtNombre.executeBatch();
@@ -76,9 +87,14 @@ public class GruposEstudioDAO implements DataAccessObject<GrupoEstudio> {
         ) {
             ResultSet rsGruposEstudio = stmtSelectGruposEstudio.executeQuery();
             while(rsGruposEstudio.next()) {
+
+                Logging.logInfo("Leyendo grupo...", this);
+
                 String nombre = rsGruposEstudio.getString("nombre");
                 GrupoEstudio g = new GrupoEstudio(nombre);
                 gruposEstudio.put(nombre, g);
+
+                Logging.logInfo("Se ha leído el grupo: " + nombre + ".", this);
             }
 
             ResultSet rsTemas = stmtSelectTemas.executeQuery();
@@ -91,7 +107,7 @@ public class GruposEstudioDAO implements DataAccessObject<GrupoEstudio> {
             ResultSet rsSolicitudes = stmtSelectSolicitudes.executeQuery();
             while(rsSolicitudes.next()) {
                 String nombre = rsSolicitudes.getString("nombre_grupo_propietario");
-                Estudiante e = Plataforma.getInstancia().buscarEstudiante(rsSolicitudes
+                Estudiante e = plataforma.buscarEstudiante(rsSolicitudes
                         .getString("nickname"));
                 if(e != null) {
                     gruposEstudio.get(nombre).recibirSolicitud(e);
@@ -101,7 +117,7 @@ public class GruposEstudioDAO implements DataAccessObject<GrupoEstudio> {
             ResultSet rsIntegrantes = stmtSelectIntegrantes.executeQuery();
             while(rsIntegrantes.next()) {
                 String nombre = rsIntegrantes.getString("nombre_grupo_propietario");
-                Estudiante e = Plataforma.getInstancia().buscarEstudiante(rsIntegrantes
+                Estudiante e = plataforma.buscarEstudiante(rsIntegrantes
                         .getString("nickname"));
                 if(e != null) {
                     gruposEstudio.get(nombre).aceptarSolicitud(e);
@@ -129,6 +145,9 @@ public class GruposEstudioDAO implements DataAccessObject<GrupoEstudio> {
             PreparedStatement stmtIntegrantes = connection.prepareStatement(sqlDeleteIntegrantes)
         ){
             for(GrupoEstudio g: eliminables) {
+
+                Logging.logInfo("Eliminando el grupo: " + g.getNombre() + "...", this);
+
                 stmtGrupos.setString(1, g.getNombre());
                 stmtGrupos.executeUpdate();
 
@@ -140,6 +159,8 @@ public class GruposEstudioDAO implements DataAccessObject<GrupoEstudio> {
 
                 stmtIntegrantes.setString(1, g.getNombre());
                 stmtIntegrantes.executeUpdate();
+
+                Logging.logInfo("Grupo eliminado.", this);
             }
 
         } catch (SQLException e) {
@@ -204,7 +225,7 @@ public class GruposEstudioDAO implements DataAccessObject<GrupoEstudio> {
             PreparedStatement stmtInsertIntegrantes = connection.prepareStatement(sqlInsertIntegrantes)
         ){
             stmtDeleteIntegrantes.setString(1, g.getNombre());
-            stmtInsertIntegrantes.executeUpdate();
+            stmtDeleteIntegrantes.executeUpdate();
 
             for(Estudiante e: g.getIntegrantes()) {
                 stmtInsertIntegrantes.setString(1, g.getNombre());
@@ -216,6 +237,9 @@ public class GruposEstudioDAO implements DataAccessObject<GrupoEstudio> {
 
         } catch (SQLException e) {
             e.fillInStackTrace();
+            System.err.println("SQL State: " + e.getSQLState());
+            System.err.println("Error Code: " + e.getErrorCode());
+            System.err.println("Message: " + e.getMessage());
             throw new RuntimeException("Error fatal en GruposEstudioDAO: Imposible crear PreparedStatement.");
         }
     }

@@ -32,6 +32,21 @@ public abstract class Usuario implements InsertableBD, Comparable<Usuario> {
         this.activo = true;
     }
 
+    @Override
+    public String toString() {
+        return nickname;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        boolean equal = false;
+        if(obj instanceof Usuario u) {
+            equal = nickname.equals(u.getNickname());
+        }
+
+        return equal;
+    }
+
     public int compareTo(Usuario u) {
         return u.numeroConexiones.compareTo(numeroConexiones);
     }
@@ -42,8 +57,6 @@ public abstract class Usuario implements InsertableBD, Comparable<Usuario> {
         }
         chat.escribirMensaje(this,contenido);
     }
-
-
 
     public int getCantidadAmigos() {
         return amigos.size();

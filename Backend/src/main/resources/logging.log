@@ -1,0 +1,722 @@
+may 27, 2025 7:40:57 P. M. co.edu.uniquindio.proyectoesdt.util.Logging log
+INFO: Estableciendo conexión con la base de datos...
+may 27, 2025 7:40:57 P. M. co.edu.uniquindio.proyectoesdt.util.Logging log
+INFO: Conexión establecida.
+may 27, 2025 7:51:19 P. M. Class 
+INFO: Estableciendo conexión con la base de datos...
+may 27, 2025 7:51:20 P. M. Class 
+INFO: Conexión establecida.
+may 27, 2025 7:55:12 P. M. Class 
+INFO: Estableciendo conexión con la base de datos...
+may 27, 2025 7:55:13 P. M. Class 
+INFO: Conexión establecida.
+may 27, 2025 7:56:15 P. M. Class 
+INFO: Estableciendo conexión con la base de datos...
+may 27, 2025 7:56:15 P. M. Class 
+INFO: Conexión establecida.
+may 27, 2025 7:56:44 P. M. Class 
+INFO: Estableciendo conexión con la base de datos...
+may 27, 2025 7:56:45 P. M. Class 
+INFO: Conexión establecida.
+may 27, 2025 8:02:07 P. M. Class 
+INFO: Estableciendo conexión con la base de datos...
+may 27, 2025 8:02:08 P. M. Class 
+INFO: Conexión establecida.
+may 27, 2025 8:02:08 P. M. UsuariosDAO 
+INFO: Intentando crear UsuariosDAO...
+may 27, 2025 8:02:08 P. M. UsuariosDAO 
+INFO: UsuariosDAO creado con éxito
+may 27, 2025 8:57:32 P. M. Class 
+INFO: Estableciendo conexión con la base de datos...
+may 27, 2025 8:57:33 P. M. Class 
+INFO: Conexión establecida.
+may 27, 2025 8:57:33 P. M. UsuariosDAO 
+INFO: Intentando crear UsuariosDAO...
+may 27, 2025 8:57:33 P. M. UsuariosDAO 
+INFO: UsuariosDAO creado con éxito
+may 27, 2025 9:47:58 P. M. Class 
+INFO: Estableciendo conexión con la base de datos...
+may 27, 2025 9:47:59 P. M. Class 
+INFO: Conexión establecida.
+may 27, 2025 9:47:59 P. M. UsuariosDAO 
+INFO: Intentando crear UsuariosDAO...
+may 27, 2025 9:47:59 P. M. UsuariosDAO 
+INFO: UsuariosDAO creado con éxito
+may 27, 2025 9:47:59 P. M. GruposEstudioDAO 
+INFO: Intentando crear GruposDAO...
+may 27, 2025 9:47:59 P. M. GruposEstudioDAO 
+INFO: GruposEstudioDAO creado con éxito
+may 27, 2025 9:47:59 P. M. PublicacionesDAO 
+INFO: Intentando crear PublicacionesDAO...
+may 27, 2025 9:47:59 P. M. PublicacionesDAO 
+INFO: PublicacionesDAO creado con éxito
+may 27, 2025 9:47:59 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 9:47:59 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: AngieC-eratosaurio.
+may 27, 2025 9:47:59 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 9:47:59 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: AngieKB.
+may 27, 2025 9:47:59 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 9:47:59 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: Juan-Devgo.
+may 27, 2025 9:47:59 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 9:47:59 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: JuanitoGolondrina.
+may 27, 2025 9:47:59 P. M. PublicacionesDAO 
+INFO: Leyendo publicación...
+may 27, 2025 9:47:59 P. M. PublicacionesDAO 
+INFO: Se ha leído la publicación: ¡Primer Publicación!.
+may 27, 2025 9:51:48 P. M. Class 
+INFO: Estableciendo conexión con la base de datos...
+may 27, 2025 9:51:49 P. M. Class 
+INFO: Conexión establecida.
+may 27, 2025 9:51:49 P. M. UsuariosDAO 
+INFO: Intentando crear UsuariosDAO...
+may 27, 2025 9:51:49 P. M. UsuariosDAO 
+INFO: UsuariosDAO creado con éxito
+may 27, 2025 9:51:49 P. M. GruposEstudioDAO 
+INFO: Intentando crear GruposDAO...
+may 27, 2025 9:51:49 P. M. GruposEstudioDAO 
+INFO: GruposEstudioDAO creado con éxito
+may 27, 2025 9:51:49 P. M. PublicacionesDAO 
+INFO: Intentando crear PublicacionesDAO...
+may 27, 2025 9:51:49 P. M. PublicacionesDAO 
+INFO: PublicacionesDAO creado con éxito
+may 27, 2025 9:51:49 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 9:51:49 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: AngieC-eratosaurio.
+may 27, 2025 9:51:49 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 9:51:49 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: AngieKB.
+may 27, 2025 9:51:49 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 9:51:49 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: Juan-Devgo.
+may 27, 2025 9:51:49 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 9:51:49 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: JuanitoGolondrina.
+may 27, 2025 9:51:49 P. M. PublicacionesDAO 
+INFO: Leyendo publicación...
+may 27, 2025 9:51:49 P. M. PublicacionesDAO 
+INFO: Se ha leído la publicación: ¡Primer Publicación!.
+may 27, 2025 9:53:59 P. M. Class 
+INFO: Estableciendo conexión con la base de datos...
+may 27, 2025 9:54:00 P. M. Class 
+INFO: Conexión establecida.
+may 27, 2025 9:54:00 P. M. UsuariosDAO 
+INFO: Intentando crear UsuariosDAO...
+may 27, 2025 9:54:00 P. M. UsuariosDAO 
+INFO: UsuariosDAO creado con éxito
+may 27, 2025 9:54:00 P. M. GruposEstudioDAO 
+INFO: Intentando crear GruposDAO...
+may 27, 2025 9:54:00 P. M. GruposEstudioDAO 
+INFO: GruposEstudioDAO creado con éxito
+may 27, 2025 9:54:00 P. M. PublicacionesDAO 
+INFO: Intentando crear PublicacionesDAO...
+may 27, 2025 9:54:00 P. M. PublicacionesDAO 
+INFO: PublicacionesDAO creado con éxito
+may 27, 2025 9:54:00 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 9:54:00 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: AngieC-eratosaurio.
+may 27, 2025 9:54:00 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 9:54:00 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: AngieKB.
+may 27, 2025 9:54:00 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 9:54:00 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: Juan-Devgo.
+may 27, 2025 9:54:00 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 9:54:00 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: JuanitoGolondrina.
+may 27, 2025 9:54:00 P. M. PublicacionesDAO 
+INFO: Leyendo publicación...
+may 27, 2025 9:54:00 P. M. PublicacionesDAO 
+INFO: Se ha leído la publicación: ¡Primer Publicación!.
+may 27, 2025 9:54:00 P. M. GruposEstudioDAO 
+INFO: Insertando el grupo: Primer Grupo...
+may 27, 2025 9:59:57 P. M. Class 
+INFO: Estableciendo conexión con la base de datos...
+may 27, 2025 9:59:58 P. M. Class 
+INFO: Conexión establecida.
+may 27, 2025 9:59:58 P. M. UsuariosDAO 
+INFO: Intentando crear UsuariosDAO...
+may 27, 2025 9:59:58 P. M. UsuariosDAO 
+INFO: UsuariosDAO creado con éxito
+may 27, 2025 9:59:58 P. M. GruposEstudioDAO 
+INFO: Intentando crear GruposDAO...
+may 27, 2025 9:59:58 P. M. GruposEstudioDAO 
+INFO: GruposEstudioDAO creado con éxito
+may 27, 2025 9:59:58 P. M. PublicacionesDAO 
+INFO: Intentando crear PublicacionesDAO...
+may 27, 2025 9:59:58 P. M. PublicacionesDAO 
+INFO: PublicacionesDAO creado con éxito
+may 27, 2025 9:59:58 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 9:59:58 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: AngieC-eratosaurio.
+may 27, 2025 9:59:58 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 9:59:58 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: AngieKB.
+may 27, 2025 9:59:58 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 9:59:58 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: Juan-Devgo.
+may 27, 2025 9:59:58 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 9:59:58 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: JuanitoGolondrina.
+may 27, 2025 9:59:58 P. M. PublicacionesDAO 
+INFO: Leyendo publicación...
+may 27, 2025 9:59:58 P. M. PublicacionesDAO 
+INFO: Se ha leído la publicación: ¡Primer Publicación!.
+may 27, 2025 9:59:58 P. M. GruposEstudioDAO 
+INFO: Insertando el grupo: Primer Grupo...
+may 27, 2025 10:03:17 P. M. Class 
+INFO: Estableciendo conexión con la base de datos...
+may 27, 2025 10:03:19 P. M. Class 
+INFO: Conexión establecida.
+may 27, 2025 10:03:19 P. M. UsuariosDAO 
+INFO: Intentando crear UsuariosDAO...
+may 27, 2025 10:03:19 P. M. UsuariosDAO 
+INFO: UsuariosDAO creado con éxito
+may 27, 2025 10:03:19 P. M. GruposEstudioDAO 
+INFO: Intentando crear GruposDAO...
+may 27, 2025 10:03:19 P. M. GruposEstudioDAO 
+INFO: GruposEstudioDAO creado con éxito
+may 27, 2025 10:03:19 P. M. PublicacionesDAO 
+INFO: Intentando crear PublicacionesDAO...
+may 27, 2025 10:03:19 P. M. PublicacionesDAO 
+INFO: PublicacionesDAO creado con éxito
+may 27, 2025 10:03:19 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:03:19 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: AngieC-eratosaurio.
+may 27, 2025 10:03:19 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:03:19 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: AngieKB.
+may 27, 2025 10:03:19 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:03:19 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: Juan-Devgo.
+may 27, 2025 10:03:19 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:03:19 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: JuanitoGolondrina.
+may 27, 2025 10:03:19 P. M. PublicacionesDAO 
+INFO: Leyendo publicación...
+may 27, 2025 10:03:19 P. M. PublicacionesDAO 
+INFO: Se ha leído la publicación: ¡Primer Publicación!.
+may 27, 2025 10:03:19 P. M. GruposEstudioDAO 
+INFO: Insertando el grupo: Primer Grupo...
+may 27, 2025 10:03:19 P. M. GruposEstudioDAO 
+INFO: El grupo: Primer Grupo se ha insertado correctamente.
+may 27, 2025 10:05:57 P. M. Class 
+INFO: Estableciendo conexión con la base de datos...
+may 27, 2025 10:05:58 P. M. Class 
+INFO: Conexión establecida.
+may 27, 2025 10:05:58 P. M. UsuariosDAO 
+INFO: Intentando crear UsuariosDAO...
+may 27, 2025 10:05:58 P. M. UsuariosDAO 
+INFO: UsuariosDAO creado con éxito
+may 27, 2025 10:05:58 P. M. GruposEstudioDAO 
+INFO: Intentando crear GruposDAO...
+may 27, 2025 10:05:58 P. M. GruposEstudioDAO 
+INFO: GruposEstudioDAO creado con éxito
+may 27, 2025 10:05:58 P. M. PublicacionesDAO 
+INFO: Intentando crear PublicacionesDAO...
+may 27, 2025 10:05:58 P. M. PublicacionesDAO 
+INFO: PublicacionesDAO creado con éxito
+may 27, 2025 10:05:58 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:05:58 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: AngieC-eratosaurio.
+may 27, 2025 10:05:58 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:05:58 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: AngieKB.
+may 27, 2025 10:05:58 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:05:58 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: Juan-Devgo.
+may 27, 2025 10:05:58 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:05:58 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: JuanitoGolondrina.
+may 27, 2025 10:05:58 P. M. GruposEstudioDAO 
+INFO: Leyendo grupo...
+may 27, 2025 10:05:58 P. M. GruposEstudioDAO 
+INFO: Se ha leído el grupo: Primer Grupo.
+may 27, 2025 10:05:58 P. M. PublicacionesDAO 
+INFO: Leyendo publicación...
+may 27, 2025 10:05:58 P. M. PublicacionesDAO 
+INFO: Se ha leído la publicación: ¡Primer Publicación!.
+may 27, 2025 10:10:52 P. M. Class 
+INFO: Estableciendo conexión con la base de datos...
+may 27, 2025 10:10:52 P. M. Class 
+INFO: Conexión establecida.
+may 27, 2025 10:10:52 P. M. UsuariosDAO 
+INFO: Intentando crear UsuariosDAO...
+may 27, 2025 10:10:52 P. M. UsuariosDAO 
+INFO: UsuariosDAO creado con éxito
+may 27, 2025 10:10:52 P. M. GruposEstudioDAO 
+INFO: Intentando crear GruposDAO...
+may 27, 2025 10:10:52 P. M. GruposEstudioDAO 
+INFO: GruposEstudioDAO creado con éxito
+may 27, 2025 10:10:52 P. M. PublicacionesDAO 
+INFO: Intentando crear PublicacionesDAO...
+may 27, 2025 10:10:52 P. M. PublicacionesDAO 
+INFO: PublicacionesDAO creado con éxito
+may 27, 2025 10:10:52 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:10:52 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: AngieC-eratosaurio.
+may 27, 2025 10:10:52 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:10:52 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: AngieKB.
+may 27, 2025 10:10:52 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:10:52 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: Juan-Devgo.
+may 27, 2025 10:10:52 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:10:52 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: JuanitoGolondrina.
+may 27, 2025 10:10:52 P. M. GruposEstudioDAO 
+INFO: Leyendo grupo...
+may 27, 2025 10:10:52 P. M. GruposEstudioDAO 
+INFO: Se ha leído el grupo: Primer Grupo.
+may 27, 2025 10:10:52 P. M. PublicacionesDAO 
+INFO: Leyendo publicación...
+may 27, 2025 10:10:52 P. M. PublicacionesDAO 
+INFO: Se ha leído la publicación: ¡Primer Publicación!.
+may 27, 2025 10:13:11 P. M. Class 
+INFO: Estableciendo conexión con la base de datos...
+may 27, 2025 10:13:12 P. M. Class 
+INFO: Conexión establecida.
+may 27, 2025 10:13:12 P. M. UsuariosDAO 
+INFO: Intentando crear UsuariosDAO...
+may 27, 2025 10:13:12 P. M. UsuariosDAO 
+INFO: UsuariosDAO creado con éxito
+may 27, 2025 10:13:12 P. M. GruposEstudioDAO 
+INFO: Intentando crear GruposDAO...
+may 27, 2025 10:13:12 P. M. GruposEstudioDAO 
+INFO: GruposEstudioDAO creado con éxito
+may 27, 2025 10:13:12 P. M. PublicacionesDAO 
+INFO: Intentando crear PublicacionesDAO...
+may 27, 2025 10:13:12 P. M. PublicacionesDAO 
+INFO: PublicacionesDAO creado con éxito
+may 27, 2025 10:13:12 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:13:12 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: AngieC-eratosaurio.
+may 27, 2025 10:13:12 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:13:12 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: AngieKB.
+may 27, 2025 10:13:12 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:13:12 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: Juan-Devgo.
+may 27, 2025 10:13:12 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:13:12 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: JuanitoGolondrina.
+may 27, 2025 10:13:12 P. M. GruposEstudioDAO 
+INFO: Leyendo grupo...
+may 27, 2025 10:13:12 P. M. GruposEstudioDAO 
+INFO: Se ha leído el grupo: Primer Grupo.
+may 27, 2025 10:13:12 P. M. PublicacionesDAO 
+INFO: Leyendo publicación...
+may 27, 2025 10:13:12 P. M. PublicacionesDAO 
+INFO: Se ha leído la publicación: ¡Primer Publicación!.
+may 27, 2025 10:14:30 P. M. Class 
+INFO: Estableciendo conexión con la base de datos...
+may 27, 2025 10:14:30 P. M. Class 
+INFO: Conexión establecida.
+may 27, 2025 10:14:30 P. M. UsuariosDAO 
+INFO: Intentando crear UsuariosDAO...
+may 27, 2025 10:14:30 P. M. UsuariosDAO 
+INFO: UsuariosDAO creado con éxito
+may 27, 2025 10:14:30 P. M. GruposEstudioDAO 
+INFO: Intentando crear GruposDAO...
+may 27, 2025 10:14:30 P. M. GruposEstudioDAO 
+INFO: GruposEstudioDAO creado con éxito
+may 27, 2025 10:14:30 P. M. PublicacionesDAO 
+INFO: Intentando crear PublicacionesDAO...
+may 27, 2025 10:14:30 P. M. PublicacionesDAO 
+INFO: PublicacionesDAO creado con éxito
+may 27, 2025 10:14:31 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:14:31 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: AngieC-eratosaurio.
+may 27, 2025 10:14:31 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:14:31 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: AngieKB.
+may 27, 2025 10:14:31 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:14:31 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: Juan-Devgo.
+may 27, 2025 10:14:31 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:14:31 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: JuanitoGolondrina.
+may 27, 2025 10:14:31 P. M. GruposEstudioDAO 
+INFO: Leyendo grupo...
+may 27, 2025 10:14:31 P. M. GruposEstudioDAO 
+INFO: Se ha leído el grupo: Primer Grupo.
+may 27, 2025 10:14:31 P. M. PublicacionesDAO 
+INFO: Leyendo publicación...
+may 27, 2025 10:14:31 P. M. PublicacionesDAO 
+INFO: Se ha leído la publicación: ¡Primer Publicación!.
+may 27, 2025 10:16:43 P. M. Class 
+INFO: Estableciendo conexión con la base de datos...
+may 27, 2025 10:16:45 P. M. Class 
+INFO: Conexión establecida.
+may 27, 2025 10:16:45 P. M. UsuariosDAO 
+INFO: Intentando crear UsuariosDAO...
+may 27, 2025 10:16:45 P. M. UsuariosDAO 
+INFO: UsuariosDAO creado con éxito
+may 27, 2025 10:16:45 P. M. GruposEstudioDAO 
+INFO: Intentando crear GruposDAO...
+may 27, 2025 10:16:45 P. M. GruposEstudioDAO 
+INFO: GruposEstudioDAO creado con éxito
+may 27, 2025 10:16:45 P. M. PublicacionesDAO 
+INFO: Intentando crear PublicacionesDAO...
+may 27, 2025 10:16:45 P. M. PublicacionesDAO 
+INFO: PublicacionesDAO creado con éxito
+may 27, 2025 10:16:45 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:16:45 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: AngieC-eratosaurio.
+may 27, 2025 10:16:45 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:16:45 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: AngieKB.
+may 27, 2025 10:16:45 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:16:45 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: Juan-Devgo.
+may 27, 2025 10:16:45 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:16:45 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: JuanitoGolondrina.
+may 27, 2025 10:16:45 P. M. GruposEstudioDAO 
+INFO: Leyendo grupo...
+may 27, 2025 10:16:45 P. M. GruposEstudioDAO 
+INFO: Se ha leído el grupo: Primer Grupo.
+may 27, 2025 10:16:45 P. M. PublicacionesDAO 
+INFO: Leyendo publicación...
+may 27, 2025 10:16:45 P. M. PublicacionesDAO 
+INFO: Se ha leído la publicación: ¡Primer Publicación!.
+may 27, 2025 10:34:51 P. M. Class 
+INFO: Estableciendo conexión con la base de datos...
+may 27, 2025 10:34:54 P. M. Class 
+INFO: Conexión establecida.
+may 27, 2025 10:34:54 P. M. UsuariosDAO 
+INFO: Intentando crear UsuariosDAO...
+may 27, 2025 10:34:54 P. M. UsuariosDAO 
+INFO: UsuariosDAO creado con éxito
+may 27, 2025 10:34:54 P. M. GruposEstudioDAO 
+INFO: Intentando crear GruposDAO...
+may 27, 2025 10:34:54 P. M. GruposEstudioDAO 
+INFO: GruposEstudioDAO creado con éxito
+may 27, 2025 10:34:54 P. M. PublicacionesDAO 
+INFO: Intentando crear PublicacionesDAO...
+may 27, 2025 10:34:54 P. M. PublicacionesDAO 
+INFO: PublicacionesDAO creado con éxito
+may 27, 2025 10:34:55 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:34:55 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: AngieC-eratosaurio.
+may 27, 2025 10:34:55 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:34:55 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: AngieKB.
+may 27, 2025 10:34:55 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:34:55 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: Juan-Devgo.
+may 27, 2025 10:34:55 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:34:55 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: JuanitoGolondrina.
+may 27, 2025 10:34:55 P. M. GruposEstudioDAO 
+INFO: Leyendo grupo...
+may 27, 2025 10:34:55 P. M. GruposEstudioDAO 
+INFO: Se ha leído el grupo: Primer Grupo.
+may 27, 2025 10:34:55 P. M. PublicacionesDAO 
+INFO: Leyendo publicación...
+may 27, 2025 10:34:55 P. M. PublicacionesDAO 
+INFO: Se ha leído la publicación: ¡Primer Publicación!.
+may 27, 2025 10:35:43 P. M. Class 
+INFO: Estableciendo conexión con la base de datos...
+may 27, 2025 10:35:43 P. M. Class 
+INFO: Conexión establecida.
+may 27, 2025 10:35:43 P. M. UsuariosDAO 
+INFO: Intentando crear UsuariosDAO...
+may 27, 2025 10:35:43 P. M. UsuariosDAO 
+INFO: UsuariosDAO creado con éxito
+may 27, 2025 10:35:43 P. M. GruposEstudioDAO 
+INFO: Intentando crear GruposDAO...
+may 27, 2025 10:35:43 P. M. GruposEstudioDAO 
+INFO: GruposEstudioDAO creado con éxito
+may 27, 2025 10:35:43 P. M. PublicacionesDAO 
+INFO: Intentando crear PublicacionesDAO...
+may 27, 2025 10:35:43 P. M. PublicacionesDAO 
+INFO: PublicacionesDAO creado con éxito
+may 27, 2025 10:35:43 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:35:43 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: AngieC-eratosaurio.
+may 27, 2025 10:35:43 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:35:43 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: AngieKB.
+may 27, 2025 10:35:43 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:35:43 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: Juan-Devgo.
+may 27, 2025 10:35:43 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:35:43 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: JuanitoGolondrina.
+may 27, 2025 10:35:43 P. M. GruposEstudioDAO 
+INFO: Leyendo grupo...
+may 27, 2025 10:35:43 P. M. GruposEstudioDAO 
+INFO: Se ha leído el grupo: Primer Grupo.
+may 27, 2025 10:35:43 P. M. PublicacionesDAO 
+INFO: Leyendo publicación...
+may 27, 2025 10:35:44 P. M. PublicacionesDAO 
+INFO: Se ha leído la publicación: ¡Primer Publicación!.
+may 27, 2025 10:41:16 P. M. Class 
+INFO: Estableciendo conexión con la base de datos...
+may 27, 2025 10:41:16 P. M. Class 
+INFO: Conexión establecida.
+may 27, 2025 10:41:16 P. M. UsuariosDAO 
+INFO: Intentando crear UsuariosDAO...
+may 27, 2025 10:41:16 P. M. UsuariosDAO 
+INFO: UsuariosDAO creado con éxito
+may 27, 2025 10:41:16 P. M. GruposEstudioDAO 
+INFO: Intentando crear GruposDAO...
+may 27, 2025 10:41:16 P. M. GruposEstudioDAO 
+INFO: GruposEstudioDAO creado con éxito
+may 27, 2025 10:41:16 P. M. PublicacionesDAO 
+INFO: Intentando crear PublicacionesDAO...
+may 27, 2025 10:41:16 P. M. PublicacionesDAO 
+INFO: PublicacionesDAO creado con éxito
+may 27, 2025 10:41:16 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:41:16 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: AngieC-eratosaurio.
+may 27, 2025 10:41:16 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:41:16 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: AngieKB.
+may 27, 2025 10:41:16 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:41:16 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: Juan-Devgo.
+may 27, 2025 10:41:16 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:41:16 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: JuanitoGolondrina.
+may 27, 2025 10:41:17 P. M. GruposEstudioDAO 
+INFO: Leyendo grupo...
+may 27, 2025 10:41:17 P. M. GruposEstudioDAO 
+INFO: Se ha leído el grupo: Primer Grupo.
+may 27, 2025 10:41:17 P. M. PublicacionesDAO 
+INFO: Leyendo publicación...
+may 27, 2025 10:41:17 P. M. PublicacionesDAO 
+INFO: Se ha leído la publicación: ¡Primer Publicación!.
+may 27, 2025 10:41:17 P. M. UsuariosDAO 
+INFO: Insertando el usuario: JuanSe...
+may 27, 2025 10:41:17 P. M. UsuariosDAO 
+INFO: El usuario: JuanSe se ha insertado correctamente.
+may 27, 2025 10:43:52 P. M. Class 
+INFO: Estableciendo conexión con la base de datos...
+may 27, 2025 10:43:54 P. M. Class 
+INFO: Conexión establecida.
+may 27, 2025 10:43:54 P. M. UsuariosDAO 
+INFO: Intentando crear UsuariosDAO...
+may 27, 2025 10:43:54 P. M. UsuariosDAO 
+INFO: UsuariosDAO creado con éxito
+may 27, 2025 10:43:54 P. M. GruposEstudioDAO 
+INFO: Intentando crear GruposDAO...
+may 27, 2025 10:43:54 P. M. GruposEstudioDAO 
+INFO: GruposEstudioDAO creado con éxito
+may 27, 2025 10:43:54 P. M. PublicacionesDAO 
+INFO: Intentando crear PublicacionesDAO...
+may 27, 2025 10:43:54 P. M. PublicacionesDAO 
+INFO: PublicacionesDAO creado con éxito
+may 27, 2025 10:43:54 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:43:54 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: AngieC-eratosaurio.
+may 27, 2025 10:43:54 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:43:54 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: AngieKB.
+may 27, 2025 10:43:54 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:43:54 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: Juan-Devgo.
+may 27, 2025 10:43:54 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:43:54 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: JuanitoGolondrina.
+may 27, 2025 10:43:54 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:43:54 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: JuanSe.
+may 27, 2025 10:47:24 P. M. GruposEstudioDAO 
+INFO: Leyendo grupo...
+may 27, 2025 10:47:24 P. M. GruposEstudioDAO 
+INFO: Se ha leído el grupo: Primer Grupo.
+may 27, 2025 10:47:24 P. M. PublicacionesDAO 
+INFO: Leyendo publicación...
+may 27, 2025 10:47:47 P. M. Class 
+INFO: Estableciendo conexión con la base de datos...
+may 27, 2025 10:47:48 P. M. Class 
+INFO: Conexión establecida.
+may 27, 2025 10:47:48 P. M. UsuariosDAO 
+INFO: Intentando crear UsuariosDAO...
+may 27, 2025 10:47:48 P. M. UsuariosDAO 
+INFO: UsuariosDAO creado con éxito
+may 27, 2025 10:47:48 P. M. GruposEstudioDAO 
+INFO: Intentando crear GruposDAO...
+may 27, 2025 10:47:48 P. M. GruposEstudioDAO 
+INFO: GruposEstudioDAO creado con éxito
+may 27, 2025 10:47:48 P. M. PublicacionesDAO 
+INFO: Intentando crear PublicacionesDAO...
+may 27, 2025 10:47:48 P. M. PublicacionesDAO 
+INFO: PublicacionesDAO creado con éxito
+may 27, 2025 10:51:12 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:51:21 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: AngieC-eratosaurio.
+may 27, 2025 10:51:24 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:51:35 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: AngieKB.
+may 27, 2025 10:51:41 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:51:45 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: Juan-Devgo.
+may 27, 2025 10:51:52 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:52:03 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: JuanitoGolondrina.
+may 27, 2025 10:52:05 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 10:52:14 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: JuanSe.
+may 27, 2025 10:56:29 P. M. GruposEstudioDAO 
+INFO: Leyendo grupo...
+may 27, 2025 10:56:29 P. M. GruposEstudioDAO 
+INFO: Se ha leído el grupo: Primer Grupo.
+may 27, 2025 10:56:35 P. M. PublicacionesDAO 
+INFO: Leyendo publicación...
+may 27, 2025 10:56:35 P. M. PublicacionesDAO 
+INFO: Se ha leído la publicación: ¡Primer Publicación!.
+may 27, 2025 11:08:41 P. M. Class 
+INFO: Estableciendo conexión con la base de datos...
+may 27, 2025 11:08:42 P. M. Class 
+INFO: Conexión establecida.
+may 27, 2025 11:08:42 P. M. UsuariosDAO 
+INFO: Intentando crear UsuariosDAO...
+may 27, 2025 11:08:42 P. M. UsuariosDAO 
+INFO: UsuariosDAO creado con éxito
+may 27, 2025 11:08:42 P. M. GruposEstudioDAO 
+INFO: Intentando crear GruposDAO...
+may 27, 2025 11:08:42 P. M. GruposEstudioDAO 
+INFO: GruposEstudioDAO creado con éxito
+may 27, 2025 11:08:42 P. M. PublicacionesDAO 
+INFO: Intentando crear PublicacionesDAO...
+may 27, 2025 11:08:42 P. M. PublicacionesDAO 
+INFO: PublicacionesDAO creado con éxito
+may 27, 2025 11:08:42 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 11:08:42 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: AngieC-eratosaurio.
+may 27, 2025 11:08:42 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 11:08:42 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: AngieKB.
+may 27, 2025 11:08:42 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 11:08:42 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: Juan-Devgo.
+may 27, 2025 11:08:42 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 11:08:42 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: JuanitoGolondrina.
+may 27, 2025 11:08:42 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 11:08:42 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: JuanSe.
+may 27, 2025 11:08:42 P. M. GruposEstudioDAO 
+INFO: Leyendo grupo...
+may 27, 2025 11:08:42 P. M. GruposEstudioDAO 
+INFO: Se ha leído el grupo: Primer Grupo.
+may 27, 2025 11:08:42 P. M. PublicacionesDAO 
+INFO: Leyendo publicación...
+may 27, 2025 11:08:42 P. M. PublicacionesDAO 
+INFO: Se ha leído la publicación: ¡Primer Publicación!.
+may 27, 2025 11:11:32 P. M. Class 
+INFO: Estableciendo conexión con la base de datos...
+may 27, 2025 11:11:33 P. M. Class 
+INFO: Conexión establecida.
+may 27, 2025 11:11:33 P. M. UsuariosDAO 
+INFO: Intentando crear UsuariosDAO...
+may 27, 2025 11:11:33 P. M. UsuariosDAO 
+INFO: UsuariosDAO creado con éxito
+may 27, 2025 11:11:33 P. M. GruposEstudioDAO 
+INFO: Intentando crear GruposDAO...
+may 27, 2025 11:11:33 P. M. GruposEstudioDAO 
+INFO: GruposEstudioDAO creado con éxito
+may 27, 2025 11:11:33 P. M. PublicacionesDAO 
+INFO: Intentando crear PublicacionesDAO...
+may 27, 2025 11:11:33 P. M. PublicacionesDAO 
+INFO: PublicacionesDAO creado con éxito
+may 27, 2025 11:11:39 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 11:11:39 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: AngieC-eratosaurio.
+may 27, 2025 11:11:39 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 11:11:39 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: AngieKB.
+may 27, 2025 11:11:39 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 11:11:39 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: Juan-Devgo.
+may 27, 2025 11:11:39 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 11:11:39 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: JuanitoGolondrina.
+may 27, 2025 11:11:39 P. M. UsuariosDAO 
+INFO: Leyendo usuario...
+may 27, 2025 11:11:39 P. M. UsuariosDAO 
+INFO: Se ha leído el usuario: JuanSe.
+may 27, 2025 11:11:46 P. M. GruposEstudioDAO 
+INFO: Leyendo grupo...
+may 27, 2025 11:11:46 P. M. GruposEstudioDAO 
+INFO: Se ha leído el grupo: Primer Grupo.
+may 27, 2025 11:11:46 P. M. PublicacionesDAO 
+INFO: Leyendo publicación...
+may 27, 2025 11:11:46 P. M. PublicacionesDAO 
+INFO: Se ha leído la publicación: ¡Primer Publicación!.

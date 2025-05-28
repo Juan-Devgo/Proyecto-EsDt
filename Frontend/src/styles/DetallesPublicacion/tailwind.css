@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        /* Primary Colors */
+        --primary-background: #ffffff;
+        --primary-foreground: #1e1e1e;
+
+        /* Button Colors */
+        --button-red: #9e2a2bcc;
+        --button-text: #ffffff;
+
+        /* Comment Section Colors */
+        --comment-bg: #7d97a3e5;
+
+        /* Like Button Colors */
+        --like-button: #eb221e;
+        --like-border: #2c2c2c;
+
+        /* Border Colors */
+        --border-primary: #e09f3ee5;
+
+        /* Text Colors */
+        --text-primary: #1e1e1e;
+        --text-secondary: #757575;
+    }
+}
+
+@layer utilities {
+    /* Background Color Utilities */
+    .bg-primary {
+        background-color: var(--primary-background);
+    }
+
+    .bg-comment {
+        background-color: var(--comment-bg);
+    }
+
+    .bg-button-red {
+        background-color: var(--button-red);
+    }
+
+    .bg-like-button {
+        background-color: var(--like-button);
+    }
+
+    /* Text Color Utilities */
+    .text-primary {
+        color: var(--text-primary);
+    }
+
+    .text-secondary {
+        color: var(--text-secondary);
+    }
+
+    .text-button {
+        color: var(--button-text);
+    }
+
+    /* Border Color Utilities */
+    .border-primary {
+        border-color: var(--border-primary);
+    }
+
+    .border-like {
+        border-color: var(--like-border);
+    }
+}

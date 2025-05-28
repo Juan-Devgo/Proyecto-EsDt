@@ -1,0 +1,68 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        /* Primary Colors */
+        --primary-background: #0078ff;
+        --primary-foreground: #ffffff;
+        --primary-light: #4da6ff;
+        --primary-dark: #0057b8;
+
+        /* Brain Loop Colors */
+        --brain-yellow: #e09f3e;
+        --brain-yellow-light: #f5d76e;
+        --brain-yellow-dark: #c78c2a;
+
+        --brain-red: #9e2a2b;
+        --brain-red-light: #e05d5d;
+        --brain-red-dark: #7a1f20;
+
+        --brain-teal: #335c67;
+        --brain-teal-light: #4a8c94;
+        --brain-teal-dark: #264650;
+
+        /* Border Colors */
+        --border-primary: #dfdfdf;
+        --border-secondary: #cccccc;
+    }
+}
+
+@layer utilities {
+    .bg-brain-yellow {
+        background-color: var(--brain-yellow);
+    }
+
+    .bg-brain-red {
+        background-color: var(--brain-red);
+    }
+
+    .bg-brain-teal {
+        background-color: var(--brain-teal);
+    }
+
+    .text-brain-yellow {
+        color: var(--brain-yellow);
+    }
+
+    .text-brain-red {
+        color: var(--brain-red);
+    }
+
+    .text-brain-teal {
+        color: var(--brain-teal);
+    }
+
+    .border-brain-yellow {
+        border-color: var(--brain-yellow);
+    }
+
+    .border-brain-red {
+        border-color: var(--brain-red);
+    }
+
+    .border-brain-teal {
+        border-color: var(--brain-teal);
+    }
+}

@@ -1,6 +1,7 @@
 package co.edu.uniquindio.proyectoesdt.Patrones;
 
 import co.edu.uniquindio.proyectoesdt.*;
+import co.edu.uniquindio.proyectoesdt.util.Archivos;
 import co.edu.uniquindio.proyectoesdt.util.Logging;
 
 import java.io.File;
@@ -15,10 +16,13 @@ import java.util.*;
 
 public class PublicacionesDAO implements DataAccessObject<Publicacion>{
     private Connection connection;
+    private final Plataforma plataforma;
 
-    public PublicacionesDAO(Connection connection) {
-
+    public PublicacionesDAO(Connection connection, Plataforma plataforma) {
         this.connection = null;
+        this.plataforma = plataforma;
+
+        Logging.logInfo("Intentando crear PublicacionesDAO...", this);
 
         try{
             if(connection == null) {
@@ -32,22 +36,32 @@ public class PublicacionesDAO implements DataAccessObject<Publicacion>{
 
             this.connection = connection;
 
+            Logging.logInfo("PublicacionesDAO creado con éxito", this);
+
         } catch (SQLException e) {
             e.fillInStackTrace();
-            throw new RuntimeException("Error fatal en UsuariosDAO: " + e.getMessage());
+            Logging.logSevere("Error fatal en PublicacionesDAO: " + e.getMessage(), this);
         }
     }
 
     @Override
     public void insertar(Collection<Publicacion> insertables) {
-        String sqlInsertPublicacion = "INSERT INTO (titulo, tema, nickname_autor, tipo, parrafos, activa, prioridad) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?) ON DUPLICATE KEY UPDATE tema = VALUES(tema), " +
-                "nickname_autor = VALUES(nickname_autor) tipo = VALUES(tipo), " +
-                "parrafos = VALUES(parrafos), activa = VALUES(activa), prioridad = VALUES(prioridad)";
+        String sqlInsertPublicacion = "INSERT INTO publicaciones (titulo, tema, nickname_autor, tipo, parrafos, " +
+                "activa, prioridad) VALUES (?, ?, ?, ?, ?, ?, ?) " +
+                "ON DUPLICATE KEY UPDATE " +
+                "tema = VALUES(tema), " +
+                "nickname_autor = VALUES(nickname_autor), " +
+                "tipo = VALUES(tipo), " +
+                "parrafos = VALUES(parrafos), " +
+                "activa = VALUES(activa), " +
+                "prioridad = VALUES(prioridad);";
 
         try(PreparedStatement stmtPublicacion = connection.prepareStatement(sqlInsertPublicacion)) {
 
             for(Publicacion p: insertables) {
+
+                Logging.logInfo("Insertando la publicación: " + p.getTitulo() + "...", this);
+
                 stmtPublicacion.setString(1, p.getTitulo());
                 stmtPublicacion.setString(2, p.getTema());
                 stmtPublicacion.setString(3, p.getAutor().getNickname());
@@ -70,7 +84,12 @@ public class PublicacionesDAO implements DataAccessObject<Publicacion>{
                 actualizarLikes(p);
                 actualizarComentarios(p);
                 actualizarArchivos(p);
+
+                Logging.logInfo("La publicación: " + p.getTitulo() + " se ha insertado correctamente.",
+                        this);
             }
+
+            stmtPublicacion.executeBatch();
 
         } catch (SQLException e) {
             e.fillInStackTrace();
@@ -93,16 +112,19 @@ public class PublicacionesDAO implements DataAccessObject<Publicacion>{
         ){
             ResultSet rsPublicaciones = stmtSelectPublicaciones.executeQuery();
             while (rsPublicaciones.next()) {
+
+                Logging.logInfo("Leyendo publicación...", this);
+
                 String titulo = rsPublicaciones.getString("titulo");
                 String tema = rsPublicaciones.getString("tema");
                 String nicknameAutor = rsPublicaciones.getString("nickname_autor");
                 String tipoString = rsPublicaciones.getString("tipo");
 
-                Usuario autor = Plataforma.getInstancia().buscarEstudiante(nicknameAutor);
+                Usuario autor = plataforma.buscarEstudiante(nicknameAutor);
                 Contenido contenido = new Contenido(titulo);
 
                 if(autor == null) {
-                    autor = Plataforma.getInstancia().buscarModerador(nicknameAutor);
+                    autor = plataforma.buscarModerador(nicknameAutor);
                 }
 
                 Publicacion p;
@@ -118,22 +140,29 @@ public class PublicacionesDAO implements DataAccessObject<Publicacion>{
 
                 publicaciones.put(titulo, p);
 
-                InputStream parrafosStream = rsPublicaciones.getBinaryStream("parrafos");
-                File parrafosFile = File.createTempFile(titulo.trim(), "_parrafos");
-                Files.copy(parrafosStream, Path.of("files\\" + parrafosFile.toPath()), StandardCopyOption
-                        .REPLACE_EXISTING);
-                contenido.setParrafos(parrafosFile);
+                //Leer archivos
 
+                String tituloSeguro = Archivos.limpiarNombreArchivo(titulo.trim());
+
+                //Leer archivo de párrafos
+                InputStream parrafosStream = rsPublicaciones.getBinaryStream("parrafos");
+                Path parrafosPath = Path.of(Archivos.obtenerRutaFiles(), tituloSeguro + "_parrafos.txt");
+                Files.copy(parrafosStream, parrafosPath, StandardCopyOption.REPLACE_EXISTING);
+                contenido.setParrafos(parrafosPath.toFile());
+
+                //Leer archivos adjuntos
                 stmtSelectArchivos.setString(1, titulo);
                 ResultSet rsArchivos = stmtSelectArchivos.executeQuery();
                 while(rsArchivos.next()) {
                     int posicion = rsArchivos.getInt("posicion");
                     InputStream archivoStream = rsArchivos.getBinaryStream("archivo");
-                    File archivo = File.createTempFile(titulo.trim(), "_archivo" + posicion);
-                    Files.copy(archivoStream, Path.of("files\\" + archivo.toPath()), StandardCopyOption
-                            .REPLACE_EXISTING);
-                    contenido.agregarArchivo(posicion, archivo);
+
+                    Path archivoPath = Path.of(Archivos.obtenerRutaFiles(), tituloSeguro + "_archivo" + posicion);
+                    Files.copy(archivoStream, archivoPath, StandardCopyOption.REPLACE_EXISTING);
+                    contenido.agregarArchivo(posicion, archivoPath.toFile());
                 }
+
+                Logging.logInfo("Se ha leído la publicación: " + titulo + ".", this);
             }
 
         } catch (SQLException e) {
@@ -160,6 +189,9 @@ public class PublicacionesDAO implements DataAccessObject<Publicacion>{
             PreparedStatement stmtArchivos = connection.prepareStatement(sqlDeleteArchivos)
         ){
             for(Publicacion p: eliminables) {
+
+                Logging.logInfo("Eliminando la publicación: " + p.getTitulo() + "...", this);
+
                 stmtPublicaciones.setString(1, p.getTitulo());
                 stmtPublicaciones.executeUpdate();
 
@@ -189,6 +221,8 @@ public class PublicacionesDAO implements DataAccessObject<Publicacion>{
                         }
                     }
                 }
+
+                Logging.logInfo("Publicación eliminada.", this);
             }
 
         } catch (SQLException e) {
@@ -199,7 +233,7 @@ public class PublicacionesDAO implements DataAccessObject<Publicacion>{
 
     public void actualizarLikes(Publicacion p) {
         String sqlDeleteLikes = "DELETE FROM likes WHERE titulo_publicacion_propietario = ?";
-        String sqlInsertLikes = "INSERT INTO (titulo_publicacion_propietario, nickname) VALUES (?, ?)";
+        String sqlInsertLikes = "INSERT INTO ikes (titulo_publicacion_propietario, nickname) VALUES (?, ?)";
 
         try(PreparedStatement stmtDeleteLikes = connection.prepareStatement(sqlDeleteLikes);
             PreparedStatement stmtInsertLikes = connection.prepareStatement(sqlInsertLikes)

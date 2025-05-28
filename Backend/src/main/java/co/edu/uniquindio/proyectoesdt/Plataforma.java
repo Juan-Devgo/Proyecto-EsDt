@@ -4,6 +4,7 @@ import co.edu.uniquindio.proyectoesdt.EstructurasDatos.*;
 import co.edu.uniquindio.proyectoesdt.Patrones.GruposEstudioDAO;
 import co.edu.uniquindio.proyectoesdt.Patrones.PublicacionesDAO;
 import co.edu.uniquindio.proyectoesdt.Patrones.UsuariosDAO;
+import co.edu.uniquindio.proyectoesdt.util.Logging;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -18,11 +19,11 @@ public class Plataforma {
     private final MiLinkedList<GrupoEstudio> gruposEstudio;
     private final ArbolBinarioABB<Publicacion> publicaciones;
     private final MiColaPrioridad<SolicitudAyuda> solicitudesAyuda;
-    private final ArrayList<Usuario> representantesComunidades;
+    private final ArrayList<Estudiante> representantesComunidades;
 
-    private final UsuariosDAO usuariosDAO;
-    private final GruposEstudioDAO gruposEstudioDAO;
-    private final PublicacionesDAO publicacionesDAO;
+    private static UsuariosDAO usuariosDAO;
+    private static GruposEstudioDAO gruposEstudioDAO;
+    private static PublicacionesDAO publicacionesDAO;
 
     public static Connection conectarBD() {
         Connection connection;
@@ -31,11 +32,11 @@ public class Plataforma {
         String contrasenia = "";
         String BD = "proyecto-esdt-BD";
         try {
-            System.out.println("Estableciendo conexión con la base de datos...");
+            Logging.logInfo("Estableciendo conexión con la base de datos...", Plataforma.class);
             connection = DriverManager.getConnection(host + BD, usuario, contrasenia);
-            System.out.println("Conexión establecida.");
+            Logging.logInfo("Conexión establecida.", Plataforma.class);
         } catch (SQLException e) {
-            System.out.println("Ha ocurrido un error de conexión con la base de datos...");
+            Logging.logInfo("Ha ocurrido un error de conexión con la base de datos...", Plataforma.class);
             throw new RuntimeException(e);
         }
 
@@ -51,27 +52,31 @@ public class Plataforma {
     }
 
     private Plataforma() {
+
         this.usuarios = new GrafoNoDirigido<>();
         this.gruposEstudio = new MiLinkedList<>();
         this.publicaciones = new ArbolBinarioABB<>();
         this.solicitudesAyuda = new MiColaPrioridad<>();
         this.representantesComunidades = new ArrayList<>();
-
-        //----------------------- Conexión con la Base de Datos ------------------------//
-        Connection connection = conectarBD();
-
-        this.usuariosDAO = new UsuariosDAO(connection);
-        this.gruposEstudioDAO = new GruposEstudioDAO(connection);
-        this.publicacionesDAO = new PublicacionesDAO(connection);
-        leerBD();
     }
 
     // Singleton
-    public static Plataforma getInstancia() {
+    public static synchronized Plataforma getInstancia() {
         if (instancia == null) {
             instancia = new Plataforma();
+            creacionDAO(instancia);
         }
+
         return instancia;
+    }
+
+    private static void creacionDAO(Plataforma instancia) {
+        //----------------------- Conexión con la Base de Datos ------------------------//
+        Connection connection = conectarBD();
+
+        Plataforma.usuariosDAO = new UsuariosDAO(connection, instancia);
+        Plataforma.gruposEstudioDAO = new GruposEstudioDAO(connection, instancia);
+        Plataforma.publicacionesDAO = new PublicacionesDAO(connection, instancia);
     }
 
     // Método para leer todos los archivos de la base de datos
@@ -215,11 +220,31 @@ public class Plataforma {
     // Método para detectar clústeres y crear comunidades
     public void crearComunidades() {
         for(Usuario usuario: usuarios) {
-            if(!representantesComunidades.contains(usuario)) {
-                for (Usuario representante : representantesComunidades) {
-                    if (!usuarios.existeCamino(representante, usuario)) {
-                        crearGrupoEstudio("Comunidad de " + usuario.getNickname());
-                        representantesComunidades.add(usuario);
+            if(usuario instanceof Estudiante estudiante) {
+
+                if (!representantesComunidades.contains(estudiante)) {
+                    if (!representantesComunidades.isEmpty()) {
+
+                        for (Estudiante representante : representantesComunidades) {
+                            if (!usuarios.existeCamino(representante, estudiante)) {
+
+                                boolean noPerteneceAComunidad = true;
+                                for (GrupoEstudio g : gruposEstudio) {
+                                    if(g.getNombre().contains("Comunidad") &&
+                                            g.getIntegrantes().contains(estudiante)) {
+                                        noPerteneceAComunidad = false;
+                                        break;
+                                    }
+                                }
+
+                                if(noPerteneceAComunidad) {
+                                    crearGrupoEstudio("Comunidad de " + estudiante.getNickname());
+                                    representantesComunidades.add(estudiante);
+                                }
+                            }
+                        }
+                    } else {
+                        representantesComunidades.add(estudiante);
                     }
                 }
             }
@@ -613,6 +638,28 @@ public class Plataforma {
         publicacionesDAO.insertar(publicacionesAutor);
     }
 
+    // Método para agregar un interés a un usuario
+    public void agregarInteresUsuario(Usuario usuario, String interes) {
+        if(usuario == null || interes == null || interes.isBlank()) {
+            throw new IllegalArgumentException("No se puede agregar el interés ya que el usuario es nulo o el " +
+                    "interés está en blanco");
+        }
+
+        usuario.agregarInteres(interes);
+        usuariosDAO.actualizarIntereses(usuario);
+    }
+
+    // Método para eliminar un interés a un usuario
+    public void eliminarInteresUsuario(Usuario usuario, String interes) {
+        if(usuario == null || interes == null || interes.isBlank()) {
+            throw new IllegalArgumentException("No se puede eliminar el interés ya que el usuario es nulo o el " +
+                    "interés está en blanco");
+        }
+
+        usuario.eliminarInteres(interes);
+        usuariosDAO.actualizarIntereses(usuario);
+    }
+
     // Método para sugerir usuarios a un usuario
     public Collection<Usuario> obtenerSugerenciasUsuarios(Usuario usuario) {
         Collection<Usuario> sugerencias = new LinkedList<>();
@@ -669,7 +716,9 @@ public class Plataforma {
             throw new IllegalArgumentException("El grupo de estudio '" + nombre + "' ya se encuentra en uso.");
         }
 
-        gruposEstudio.agregar(new GrupoEstudio(nombre));
+        GrupoEstudio nuevoGrupo = new GrupoEstudio(nombre);
+        gruposEstudio.agregar(nuevoGrupo);
+        gruposEstudioDAO.insertar(List.of(nuevoGrupo));
     }
 
     public boolean validarNombreGrupoDisponible(String nombre) {

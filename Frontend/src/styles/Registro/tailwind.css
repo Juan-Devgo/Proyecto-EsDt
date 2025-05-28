@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        /* Primary Colors */
+        --primary-background: #335c67;
+        --primary-foreground: #ffffff;
+        --primary-light: #4a7d8a;
+        --primary-dark: #264751;
+
+        /* Secondary Colors */
+        --secondary-background: #9e2a2b;
+        --secondary-foreground: #ffffff;
+        --secondary-light: #b84142;
+        --secondary-dark: #7e2122;
+
+        /* Text Colors */
+        --text-primary: #000000;
+        --text-secondary: #828282;
+
+        /* Border Colors */
+        --border-primary: #dfdfdf;
+    }
+}
+
+@layer utilities {
+    /* Background Color Utilities */
+    .bg-brainloop-primary {
+        background-color: var(--primary-background);
+    }
+
+    .bg-brainloop-secondary {
+        background-color: var(--secondary-background);
+    }
+
+    /* Text Color Utilities */
+    .text-brainloop-primary {
+        color: var(--text-primary);
+    }
+
+    .text-brainloop-secondary {
+        color: var(--text-secondary);
+    }
+
+    /* Border Color Utilities */
+    .border-brainloop {
+        border-color: var(--border-primary);
+    }
+}

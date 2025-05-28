@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        /* Primary Colors */
+        --primary-background: #ffffff;
+        --primary-foreground: #1e1e1e;
+
+        /* Secondary Colors */
+        --secondary-background: #f5f5f5;
+        --secondary-foreground: #757575;
+
+        /* Accent Colors */
+        --accent-color: #e09f3ee5;
+        --accent-foreground: #ffffff;
+
+        /* Status Colors */
+        --status-active: #e09f3ee5;
+        --status-career: #335c67;
+        --status-usertype: #333355;
+
+        /* Group Colors */
+        --group-background: #7d97a3e5;
+
+        /* Button Colors */
+        --button-follow: #9e2a2bcc;
+        --button-follow-hover: #9e2a2b;
+
+        /* Border Colors */
+        --border-primary: #dfdfdf;
+        --border-secondary: #757575;
+        --border-accent: #e09f3ee5;
+        --border-group: #9e2a2b4c;
+    }
+}
+
+@layer utilities {
+    /* Background Color Utilities */
+    .bg-primary {
+        background-color: var(--primary-background);
+    }
+
+    .bg-secondary {
+        background-color: var(--secondary-background);
+    }
+
+    .bg-accent {
+        background-color: var(--accent-color);
+    }
+
+    .bg-group {
+        background-color: var(--group-background);
+    }
+
+    .bg-button-follow {
+        background-color: var(--button-follow);
+    }
+
+    /* Text Color Utilities */
+    .text-primary {
+        color: var(--primary-foreground);
+    }
+
+    .text-secondary {
+        color: var(--secondary-foreground);
+    }
+
+    .text-status-active {
+        color: var(--status-active);
+    }
+
+    .text-status-career {
+        color: var(--status-career);
+    }
+
+    .text-status-usertype {
+        color: var(--status-usertype);
+    }
+
+    /* Border Color Utilities */
+    .border-primary {
+        border-color: var(--border-primary);
+    }
+
+    .border-secondary {
+        border-color: var(--border-secondary);
+    }
+
+    .border-accent {
+        border-color: var(--border-accent);
+    }
+
+    .border-group {
+        border-color: var(--border-group);
+    }
+}

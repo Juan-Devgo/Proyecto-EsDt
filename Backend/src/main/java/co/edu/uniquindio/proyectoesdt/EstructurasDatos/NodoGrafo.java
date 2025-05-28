@@ -3,6 +3,8 @@ package co.edu.uniquindio.proyectoesdt.EstructurasDatos;
 import co.edu.uniquindio.proyectoesdt.Usuario;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class NodoGrafo<T extends Usuario> {
     private T elemento;
@@ -17,17 +19,29 @@ public class NodoGrafo<T extends Usuario> {
         return adyacentes.contains(nodo);
     }
 
-    public boolean existeCamino(NodoGrafo<T> nodo) {
-        if (existeNodo(nodo)) {
+    public boolean existeCamino(NodoGrafo<T> destino) {
+        Set<NodoGrafo<T>> visitados = new HashSet<>();
+        return existeCaminoDFS(this, destino, visitados);
+    }
+
+    private boolean existeCaminoDFS(NodoGrafo<T> actual, NodoGrafo<T> destino, Set<NodoGrafo<T>> visitados) {
+        if (actual.equals(destino)) {
             return true;
         }
 
-        for (NodoGrafo<T> adyacente : adyacentes) {
-            return existeCamino(nodo);
+        visitados.add(actual);
+
+        for (NodoGrafo<T> adyacente : actual.adyacentes) {
+            if (!visitados.contains(adyacente)) {
+                if (existeCaminoDFS(adyacente, destino, visitados)) {
+                    return true;
+                }
+            }
         }
 
         return false;
     }
+
 
     public void agregarNodo(NodoGrafo<T> nuevoNodo) {
         if (nuevoNodo == null) {

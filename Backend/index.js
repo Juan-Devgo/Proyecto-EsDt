@@ -1,14 +1,10 @@
 // index.js
 import express from "express";
 import cors from "cors";
-import sequelize from "./models/index.js";
 import Publication from "./models/Publication.js";
 
 const app = express();
 app.use(cors());
-
-await sequelize.authenticate();
-await sequelize.sync();
 
 app.get("/recommended-content", async (req, res) => {
     const content = await Publication.findAll();

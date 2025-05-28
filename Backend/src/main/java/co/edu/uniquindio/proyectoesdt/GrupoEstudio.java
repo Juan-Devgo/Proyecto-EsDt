@@ -27,6 +27,16 @@ public class GrupoEstudio implements InsertableBD, Comparable<GrupoEstudio> {
         return Integer.compare(otroGrupo.getNumeroParticipantes(), this.getNumeroParticipantes());
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        boolean equal = false;
+        if(obj instanceof GrupoEstudio g) {
+            equal = nombre.equals(g.nombre);
+        }
+
+        return equal;
+    }
+
     public GrupoEstudio clonar(String nombre) {
         GrupoEstudio grupo = new GrupoEstudio(nombre);
         grupo.setTemas(temas);

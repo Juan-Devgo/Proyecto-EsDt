@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        /* Primary Colors */
+        --primary-background: #9e2a2b;
+        --primary-foreground: #ffffff;
+        --primary-light: #b85c5d;
+        --primary-dark: #7e2122;
+
+        /* Secondary Colors */
+        --secondary-background: #f7f7f7;
+        --secondary-foreground: #000000;
+        --secondary-light: #ffffff;
+        --secondary-dark: #dfdfdf;
+
+        /* Accent Colors */
+        --accent-color: #335c67;
+        --accent-foreground: #ffffff;
+        --accent-light: #4a7d8a;
+        --accent-dark: #264852;
+
+        /* Border Colors */
+        --border-primary: #dfdfdf;
+        --border-secondary: #828282;
+        --border-light: #f5f5f5;
+        --border-dark: #444444;
+
+        /* Text Colors */
+        --text-primary: #000000;
+        --text-secondary: #444444;
+        --text-tertiary: #828282;
+    }
+}
+
+@layer utilities {
+    /* Background Color Utilities */
+    .bg-primary-red {
+        background-color: var(--primary-background);
+    }
+
+    .bg-primary-light {
+        background-color: var(--primary-light);
+    }
+
+    .bg-primary-dark {
+        background-color: var(--primary-dark);
+    }
+
+    .bg-secondary-gray {
+        background-color: var(--secondary-background);
+    }
+
+    .bg-secondary-light {
+        background-color: var(--secondary-light);
+    }
+
+    .bg-secondary-dark {
+        background-color: var(--secondary-dark);
+    }
+
+    .bg-accent-teal {
+        background-color: var(--accent-color);
+    }
+
+    .bg-accent-light {
+        background-color: var(--accent-light);
+    }
+
+    .bg-accent-dark {
+        background-color: var(--accent-dark);
+    }
+
+    /* Text Color Utilities */
+    .text-primary-white {
+        color: var(--primary-foreground);
+    }
+
+    .text-secondary-black {
+        color: var(--secondary-foreground);
+    }
+
+    .text-accent-white {
+        color: var(--accent-foreground);
+    }
+
+    /* Border Color Utilities */
+    .border-primary {
+        border-color: var(--border-primary);
+    }
+
+    .border-secondary {
+        border-color: var(--border-secondary);
+    }
+
+    .border-light {
+        border-color: var(--border-light);
+    }
+
+    .border-dark {
+        border-color: var(--border-dark);
+    }
+}

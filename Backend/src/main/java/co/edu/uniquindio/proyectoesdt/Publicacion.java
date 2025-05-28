@@ -38,6 +38,16 @@ public class Publicacion implements InsertableBD, Comparable<Publicacion> {
         return titulo.compareTo(o.titulo);
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        boolean equal = false;
+        if(obj instanceof Publicacion p) {
+            equal = titulo.equals(p.titulo);
+        }
+
+        return equal;
+    }
+
     public Publicacion clonar(String titulo) {
         Publicacion publicacion = new Publicacion(titulo, tema, autor, tipoPublicacion, contenido);
         publicacion.setLikes(likes);

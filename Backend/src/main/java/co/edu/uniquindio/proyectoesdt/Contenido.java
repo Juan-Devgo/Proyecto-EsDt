@@ -1,9 +1,9 @@
 package co.edu.uniquindio.proyectoesdt;
 
+import co.edu.uniquindio.proyectoesdt.util.Archivos;
+
 import java.io.*;
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Contenido implements InsertableBD {
@@ -62,7 +62,9 @@ public class Contenido implements InsertableBD {
     }
 
     public File getParrafosFile() throws IOException {
-        File parrafosFile = new File("files", tituloPublicacion.trim() + "_parrafos.txt");
+        String nombreArchivoLimpio = Archivos.limpiarNombreArchivo(tituloPublicacion.trim());
+
+        File parrafosFile = new File(Archivos.obtenerRutaFiles(),  nombreArchivoLimpio + "_parrafos.txt");
 
         try (BufferedWriter bfw = new BufferedWriter(new FileWriter(parrafosFile))) {
             for (String parrafo : parrafos) {
